@@ -1,0 +1,138 @@
+.add-img {
+	.close-popup {
+		position: absolute;
+		top: 8px;
+		left: 8px;
+		border: 3px solid #000;
+		border-radius: 50%;
+		width: 32px;
+		height: 32px;
+		line-height: 29px;
+		text-align: center;
+		cursor: pointer;
+		z-index: 999;
+		img {
+			display: inline-block;
+			vertical-align: middle;
+			width: 16px;
+		}
+	}
+	h1 {
+		margin-top: -12px;
+		font-weight: 700;
+		text-align: center;
+		color: #545454;
+	}
+	.images-wrapper {
+		.wrapper {
+			width: 90%;
+			margin: 0 auto;
+			.image {
+				position: relative;
+				text-align: center;
+				height: 250px;
+				overflow: hidden;
+				border: 1px solid #f1f1f1;
+				.loader {
+					font-size: 6px;
+					top: 35%;
+				}
+				.delete_img {
+					position: absolute;
+					z-index: 99;
+					display: block;
+					cursor: pointer;
+					background: rgba(255, 255, 255, 0.5);
+					top: 0;
+					left: 0;
+					padding: 8px;
+					img {
+						display: block;
+						width: 32px !important;
+						opacity: 0.5;
+						transform: scale(1);
+						transition: transform 0.5s;
+						&:hover {
+							transform: scale(1.2);
+							transition: transform 0.5s;
+						}
+						&:active {
+							transform: scale(1.5);
+							transition: transform 0.5s;
+						}
+					}
+				}
+				&:hover {
+					.delete_img {
+						background: #fff;
+						img {
+							opacity: 1;
+						}
+					}
+				}
+				&.no-image {
+					.edit-image-wrapper {
+						height: 100%;
+						width: 100%;
+						.edit-image {
+							cursor: pointer;
+							position: relative;
+							top: 50%;
+							transform: translateY(-50%);
+							right: 0;
+							img {
+								text-align: center;
+								margin: 0 auto;
+								position: initial;
+								top: 0;
+								transform: none;
+								opacity: 1;
+							}
+						}
+					}					
+				}
+			}
+			.description {
+				margin: 16px 0;
+				input {
+					width: calc(100% - 8px);
+					padding-right: 8px;
+					height: 40px;
+					border: 1px solid #f1f1f1;
+					outline: none;
+					&:focus {
+						border: 1px solid #ccc;
+					}
+				}
+			}
+		}
+	}
+	.save {
+		margin-top: 8px;
+		padding-right: 16px;
+		ul {
+			li {
+				display: inline-block;
+				padding-left: 16px;
+				button {
+					font-size: 16px;
+					background: #91DC5A;
+					padding: 8px 32px;
+					color: #fff;
+					font-weight: 700;
+					border: none;
+					cursor: pointer;
+					&:hover {
+						background: darken(#91DC5A, 20%);
+					}
+					&.cancel {
+						background: #ccc;
+						&:hover {
+							background: darken(#ccc, 20%);
+						}
+					}
+				}
+			}
+		}
+	}
+}

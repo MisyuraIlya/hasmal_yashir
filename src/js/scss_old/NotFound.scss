@@ -1,0 +1,58 @@
+.not-found {
+	h1 {
+		font-size: 8vw;
+		font-weight: 700;
+		text-align: center;
+		margin: 0.5vw 0;
+	}
+	.error {
+		position: relative;
+		max-width: 250px;
+		margin: 0 auto;
+		img {
+			display: block;
+		}
+		span {
+			position: absolute;
+			display: block;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 0;
+			left: 0;
+			width: 70%;
+			margin: 0 auto;
+			text-align: center;
+			font-size: 79px;
+			font-weight: 700;
+			background: #ff5959;
+			border-radius: 50%;
+			color: #fff;
+		}
+	}
+	h2 {
+		font-size: 5vw;
+		text-align: center;
+		margin-top: 0.5vw;
+		margin-bottom: 1.5vw;
+	}
+	.actions {
+		text-align: center;
+		margin-bottom: 0.5vw;
+		button {
+			font-size: 18px;
+			color: #fff;
+			background: #03a9f4;
+			border: none;
+			padding: 16px 40px;
+			cursor: pointer;
+			transition: all 0.5s;
+			margin: 0 16px;
+			outline: 4px solid #03a9f4;
+			border: 4px solid #ffffff;
+			&:hover {
+				background: darken(#03a9f4, 20%);
+				transition: all 0.5s;
+			}
+		}
+	}
+}

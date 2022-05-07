@@ -1,0 +1,239 @@
+.myzone_container{
+    background-color: #fff8f4;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+.myzone_container_center{
+    width: 900px;
+    margin: 0 auto;
+}
+
+.myzone_zone_container{
+    background-color: #fff;
+    border-radius: 60px;
+    padding-bottom: 50px;
+}
+
+.myzone_zone_menu{
+    border-radius: 60px;
+    background-color: #c6e4f8;
+    display: flex;
+    div{
+        width: 20%;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }:hover{
+        background-color: #505050;
+        box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.16);
+        color: #fff;
+    }
+}
+
+.myzone_zone_menu_selected{
+    border-radius: 0px;
+    background-color: #505050;
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.16);
+    color: #fff;
+
+    border: 1px solid black;
+}
+
+.myzone_zone_calender{
+    display: flex;
+}
+
+.myzone_calender{
+    border-radius: 43px;
+    background-color: #eaeaea;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .myzone_calender_icon{
+        width: 20%;
+        border-right: 1px solid #505050;
+    }
+    span{
+        width: 80%;
+        padding-right: 10px;
+    }
+    div{
+        padding-right: 10px;
+    }
+    img{
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.myzone_zone_calender{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    button{
+        padding: 16px 45px 21px 44px;
+        border-radius: 43px;
+        background-color: #ffbf00;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+    }
+
+}
+
+.myzone_zone_title{
+    display: flex;
+    div{
+        width: 33%;
+    }
+}
+
+.myzone_zone_entire{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.myzone_card_container{
+    width: 100%;
+    .accordion {
+        margin-top: 20px;
+        color: black;
+    }
+}
+.myzone_zone_card{
+    border-radius: 43px;
+    background-color: #eaeaea;
+    height: 60px;
+
+    div{
+        align-items: center;
+        display: flex;
+        // width: 100%;
+        // justify-content: center;
+    }
+
+    span{
+    }
+    
+}
+
+.myzone_card_devider{
+    &::before{
+        content: '|';
+        text-indent: -999999px; // Hide the content
+        display: block;
+        float: right; // Position
+        width: 1px;
+        height: 65%; // The 100% of parent (li)
+        background: black; // The color
+        margin: {
+          left: 20px;
+        }
+    }
+}
+
+.myzone_card_devider_active{
+    &::before{
+        content: '|';
+        text-indent: -999999px; // Hide the content
+        display: block;
+        float: right; // Position
+        width: 1px;
+        height: 65%; // The 100% of parent (li)
+        background: white; // The color
+        margin: {
+          left: 20px;
+        }
+    }
+}
+
+
+
+.myzone_card_down{
+    cursor: pointer;
+}
+
+.myzone_zone_card_info{
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: solid 1px #707070;
+}
+
+.myzone_zone_card_info_container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 15px;
+    div{
+        width: 20%;
+    }
+    img{
+        width: 75.8px;
+        height: 56.8px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+.myzone_zone_zard_devider{
+    background-color: #a7a7a7;
+    width: 90%;
+}
+
+.myzone_zone_card_form{
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    span{
+        text-decoration: underline;
+        cursor: pointer;
+        color: #0081cb;
+    }
+}
+
+.myzone_zone_button{
+    button{
+        float: left;
+        width: 105px;
+        height: 42px;
+        margin: 17.2px 40px 0 0.2px;
+        padding: 10px 19px 12px 11px;
+        border-radius: 43px;
+        background-color: #505050;
+
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        letter-spacing: 0.34px;
+        text-align: right;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+
+
+.myzone_calender_button{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.myzone_showmore{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:20px;
+    span{
+        text-decoration: underline;
+        color: #0081cb;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,49 @@
+.category_modal{
+    background-color: #eaeaea;
+    margin-top: 80px;
+}
+.container_category{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card_category{
+  margin: 76px 45px 0;
+  padding: 54px 12px 20px 26px;
+  border-radius: 3px;
+  box-shadow: 3px 3px 1px 0 rgba(0, 0, 0, 0.16);
+  background-color: #fff;
+}
+
+.category_modal_container{
+    padding-bottom: 100px;
+}
+
+
+.button_category_product{
+
+    border-radius: 43px;
+    background-color: #0081cb;
+
+    h3{
+        font-size: 16px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        text-align: center;
+        color: #fff;
+        padding-top: 10px;
+    }
+
+    div{
+        font-size: 14px;
+        font-weight: 300;
+        font-stretch: normal;
+        font-style: normal;
+        text-align: center;
+        color: #fff;
+        padding-bottom: 10px;
+    }
+}

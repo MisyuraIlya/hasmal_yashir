@@ -1,0 +1,25 @@
+.editor-for-title {
+	margin-bottom: 16px;
+	input {
+		font-size: 60px;
+		height: 72px;
+		padding: 0 8px;
+		background: transparent;
+		outline: none;
+		color: #999999;
+		width: calc(100% - 18px);
+		border: 1px solid #ccc;
+		&.h1 {
+			font-size: 60px;
+			height: 72px;
+		}
+		&.h2 {
+			font-size: 40px;
+			height: 52px;
+		}
+		&.h3 {
+			font-size: 28px;
+			height: 40px;
+		}
+	}
+}

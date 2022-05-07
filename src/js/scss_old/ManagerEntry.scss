@@ -1,0 +1,200 @@
+#managerEntry {
+	.popup-wrapper {
+		position: relative;
+		max-width: 400px;
+		background: #4d4d4d;
+		top: 50%;
+		transform: translateY(-50%);
+		margin: 0 auto;
+		border-radius: 4px;
+		box-shadow: 0 0 50px #000;
+		.close-popup {
+			position: absolute;
+			top: 16px;
+			left: 16px;
+			cursor: pointer;
+			img {
+				width: 16px;
+			}
+		}
+    .admin-icon {
+      text-align: center;
+      padding: 24px 0;
+      img {
+        width: 64px;
+      }
+    }
+	}
+  .wrapp{
+    padding:0px 0 30px 0;
+    .action-to-perform{
+      h3{
+        text-align: center;
+        margin:0;
+        margin-bottom:30px;
+        color:#fff;
+      }
+  		ul {
+        width:80%;
+        margin:0 auto;
+  			li {
+  				width: 50%;
+  				display:inline-block;
+          text-align: center;
+  				div {
+            padding:10px 0;
+            width: 90%;
+            margin:0 auto;
+            font-size: 18px;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            border:1px solid #fff;
+            &:hover{
+              background:#fff;
+              color:#222;
+            }
+  				}
+  			}
+  		}
+    }
+  }
+	.user-entry-wrapper {
+
+		ul {
+      width:90%;
+      margin:0 auto;
+			li {
+				width: 50%;
+				float: right;
+				font-size: 24px;
+				color: #139cd1;
+				cursor: pointer;
+				border-radius: 30px 0 0 0;
+				&.active {
+					background: #eeeeee;
+				}
+				span {
+					padding: 8px 24px;
+					display: block;
+				}
+			}
+		}
+		.user-entry {
+			clear: both;
+			padding: 8px 0;
+			.admin-icon {
+				text-align: center;
+				padding: 24px 0;
+				img {
+					width: 64px;
+				}
+			}
+			.login {}
+			.register, .login {
+				padding: 0 24px;
+				input {
+					display: block;
+					width: calc(100% - 18px);
+					border: 1px solid #ccc;
+					border-radius: 4px;
+					height: 35px;
+					padding-right: 16px;
+					font-size: 16px;
+					margin: 8px 0;
+					outline: none;
+					&.error {
+						border: 1px solid red;
+					}
+				}
+				.terms-and-conditions {
+					margin-top: 16px;
+					.checkboxes-and-radios {
+						display: inline-block;
+						width: 40px;
+					}
+					span {
+						display: inline-block;
+						font-size: 13px;
+						padding-right: 16px;
+						position: relative;
+						top: -10px;
+						color: #c2c2c2;
+						a {
+							color: #c2c2c2;
+							text-decoration: underline;
+							cursor: pointer;
+						}
+					}
+				}
+				.actions {
+					display: flex;
+					margin: 16px 0;
+					.cancel {
+						button {
+							background: #9a9a9a;
+						}
+					}
+					button {
+						color: #fff;
+						font-size: 16px;
+						border: none;
+						padding: 8px 0;
+						display: block;
+						width: 100%;
+						cursor: pointer;
+						outline: none;
+						transition: all 0.5s;
+						border-radius: 4px;
+						&:hover {
+							background: darken(#9a9a9a, 20%);
+							transition: all 0.5s;
+						}
+					}
+					.accept {
+						width: 65%;
+						margin-left: 5%;
+						button {
+							background: #c2c2c2;
+							cursor: no-drop;
+							&:hover {
+								background: darken(#c2c2c2, 10%);
+							}
+						}
+					}
+					.send {
+						width: 65%;
+						margin-left: 5%;
+						button {
+							background: #09a6a7;
+							transition: all 0.5s;
+							&:hover {
+								background: darken(#09a6a7, 10%);
+							}
+						}
+					}
+					.cancel {
+						width: 30%;
+					}
+				}
+			}
+		}
+	}
+}
+@media all and (max-width: 600px) {
+	#adminEntry {
+		overflow-y: auto;
+		h1 {
+			font-size: 32px;
+			line-height: 24px;
+			margin: 0 0 16px 0;
+		}
+		.popup-wrapper {
+			top: 5%;
+			transform: none;
+			width: 90%;
+			zoom: 0.9;
+			border-radius: 4px;
+		}
+	}
+}

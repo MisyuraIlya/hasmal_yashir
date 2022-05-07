@@ -1,0 +1,62 @@
+.my-editor {
+	* {
+		outline: none;
+	}
+	.ql-toolbar.ql-snow {
+		.ql-formats {
+			margin-right: 0;
+			margin-left: 8px;
+			span.ql-header {
+				width: 80px;
+				span.ql-picker-label {
+					border: none;
+					padding-left: 0;
+					padding-right: 14px;
+				}
+			}
+		}
+		.ql-color-picker {
+			width: 24px;
+			top: 2px;
+			span.ql-picker-label {
+				padding: 0;
+			}
+		}
+	}
+	.ql-snow .ql-tooltip input[type=text] {
+		direction: ltr;
+	}
+	button.ql-underline {
+		position: relative;
+		top: 1px;
+	}
+	&.ru {
+		direction: ltr;
+	}
+	&.he {
+		.ql-editor {
+			ul, ol {
+				padding-left: 0;
+				padding-right: 1em;
+				li {
+					padding-left: 0;
+					padding-right: 0;
+					&:before {
+						margin-left: 0.3em;
+						margin-right: -1em;
+					}
+				}
+			}
+		}
+		button.ql-align {
+			float: right;
+			transform: scaleX(-1);
+		}
+	}
+	.ql-editor {
+		text-align: initial;
+		p {
+			margin: 8px 0;
+		}
+	}
+}

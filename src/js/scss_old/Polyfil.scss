@@ -1,0 +1,40 @@
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+	#root {
+		h1.title {
+			background-image: none;
+			-webkit-text-fill-color: initial;
+			padding-bottom: 24px;
+			color: $c1;
+		}
+		h2.title {
+			background-image: none;
+			-webkit-text-fill-color: initial;
+			font-size: 40px;
+			padding-bottom: 16px;
+			color: $c2;
+		}
+		.home-page {
+			.second-section .wrapp:hover {
+				transform: none;
+				background-image: none;
+			}
+			.tenth-section {
+				background-attachment: scroll;
+			}
+		}
+		.slick-prev::before, .slick-next::before {
+			font-size: 20px !important;
+		}
+		.course-page {
+			.third-section {
+				background-attachment: scroll;
+			}
+			.sixth-section::before {
+				background-attachment: scroll;
+			}
+			.sixth-section.tenth-section::before {
+				background-attachment: scroll;
+			}
+		}
+	}
+}

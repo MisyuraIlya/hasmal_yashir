@@ -1,0 +1,32 @@
+.right_sidebar_container{
+    position: fixed;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 375px;
+    height: 100vh;
+    background-color: #292929;
+    z-index: 99999999999999999999999999;
+}
+
+.right_sidebar_items{
+    margin-right: 30px;
+    li{
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 3.44;
+        letter-spacing: 0.8px;
+        text-align: right;
+        color: #fff;
+    }
+    a {
+        color: #fff;
+    }
+}
+
+.right_sidebar_divider{
+    opacity: 0.45;
+    background-color: #707070;
+}

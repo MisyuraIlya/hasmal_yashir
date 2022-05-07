@@ -1,0 +1,351 @@
+.modal-backdrop.fade {
+	opacity: 1 !important;
+	background-color: rgba(0, 0, 0, 0.7);
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1040;
+}
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1050;
+	display: none;
+	overflow: hidden;
+	outline: 0;
+}
+.modal-open .modal {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.modal.fade .modal-dialog {
+	-webkit-transition: -webkit-transform 0.3s ease-out;
+	transition: -webkit-transform 0.3s ease-out;
+	-o-transition: -o-transform 0.3s ease-out;
+	transition: transform 0.3s ease-out;
+	transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out, -o-transform 0.3s ease-out;
+	-webkit-transform: translate(0, -25%);
+	-o-transform: translate(0, -25%);
+	transform: translate(0, -25%);
+}
+.modal-content {
+	position: relative;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	background-color: #fff;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 0.3rem;
+	outline: 0;
+}
+.modal-body {
+	position: relative;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 1 auto;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	padding: 15px;
+	.cropper-bg {
+		max-height: 60vh;
+	}
+}
+.image-crop {
+	opacity: 1 !important;
+	.modal-dialog {
+		position: relative;
+		margin: 0 auto;
+		top: 40%;
+		transform: translateY(-50%);
+		width: 100%;
+		max-width: 1000px;
+		min-height: 200px;
+		.modal-body {
+			outline: none;
+		}
+		button.close-pop {
+			cursor: pointer;
+			position: absolute;
+			top: 0px;
+			background: #fff;
+			left: -38px;
+			height: 30px;
+			line-height: 37px;
+			width: 30px;
+			border: none;
+			opacity: 1;
+			border-radius: 5px;
+			&:hover {
+				opacity: 0.5;
+			}
+		}
+		.image-preview {
+			position: relative;
+			height: 100%;
+			border: 2px dashed #ddd;
+			img {
+				position: relative;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+	}
+	.upload-img {
+		position: relative;
+		margin-bottom: 8px;
+		input {
+			position: relative;
+			z-index: 99;
+			opacity: 0;
+			padding-bottom: 20px;
+			cursor: pointer;
+			&:hover + .input-masc{
+				background: darken(#4798d1, 20%);
+				transition: all 0.5s;
+			}
+		}
+		img {
+			position: relative;
+			top: 4px;
+		}
+		.input-masc {
+			position: absolute;
+			top: 0;
+			right: 0;
+			background: #4798d1;
+			color: #fff;
+			padding: 0 16px;
+			height: 40px;
+			line-height: 40px;
+			cursor: pointer;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: all 0.5s;
+			&:hover {
+				background: darken(#4798d1, 20%);
+				transition: all 0.5s;
+			}
+			img{
+				padding-right: 16px;
+				zoom: 0.7;
+			}
+		}
+	}
+	.col-lg-6 {
+		&:first-child {
+			> div {
+				position: relative;
+				height: 100%;
+				border: 2px solid #ddd;
+				overflow: hidden;
+			}
+		}
+		> div {
+			margin: 0 8px;
+			min-height: 280px;
+			.cropper-crop {
+				height: 102%;
+			}
+		}
+	}
+	.flex-container {
+		margin: 0 -8px;
+	}
+	.actions {
+		margin-top: 16px;
+		text-align: left;
+		position: relative;
+		li {
+			display: inline-block;
+			button.button-crop {
+				position: absolute;
+				top: -2px;
+				cursor: pointer;
+				border: 2px solid #139cd1;
+				color: #139cd1;
+				right: 0;
+				font-size: 18px;
+				&:hover {
+					background: linear-gradient(180deg, #139cd1, #168bb8) !important;
+					color: #fff;
+				}
+			}
+			button {
+				cursor: pointer;
+				border: none;
+				padding: 4px 16px;
+				border-radius: 20px;
+				outline: none;
+				background: transparent;
+				&.button-green {
+					color: #3bbe3b;
+					border: 2px solid #3bbe3b;
+					transition: all 0.5s;
+					margin-left: 8px;
+					&:hover {
+						color: #fff;
+						background: #3bbe3b;
+						transition: all 0.5s;
+					}
+				}
+				&.button-red {
+					background: transparent;
+					border: 2px solid #cfd0d1;
+					transition: all 0.5s;
+					&:hover {
+						background: #cfd0d1;
+						transition: all 0.5s;
+					}
+				}
+			}
+			&:first-child {
+				margin-left: 8px;
+			}
+		}
+	}
+}
+.edit-image-wrapper {
+	position: relative;
+	.edit-image {
+		cursor: pointer;
+		position: absolute;
+		top: 8px;
+		right: 8px;
+	}
+	.image-crop {}
+}
+@media all and (max-width: 1365px) {
+	.image-crop .modal-dialog {
+		top: 24px;
+		transform: none !important;
+	}
+}
+@media all and (max-width: 600px) {
+	.cropper-container {
+		-ms-touch-action: none;
+		touch-action: none;
+	}
+	#gallery-camera {
+		.popup-wrapper {
+			width: 90%;
+			.wrapp {
+				.close-popup {
+					position: absolute;
+					top: 8px;
+					left: 8px;
+					cursor: pointer;
+					background: #ddd;
+					padding: 8px;
+					img {
+						width: 18px;
+						display: block;
+					}
+				}
+				.select {
+					text-align: center;
+					margin-top: 40px;
+					button {
+						background: #ddd;
+						border: 1px solid #ccc;
+						margin: 0 auto;
+						border-radius: 50%;
+						width: 90px;
+						height: 90px;
+						text-align: center;
+						span {
+							position: relative;
+							top: 2px;
+							display: block;
+							font-size: 16px;
+						}
+						img {
+							width: 32px;
+							display: block;
+							margin: 0 auto;
+						}
+					}
+				}
+			}
+		}
+	}
+	.image-crop .modal-dialog {
+		height: 100% !important;
+		transform: none !important;
+		transition: none !important;
+		.modal-content {
+			height: 100% !important;
+		}
+		button.close-pop {
+			top: 15px;
+			left: 16px;
+			background: #ddd;
+			z-index: 99;
+			cursor: pointer;
+		}
+	}
+	#camera_upload {
+		background: #000;
+		border: none;
+		border-radius: 4px;
+		color: #fff;
+		padding: 6px 16px 4px 16px;
+		margin-bottom: 8px;
+		img {
+			display: inline-block;
+			width: 18px;
+		}
+		span {
+			position: relative;
+			display: inline-block;
+			font-size: 16px;
+			padding-left: 8px;
+			bottom: 2px;
+		}
+	}
+	.image-crop .modal-dialog {
+		top: 0;
+		.modal-body .flex-container {
+			> .col-lg-6 {
+				&:first-child {
+					width: 100%;
+				}
+				&:last-child {
+					display: none;
+				}
+			}
+		}
+	}
+	.image-crop .modal-body {
+		.cropper-bg {
+			max-height: 75vh;
+		}
+		.for-cropp {
+			text-align: center;
+		}
+		.actions {
+			text-align: center;
+			li {
+				&:first-child {
+					display: block;
+					margin: 0 0 8px 0;
+				}
+			}
+			span {
+				display: block;
+				text-align: center;
+			}
+		}
+	}
+}

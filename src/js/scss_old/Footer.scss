@@ -1,0 +1,257 @@
+footer {
+	clear: both;
+	direction: rtl;
+  
+  .copyright {
+		position: relative;
+		background: black;
+		text-align: center;
+		a {
+			display: inline-block;
+			padding: 24px 0 14px 0;
+			img {
+				width: 150px;
+			}
+		}
+		.administrator, .agent {
+			position: absolute;
+			left: 5%;
+			top: 25px;
+			cursor: pointer;
+			img {
+				width: 24px;
+			}
+			.login {
+				position: relative;
+				display: inline-block;
+				color: #fff;
+				padding-right: 5px;
+				bottom: 5px;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+
+    .privacy {
+			position: absolute;
+			left: 15%;
+			top: 29px;
+			cursor: pointer;
+      margin: 0;
+      padding: 0;
+      color:#fff;
+		}
+		.agent {
+			left: 240px;
+		}
+	}
+	.after-copyright {
+		background: $c2;
+		p {
+			padding: 8px 0;
+			margin: 0;
+			text-align: center;
+			font-size: 14px;
+			color: #fff;
+		}
+	}
+}
+@media all and (max-width: 1000px) {
+	footer {
+		.copyright {
+			.administrator {
+				top: 12px;
+			}
+      .privacy {
+        position: absolute;
+        left:auto;
+        right: 5%;
+        top: 15px;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        color:#fff;
+        span{
+          font-size:12px;
+        }
+      }
+      a{
+        img{
+          width:90px;
+        }
+      }
+		}
+		.after-copyright {
+			display: none;
+		}
+	}
+}
+.sizeL {
+	font-size: 125% !important;
+}
+.sizeXL {
+	font-size: 150% !important;
+}
+.sizeXXL {
+	font-size: 200% !important;
+}
+.sizeXXXL {
+	font-size: 250% !important;
+}
+.zoomL {
+	zoom: 1.15;
+}
+.zoomXL {
+	zoom: 1.25;
+}
+.zoomXXL {
+	zoom: 1.35;
+}
+.grayscale_body {
+	-webkit-filter: grayscale(1);
+	filter: grayscale(1);
+}
+.invert_body {
+	-webkit-filter: invert(1);
+	filter: invert(1);
+}
+.underline_links {
+	text-decoration: underline !important;
+}
+.links_bolder {
+	font-weight: 700 !important;
+}
+.accessibility-wrapper {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+	background: #fff;
+	z-index: 9999;
+	box-shadow: 1px 1px 6px #000;
+	.open-accessibility {
+		position: absolute;
+		right: -2px;
+		top: 80vh;
+		background: #122231;
+		padding: 8px 10px;
+		border-radius: 30px 0 0 30px;
+		border: 2px solid #fff;
+		cursor: pointer;
+		img {
+			display: inline-block;
+			vertical-align: middle;
+			width: 24px;
+			&.close {
+				width: 16px;
+				padding-left: 8px;
+				margin-left: 8px;
+				border-left: 1px solid #fff;
+			}
+		}
+	}
+}
+.accessibility {
+	clear: both;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding-top: 20px;
+	display: none;
+}
+.accessibility-footer {
+	clear: both;
+	height: 10px;
+}
+.accessibility .flex-container .col-lg-4 {
+	width: 25%;
+}
+.accessibility h3 {
+    font-size: 30px !important;
+    font-weight: 400;
+    margin: 0;
+}
+.accessibility ul {
+	position: relative;
+	margin: 15px 0;
+	padding: 0;
+	list-style-type: none;
+}
+.accessibility ul:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 40px;
+	height: 100%;
+	width: 1px;
+	background: #ddd;
+	left: 40px !important;
+	right: auto !important;
+}
+.accessibility .col-lg-4:last-child ul:before {
+	display: none;
+}
+.accessibility ul li {
+	font-size: 20px !important;
+	cursor: pointer;
+	height: 40px;
+	display: block;
+}
+.accessibility ul li span {
+	position: relative;
+	display: inline-block;
+	top: 5px;
+	padding-right: 10px;
+}
+@media all and (max-width: 1250px) {
+	.accessibility {
+		width: 90%;
+	}
+	.accessibility ul:before {
+		display: none;
+	}
+}
+@media all and (max-width: 1025px) {
+	.accessibility ul li {
+		font-size: 18px !important;
+	}
+}
+@media all and (max-width: 820px) {
+	.accessibility .flex-container .col-lg-4 {
+		width: 50%;
+	}
+
+}
+@media all and (max-width: 480px) {
+	.accessibility .accessibility-contant.flex-container .col-lg-4 {
+		width: 100%;
+		float: none;
+		padding-bottom: 8px;
+	}
+	.accessibility ul {
+		margin: 5px 0;
+	}
+	.accessibility ul li {
+		height: 35px;
+		width: auto !important;
+		display: inline-block !important;
+		padding-left: 15px;
+		a {
+			bottom: 2px !important;
+			padding-right: 4px;
+		}
+	}
+	.accessibility ul li span img {
+		width: 24px;
+	}
+	.accessibility h3 {
+		font-size: 24px !important;
+	}
+	.accessibility-contant.flex-container .col-lg-4 {
+		&:first-child {
+			display: none;
+		}
+	}
+}

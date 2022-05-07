@@ -1,0 +1,35 @@
+.pay-popup {
+	.popup {
+		z-index: 9999;
+		.popup-wrapper {
+			max-width: 1000px;
+		}
+	}
+	.close-popup {
+		position: absolute;
+		top: 24px;
+		left: 24px;
+		cursor: pointer;
+		z-index: 99;
+		img {
+			width: 32px !important;
+		}
+	}
+	h1.for-title {
+		text-align: center;
+		margin: 0;
+		padding: 24px 0;
+		font-weight: 400;
+		color: #696969;
+	}
+	.wrapper {
+		background: #fff;
+    height: 80vh;
+		overflow-y: none;
+		iframe {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
