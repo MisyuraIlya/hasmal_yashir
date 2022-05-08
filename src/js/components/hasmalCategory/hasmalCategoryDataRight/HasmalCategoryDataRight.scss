@@ -1,0 +1,41 @@
+.rightCategory{
+  float: left;
+
+
+}
+
+.subCategory{
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  
+  span{
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.11;
+    letter-spacing: normal;
+    text-align: right;
+    color: #505050;
+  }
+
+  div{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.filtered_content{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.67;
+  letter-spacing: 0.48px;
+  text-align: right;
+  color: #505050;
+  h3{
+    text-align: right;
+  }
+}

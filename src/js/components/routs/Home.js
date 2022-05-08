@@ -518,7 +518,7 @@ export default class Home extends Component {
             <div className="filter_container">
               {this.state.searchFilter == '' 
               ? null
-              :<SearchModal searchFilter={this.state.searchFilter}/>
+              :<SearchModal globalFileServer={globalFileServer} searchFilter={this.state.searchFilter}/>
               }
             </div>
             

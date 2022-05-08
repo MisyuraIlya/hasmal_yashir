@@ -1,8 +1,10 @@
 import React from 'react';
 
-const LogInOne = ({closeUserLoginModal}) => {
+const LogInOne = ({globalFileServer, closeUserLoginModal}) => {
+    console.log(globalFileServer)
     return (
         <div className='login_modal'>
+            	<img src={globalFileServer + 'header/mobile/mobile_auth_mobile.png'} />
             <span onClick={closeUserLoginModal} className='close_login_modal'>סגור</span>
             <div className='login_container'>
                 <h2>כניסה אל האזור האישי</h2>

@@ -748,7 +748,7 @@ export default class Header extends Component {
 				</div>
 			
 				{/* whats the ponit */}
-				{this.state.userButton ? <LogInOne closeUserLoginModal={this.closeUserLoginModal}/> : null}
+				{this.state.userButton ? <LogInOne globalFileServer={globalFileServer} closeUserLoginModal={this.closeUserLoginModal}/> : null}
 				{/* <LogInTwo/> */}
 
 

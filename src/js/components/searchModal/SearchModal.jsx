@@ -1,7 +1,9 @@
 import React from 'react';
 
-const SearchModal = ({searchFilter}) => {
+const SearchModal = ({globalFileServer, searchFilter}) => {
     
+    console.log(globalFileServer)
+
     const products = [
         {id:1, title:'נורה ליבון',number:'112 סוגים',img:''},
         {id:2, title:'נורה ליבון',number:'112 סוגים',img:''},
@@ -24,7 +26,7 @@ const SearchModal = ({searchFilter}) => {
                     </div>
 
                     <div className='col-lg-6 image_filtered_product'>
-                        <img src='\images\Mask Group 8.png'/>
+                        <img src={globalFileServer + 'home/banner/filtered_product.png'} />
                     </div>
                     <div className='line_product'></div>
                 </div>

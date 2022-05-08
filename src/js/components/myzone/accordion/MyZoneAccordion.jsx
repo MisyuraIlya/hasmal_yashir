@@ -4,7 +4,6 @@ import './MyZoneAccordion.scss'
 const MyZoneAccordion = (props) => {
 
     const [active, setActive] = useState(false)
-    
     return (
         <div className={`accordion ${active ? 'active ' : ''}`}>
             <div className="flex-container accordion__title" onClick={() => setActive(!active)}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import MyZoneAccordion from './myzone/accordion/MyZoneAccordion';
 import 'boxicons/css/boxicons.min.css';
-const MyZone = ({ hasbonit, products, currentUser, showeMore}) => {
+const MyZone = ({globalFileServer, isOpen, hasbonit, products, currentUser, showeMore}) => {
     // console.log(openSelectedCard)
     
 
@@ -39,13 +39,13 @@ const MyZone = ({ hasbonit, products, currentUser, showeMore}) => {
                             <div className='col-lg-4'>
                                 <div className='myzone_calender'>
                                 <span>23/11/2019</span>
-                                <div className='myzone_calender_icon'><img src='/#'/></div>
+                                    <div className='myzone_calender_icon'><img src={globalFileServer + 'myzone/calender.png'}/></div>
                                 </div>
                             </div>
                             <div className='col-lg-4'>
                                 <div className='myzone_calender'>
                                     <span>תאריך</span> 
-                                    <div className='myzone_calender_icon'><img src='/#'/></div>
+                                    <div className='myzone_calender_icon'><img src={globalFileServer + 'myzone/calender.png'}/></div>
                                 </div>
                             </div>
                             <div className='col-lg-4 myzone_calender_button' >
@@ -64,6 +64,7 @@ const MyZone = ({ hasbonit, products, currentUser, showeMore}) => {
                                 hasbonit.map((item, index) => 
                                     <MyZoneAccordion
                                         key={index}
+                                        isOpen={isOpen}
                                         indificator = {item.indificator}
                                         date = {item.date}
                                         status = {item.status}

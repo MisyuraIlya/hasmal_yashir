@@ -1,3 +1,9 @@
+.myzone_banner_image{
+    margin-top: 70px;
+    img{
+        width: 100%;
+    }
+}
 .myzone_container{
     background-color: #fff8f4;
     padding-top: 200px;
@@ -53,6 +59,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    cursor: pointer;
     .myzone_calender_icon{
         width: 20%;
         border-right: 1px solid #505050;
@@ -67,6 +74,7 @@
     img{
         align-items: center;
         justify-content: center;
+        width:20px;
     }
 }
 
