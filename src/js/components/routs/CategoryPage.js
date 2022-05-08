@@ -8,7 +8,7 @@ import ProductPopUp from "./productPage/ProductPopUp";
 import ProductAddToCart from "./productPage/ProductAddToCart";
 import ProductAddToCartCatalog from "./productPage/ProductAddToCartCatalog";
 import ProductAddToCartCatalogList from "./productPage/ProductAddToCartCatalogList";
-
+import HasmalCategoryBanner from '../hasmalCategory/HasmalCategoryBanner';
 import UserContext from '../../UserContext';
 import CategorySlide from '../tools/CategorySlide';
 
@@ -547,609 +547,620 @@ export default class CategoryPage extends Component {
     let lang = this.props.state.lang;
 
 		return (
-
+      <>
+      <HasmalCategoryBanner categories={this.props.state.categories} parentCategory={parentCategory}/>
 			<div className="page-container category-page">
-        <CategorySlide />
-        <div className={this.state.categorySlide ? "category-page-sub small" : "category-page-sub"}>
-
-          {this.state.preload ?
-            <div className="spinner-wrapper">
-              <div className="spinner">
-                <div className="bounce1"></div>
-                <div className="bounce2"></div>
-                <div className="bounce3"></div>
-              </div>
-            </div>
-          : null}
-  				{parentCategory ?
-  					<Helmet>
-  						<title>{parentCategory.Title}</title>
-  						<meta name="keywords" content={parentCategory.Title} />
-  						<link rel="canonical" href={entry + '/category/' + parentCategory.ParentId + '/' + parentCategory.Id} />
-  						<link rel="alternate" href={entry + '/category/' + parentCategory.ParentId + '/' + parentCategory.Id} hreflang="he-il" />
-  					</Helmet>
-  				: null}
-  				{this.state.info ? ReactDOM.createPortal(
-  					<div className="my-modal prod-info">
-  						<div className="modal-wrapper animated">
-                <div className="close-cont">
-    							<div onClick={this.close} className="close">
-    								<img src={globalFileServer + 'icons/close.svg'} />
-    							</div>
-                </div>
-  							<ProductInfo {...this}/>
-  						</div>
-  						<div onClick={this.close} className="overflow"></div>
-  					</div>,
-  					document.getElementById('modal-root')
-  				) : null}
-          {this.state.ProductPopUp ? ReactDOM.createPortal(
-  					<div className="my-modal prod-info">
-  						<div className="modal-wrapper animated">
-                <div className="close-cont">
-    							<div onClick={() => this.setState({ProductPopUp: !this.state.ProductPopUp})} className="close">
-    								<img src={globalFileServer + 'icons/close.svg'} />
-    							</div>
-                </div>
-  							<ProductPopUp {...this} lang={lang}/>
-  						</div>
-  						<div onClick={this.close} className="overflow"></div>
-  					</div>,
-  					document.getElementById('modal-root')
-  				) : null}
-
-          <div className="title-breadcrumbs">
-            {parentCategory ?
-            <div className="container flex-container">
-              <div className="col-lg-6 breadcrumbs">
-                <ul>
-                  <li>
-                    <NavLink to={"/home/" + lang}>בית</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/category-page/" + parentCategory.Id + "/0/0/" + lang}>{parentCategory.Title}</NavLink>
-                  </li>
-                  {childCategory ?
-                    <li>
-                      <NavLink to={'/category/'+parentCategory.Id + "/" + childCategory.Id + "/0/" + lang}>
-                        <span>{childCategory.Title}</span>
-                      </NavLink>
-                    </li>
-                  :
-                    <li>
-                      <span>{parentCategory.Title}</span>
-                    </li>
-                  }
-                  {subChildCategory ?
-                    <li>
-                      <span>{subChildCategory.Title}</span>
-                    </li>
-                  :null}
-                </ul>
-              </div>
-            </div>
-            :null}
+        <div className="flex-container">
+          <div className=" right_category">
+            <CategorySlide />
           </div>
+          <div className="left_category">
+            <div className={this.state.categorySlide ? "category-page-sub small" : "category-page-sub"}>
 
-          <div className="view-mode-cont">
-            <div className="view-mode-rightcont">
-              <div className="check-box-sub-cont check-row">
-                <div className={this.props.state.listView == 'true' ? "view-img-cont actice" : "view-img-cont not-active"} onClick={()=> this.props.setView("true")}>
-                  <img src={globalFileServer + 'icons/list-view.svg'} />
-                </div>
-                <div className={this.props.state.listView == 'false' ? "view-img-cont actice" : "view-img-cont  not-active"} onClick={()=> this.props.setView("false")}>
-                  <img src={globalFileServer + 'icons/grid-view.svg'} />
+            {this.state.preload ?
+              <div className="spinner-wrapper">
+                <div className="spinner">
+                  <div className="bounce1"></div>
+                  <div className="bounce2"></div>
+                  <div className="bounce3"></div>
                 </div>
               </div>
-              <div className="freeSearch-cont">
-                  <input
-                    type="text"
-                    placeholder="חיפוש חופשי..."
-                    onChange={(e)=> this.searchProducts(e)}
-                    value={this.state.searchString}
-                  />
-                  {this.state.searchString != "" ?
-                    <img onClick={ ()=>this.resetSearch() } src={globalFileServer + 'icons/cross-grey.svg'} />
-                  :null}
-
-              </div>
-              <div className={this.state.openFilter ? "brandFilter-cont select active padding" : "brandFilter-cont select padding"}>
-                <div onClick={this.state.openFilter ? () => this.setState({openFilter:false}): () => this.setState({openFilter:true})} className="headind-cat">
-                  <p>{!this.state.chosenBrand ? 'סינון לפי מותג' : this.state.chosenBrand}</p>
-                  <div className="img">
-                    <img src={globalFileServer + "icons/down-chevron.svg"} alt=""/>
+            : null}
+            {parentCategory ?
+              <Helmet>
+                <title>{parentCategory.Title}</title>
+                <meta name="keywords" content={parentCategory.Title} />
+                <link rel="canonical" href={entry + '/category/' + parentCategory.ParentId + '/' + parentCategory.Id} />
+                <link rel="alternate" href={entry + '/category/' + parentCategory.ParentId + '/' + parentCategory.Id} hreflang="he-il" />
+              </Helmet>
+            : null}
+            {this.state.info ? ReactDOM.createPortal(
+              <div className="my-modal prod-info">
+                <div className="modal-wrapper animated">
+                  <div className="close-cont">
+                    <div onClick={this.close} className="close">
+                      <img src={globalFileServer + 'icons/close.svg'} />
+                    </div>
                   </div>
+                  <ProductInfo {...this}/>
                 </div>
-                <div className={this.state.openFilter ? "masc active" : "masc"}>
-                  <div className="brand_search-cont">
-                    <input
-                      type="text"
-                      placeholder="חפש מותג.."
-                      onChange={(e)=> this.searchBrand(e)}
-                      value={this.state.brandSearchString}
-                    />
-                    {this.state.brandSearchString != "" ?
-                      <img onClick={ ()=>this.resetSearchBrand() } src={globalFileServer + 'icons/cross-grey.svg'} />
-                    :null}
+                <div onClick={this.close} className="overflow"></div>
+              </div>,
+              document.getElementById('modal-root')
+            ) : null}
+            {this.state.ProductPopUp ? ReactDOM.createPortal(
+              <div className="my-modal prod-info">
+                <div className="modal-wrapper animated">
+                  <div className="close-cont">
+                    <div onClick={() => this.setState({ProductPopUp: !this.state.ProductPopUp})} className="close">
+                      <img src={globalFileServer + 'icons/close.svg'} />
+                    </div>
                   </div>
+                  <ProductPopUp {...this} lang={lang}/>
+                </div>
+                <div onClick={this.close} className="overflow"></div>
+              </div>,
+              document.getElementById('modal-root')
+            ) : null}
+
+            <div className="title-breadcrumbs">
+              {parentCategory ?
+              <div className="container flex-container">
+                <div className="col-lg-6 breadcrumbs">
                   <ul>
-                    {this.state.filteredBrandsArr.length ? this.state.filteredBrandsArr.map((ele,ind) => {
-                      return(
-                        <li key={ind} onClick={()=>this.selectBrand(ele)}>
-                          <div className="mask-li-cls">
-                            <span>{ele}</span>
-                            <div className="img">
-                              <img src={globalFileServer + 'icons/back-select.svg'} alt=""/>
-                            </div>
-                          </div>
-                        </li>
-                      )
-                    }):null}
-
+                    <li>
+                      <NavLink to={"/home/" + lang}>בית</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to={"/category-page/" + parentCategory.Id + "/0/0/" + lang}>{parentCategory.Title}</NavLink>
+                    </li>
+                    {childCategory ?
+                      <li>
+                        <NavLink to={'/category/'+parentCategory.Id + "/" + childCategory.Id + "/0/" + lang}>
+                          <span>{childCategory.Title}</span>
+                        </NavLink>
+                      </li>
+                    :
+                      <li>
+                        <span>{parentCategory.Title}</span>
+                      </li>
+                    }
+                    {subChildCategory ?
+                      <li>
+                        <span>{subChildCategory.Title}</span>
+                      </li>
+                    :null}
                   </ul>
                 </div>
               </div>
+              :null}
             </div>
-            <div className="view-mode-subcont">
-              <div className="check-box-main-cont">
-                <div className="check-box-sub-cont check-row status sale">
-                  {this.state.backToInventory ?
-                    <div onClick={()=> this.checkBoxSet("backToInventory", false)} className="input active">
-                      <img src={globalFileServer + "icons/done.svg"} alt=""/>
-                    </div>
-                  :
-                  <div onClick={()=> this.checkBoxSet("backToInventory", true)} className="input">
-                    <img src={globalFileServer + "icons/cross-bold.svg"} alt=""/>
-                  </div>
-                  }
-                  <p>חזר למלאי</p>
-                </div>
-                <div className="check-box-sub-cont check-row status sale">
-                  {this.state.newInStock ?
-                    <div onClick={()=> this.checkBoxSet("newInStock", false)} className="input active">
-                      <img src={globalFileServer + "icons/done.svg"} alt=""/>
-                    </div>
-                  :
-                  <div onClick={()=> this.checkBoxSet("newInStock", true)} className="input">
-                    <img src={globalFileServer + "icons/cross-bold.svg"} alt=""/>
-                  </div>
-                  }
-                  <p>חדש במלאי</p>
-                </div>
-                <div className="check-box-sub-cont check-row status sale">
-                  {this.state.inAlon ?
-                    <div onClick={()=> this.checkBoxSet("inAlon", false)} className="input active">
-                      <img src={globalFileServer + "icons/done.svg"} alt=""/>
-                    </div>
-                  :
-                  <div onClick={()=> this.checkBoxSet("inAlon", true)} className="input">
-                    <img src={globalFileServer + "icons/cross-bold.svg"} alt=""/>
-                  </div>
-                  }
-                  <p>עלון מבצעים</p>
-                </div>
-                <div className="xls-btn-main-cont">
 
-                  <div className="xls-btn-small-cont" onClick={()=> this.setState({morePop: true})}>
-                    <img className="info-icon-img xls-btn-icon" src={globalFileServer + 'icons/excel.svg'} />
+            <div className="view-mode-cont">
+              <div className="view-mode-rightcont">
+                <div className="check-box-sub-cont check-row">
+                  <div className={this.props.state.listView == 'true' ? "view-img-cont actice" : "view-img-cont not-active"} onClick={()=> this.props.setView("true")}>
+                    <img src={globalFileServer + 'icons/list-view.svg'} />
                   </div>
-                  {this.state.morePop ?
-                    <div className="more_cont">
-                      <div className="more_cont-header flex-container">
-                        <div className="col-lg-10" >
-                          <p></p>
-                        </div>
-                        <div className="close-popup col-lg-2">
-                          <div className="close-popup-cont" onClick={()=> this.setState({morePop: false})}>
-                            <img src={globalFileServer + 'icons/close_purple.svg'} />
+                  <div className={this.props.state.listView == 'false' ? "view-img-cont actice" : "view-img-cont  not-active"} onClick={()=> this.props.setView("false")}>
+                    <img src={globalFileServer + 'icons/grid-view.svg'} />
+                  </div>
+                </div>
+                <div className="freeSearch-cont">
+                    <input
+                      type="text"
+                      placeholder="חיפוש חופשי..."
+                      onChange={(e)=> this.searchProducts(e)}
+                      value={this.state.searchString}
+                    />
+                    {this.state.searchString != "" ?
+                      <img onClick={ ()=>this.resetSearch() } src={globalFileServer + 'icons/cross-grey.svg'} />
+                    :null}
+
+                </div>
+                <div className={this.state.openFilter ? "brandFilter-cont select active padding" : "brandFilter-cont select padding"}>
+                  <div onClick={this.state.openFilter ? () => this.setState({openFilter:false}): () => this.setState({openFilter:true})} className="headind-cat">
+                    <p>{!this.state.chosenBrand ? 'סינון לפי מותג' : this.state.chosenBrand}</p>
+                    <div className="img">
+                      <img src={globalFileServer + "icons/down-chevron.svg"} alt=""/>
+                    </div>
+                  </div>
+                  <div className={this.state.openFilter ? "masc active" : "masc"}>
+                    <div className="brand_search-cont">
+                      <input
+                        type="text"
+                        placeholder="חפש מותג.."
+                        onChange={(e)=> this.searchBrand(e)}
+                        value={this.state.brandSearchString}
+                      />
+                      {this.state.brandSearchString != "" ?
+                        <img onClick={ ()=>this.resetSearchBrand() } src={globalFileServer + 'icons/cross-grey.svg'} />
+                      :null}
+                    </div>
+                    <ul>
+                      {this.state.filteredBrandsArr.length ? this.state.filteredBrandsArr.map((ele,ind) => {
+                        return(
+                          <li key={ind} onClick={()=>this.selectBrand(ele)}>
+                            <div className="mask-li-cls">
+                              <span>{ele}</span>
+                              <div className="img">
+                                <img src={globalFileServer + 'icons/back-select.svg'} alt=""/>
+                              </div>
                             </div>
-                        </div>
-                      </div>
+                          </li>
+                        )
+                      }):null}
 
-                      <div className="flex-container row" >
-                        <div className="col-lg-2">
-                          <img src={globalFileServer + 'icons/wheel1.svg'} />
-                        </div>
-                        <div className="col-lg-10" onClick={()=>this.downloadExcel('category')}>
-                          <p>מוצרים בקטגוריה</p>
-                        </div>
-                      </div>
-                      <div className="flex-container row">
-                        <div className="col-lg-2">
-                          <img src={globalFileServer + 'icons/wheel1.svg'} />
-                        </div>
-                        <div className="col-lg-10" onClick={()=>this.downloadExcel('all')}>
-                          <p>כל הקטלוג</p>
-                        </div>
-                      </div>
-
-                    </div>
-                  :null}
+                    </ul>
+                  </div>
                 </div>
+              </div>
+              <div className="view-mode-subcont">
+                <div className="check-box-main-cont">
+                  <div className="check-box-sub-cont check-row status sale">
+                    {this.state.backToInventory ?
+                      <div onClick={()=> this.checkBoxSet("backToInventory", false)} className="input active">
+                        <img src={globalFileServer + "icons/done.svg"} alt=""/>
+                      </div>
+                    :
+                    <div onClick={()=> this.checkBoxSet("backToInventory", true)} className="input">
+                      <img src={globalFileServer + "icons/cross-bold.svg"} alt=""/>
+                    </div>
+                    }
+                    <p>חזר למלאי</p>
+                  </div>
+                  <div className="check-box-sub-cont check-row status sale">
+                    {this.state.newInStock ?
+                      <div onClick={()=> this.checkBoxSet("newInStock", false)} className="input active">
+                        <img src={globalFileServer + "icons/done.svg"} alt=""/>
+                      </div>
+                    :
+                    <div onClick={()=> this.checkBoxSet("newInStock", true)} className="input">
+                      <img src={globalFileServer + "icons/cross-bold.svg"} alt=""/>
+                    </div>
+                    }
+                    <p>חדש במלאי</p>
+                  </div>
+                  <div className="check-box-sub-cont check-row status sale">
+                    {this.state.inAlon ?
+                      <div onClick={()=> this.checkBoxSet("inAlon", false)} className="input active">
+                        <img src={globalFileServer + "icons/done.svg"} alt=""/>
+                      </div>
+                    :
+                    <div onClick={()=> this.checkBoxSet("inAlon", true)} className="input">
+                      <img src={globalFileServer + "icons/cross-bold.svg"} alt=""/>
+                    </div>
+                    }
+                    <p>עלון מבצעים</p>
+                  </div>
+                  <div className="xls-btn-main-cont">
+
+                    <div className="xls-btn-small-cont" onClick={()=> this.setState({morePop: true})}>
+                      <img className="info-icon-img xls-btn-icon" src={globalFileServer + 'icons/excel.svg'} />
+                    </div>
+                    {this.state.morePop ?
+                      <div className="more_cont">
+                        <div className="more_cont-header flex-container">
+                          <div className="col-lg-10" >
+                            <p></p>
+                          </div>
+                          <div className="close-popup col-lg-2">
+                            <div className="close-popup-cont" onClick={()=> this.setState({morePop: false})}>
+                              <img src={globalFileServer + 'icons/close_purple.svg'} />
+                              </div>
+                          </div>
+                        </div>
+
+                        <div className="flex-container row" >
+                          <div className="col-lg-2">
+                            <img src={globalFileServer + 'icons/wheel1.svg'} />
+                          </div>
+                          <div className="col-lg-10" onClick={()=>this.downloadExcel('category')}>
+                            <p>מוצרים בקטגוריה</p>
+                          </div>
+                        </div>
+                        <div className="flex-container row">
+                          <div className="col-lg-2">
+                            <img src={globalFileServer + 'icons/wheel1.svg'} />
+                          </div>
+                          <div className="col-lg-10" onClick={()=>this.downloadExcel('all')}>
+                            <p>כל הקטלוג</p>
+                          </div>
+                        </div>
+
+                      </div>
+                    :null}
+                  </div>
+
+                </div>
+
 
               </div>
-
-
             </div>
-          </div>
 
-          <div className="category-header-cont">
-            <div className="row-cont flex-container">
-                <div className="img-cont col-lg-2">
-                  <img src={childCategory ? globalFileServer + 'categories/' + childCategory.Img : parentCategory ? globalFileServer + 'categories/' + parentCategory.Img :  globalFileServer + 'placeholder.jpg'} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'}/>
-                </div>
-                <div className="h1-cont col-lg-8">
-                  <h1>{subChildCategory ? subChildCategory.Title : childCategory ? childCategory.Title : parentCategory ? parentCategory.Title : null}</h1>
-                </div>
+            <div className="category-header-cont">
+              <div className="row-cont flex-container">
+                  <div className="img-cont col-lg-2">
+                    <img src={childCategory ? globalFileServer + 'categories/' + childCategory.Img : parentCategory ? globalFileServer + 'categories/' + parentCategory.Img :  globalFileServer + 'placeholder.jpg'} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'}/>
+                  </div>
+                  <div className="h1-cont col-lg-8">
+                    <h1>{subChildCategory ? subChildCategory.Title : childCategory ? childCategory.Title : parentCategory ? parentCategory.Title : null}</h1>
+                  </div>
+              </div>
             </div>
-          </div>
-          {this.props.state.listView != 'true' ?
-            <div className="category-wrapper">
-    					<div id="navFix" className={"flex-container products-view"}>
-    						{!this.state.tmpProducts.length ? <h1 className="hide-on-desctop no-product">לא קיימים מוצרים</h1> : null}
-    						{this.state.tmpProducts.map((element, index) => {
-    							let inCart = this.props.state.productsInCart.filter(item => item.Products.CatalogNumber == element.CatalogNumber);
-    							let productSales = this.props.state.productSales.length ? this.props.state.productSales.filter(item => item.ForCatalogNum == element.CatalogNumber) : [];
+            {this.props.state.listView != 'true' ?
+              <div className="category-wrapper">
+                <div id="navFix" className={"flex-container products-view"}>
+                  {!this.state.tmpProducts.length ? <h1 className="hide-on-desctop no-product">לא קיימים מוצרים</h1> : null}
+                  {this.state.tmpProducts.map((element, index) => {
+                    let inCart = this.props.state.productsInCart.filter(item => item.Products.CatalogNumber == element.CatalogNumber);
+                    let productSales = this.props.state.productSales.length ? this.props.state.productSales.filter(item => item.ForCatalogNum == element.CatalogNumber) : [];
+                    let diffQuantity = this.props.state.productSalesDiffQuan.filter(item => item.ProdId == element.Id && item.Quantity != null);
+                    let maam = this.props.state.user.Type == 2 ? 1 : 1;
+                    let image = this.props.state.images.length ? this.props.state.images.filter(item => item == element.CatalogNumber) : [];
+                    let type;
+
+                    if((inCart.length && !("UnitChosen" in inCart[0])) ||  (inCart.length == 0)){
+                      element.Unit == 2 ? type = "/יח" : type = "/יח'";
+                    }else if((inCart.length && (("UnitChosen" in inCart[0] && inCart[0].UnitChosen == 0)))){
+                      type = "/יח'";
+                    }else if((inCart.length && (("UnitChosen" in inCart[0] && inCart[0].UnitChosen == 1)))){
+                      type = "/אריזה";
+                    }else if((inCart.length && (("UnitChosen" in inCart[0] && inCart[0].UnitChosen == 2)))){
+                      type = "/יח";
+                    }
+
+                    if(index <= this.state.toShow && !element.Extra2 ){
+                      return(
+                        <div key={index} className={element.Unpublished ? "col-lg-3 wrapper-cont unpublished" : "wrapper-cont col-lg-3"}>
+                          <div className={!element.ActualQuan ? "wrapper" : "wrapper disable"}>
+                            {localStorage.user && (productSales.length || diffQuantity.length) && !element.Status && !element.Extra3 ?
+                              <div onClick={() => this.setState({info: element})} className="flip-card">
+                                <div className="flip-card-inner">
+                                  <div className="flip-card-front">
+                                    <img src={globalFileServer + 'icons/percent.svg'} />
+                                  </div>
+                                  <div className="flip-card-back">
+                                    <img src={globalFileServer + 'icons/info-white.svg'} />
+                                  </div>
+                                </div>
+                              </div>
+                            : null}
+
+                            {element.Discount ?
+                              <div className="discount-cont">
+                                <p>הנחה</p>
+                              </div>
+                            :null}
+
+                            <div onClick = {!element.Extra3 ? () => this.setState({selectedProd:element, ProductPopUp:true}) : ()=> this.goToProductParent(element.CatalogNumber)}>
+                              <div className="img-cont">
+                                <img src={globalFileServer + 'category/data/love.png'}  className='love_image'/>
+                                <img className="img" src={element.Extra1} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
+                              </div>
+                              <div className={this.props.state.user ? "prod-data-cont user" : "prod-data-cont"}>
+                                <h3 className="p-title">{lang=="he" ? element.Title : element.TitleEng}</h3>
+                                <div className="barcode-cont">
+                                  <p>{"מק״ט: " + element.CatalogNumber}</p>
+                                  {element.Barcode ?
+                                    <p>{"ברקוד: " + element.Barcode}</p>
+                                  :null}
+                                </div>
+                                <div>
+                                  {(this.props.state.user && this.props.state.user.Id) ||  (!this.props.state.user && !localStorage.role && this.props.state.priceNoLogin == "1") ?
+                                    <div className="price-main-cont">
+                                      {element.Price && element.Price != '0' ?
+                                        <div className="price-cont">
+                                          <div className="price-subCont">
+                                            {(inCart.length && (("UnitChosen" in inCart[0] && (inCart[0].UnitChosen == 0 || inCart[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCart[0])))) || (inCart.length == 0) ?
+                                              <h3 className="price">{(parseFloat(element.Price) * maam).toFixed(2) + type}</h3>
+                                            :
+                                              <h3 className="price">{(parseFloat(element.Price) * parseInt(element.PackQuan) * maam).toFixed(2) + type}</h3>
+                                            }
+                                          </div>
+                                          {parseFloat(element.OrgPrice) > element.Price ?
+                                          <div className="orgPrice-subCont">
+                                            <div className="price-widh-discount">
+                                              {(inCart.length && (("UnitChosen" in inCart[0] && (inCart[0].UnitChosen == 0 || inCart[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCart[0])))) || (inCart.length == 0) ?
+                                                <h3 className="old-price">{(parseFloat(element.OrgPrice) * maam).toFixed(2)}</h3>
+                                              :
+                                                <h3 className="old-price">{(parseFloat(element.OrgPrice) * parseInt(element.PackQuan) * maam).toFixed(2)}</h3>
+                                              }
+                                            </div>
+                                          </div>
+                                        :null}
+                                        </div>
+                                      :null}
+                                    </div>
+                                  :null}
+                                </div>
+                              </div>
+                            </div>
+                            {/*.Type || this.props.state.b2cAvailiable*/}
+                            {(this.props.state.user || this.props.state.b2cAvailiable)  && element.Price && element.Price != 0 && !element.Extra3 ?
+                            <div className={inCart.length ? "add-to-cart in-cart catalog after-add" : "add-to-cart not-in-cart catalog before-add"}>
+                              <ProductAddToCartCatalog
+                                inCart={inCart}
+                                element={element}
+                                price={(parseFloat(element.Price) * maam)}
+                                {...props}
+                              />
+                            </div>
+                            :null}
+
+                            {this.props.state.user && element.Extra3 ?
+                              <NavLink className={"meaged-nav"} to={"/productParent/" + this.props.match.params.lvl1 + "/" + this.props.match.params.lvl2 + "/" + this.props.match.params.lvl3 + "/" + element.CatalogNumber + "/" + lang}>
+                                <div className={"meaged-main"}>
+                                  <p>{lang == "he" ? "צפה במוצרים" : "View Products"}</p>
+                                </div>
+                              </NavLink>
+                            :null}
+                          </div>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+              </div>
+            :
+            <div className="category-wrapper-list">
+              <div className="products-view-header flex-container">
+                <div className="flex-container col-lg-10">
+
+                  <div className="col-lg-1 center">
+                    <p>חזר</p>
+                  </div>
+                  <div className="col-lg-1">
+                    <p>קטגוריה</p>
+                  </div>
+                  <div className="col-lg-1 center">
+                    <p>תמונה</p>
+                  </div>
+                  <div className="col-lg-3">
+                    <p>שם</p>
+                  </div>
+                  <div className="col-lg-1">
+                    <p>מותג</p>
+                  </div>
+                  <div className="col-lg-2">
+                    <p>ברקוד</p>
+                  </div>
+
+                  <div className="col-lg-1">
+                    <p>מלאי</p>
+                  </div>
+                  <div className="col-lg-1">
+                    <p>מחיר</p>
+                  </div>
+                </div>
+                <div className="col-lg-1 center">
+                  <p>כמות</p>
+                </div>
+                <div className="col-lg-1 center">
+                  <p>סה״כ</p>
+                </div>
+              </div>
+              <ul id="navFix" className={"flex-container products-view"}>
+                {!this.state.tmpProducts.length ? <h1 className="hide-on-desctop no-product">לא קיימים מוצרים</h1> : null}
+                {this.state.tmpProducts.map((element, index) => {
+                  let inCart = this.props.state.productsInCart.filter(item => item.Products.CatalogNumber == element.CatalogNumber);
+                  let productSales = this.props.state.productSales.length ? this.props.state.productSales.filter(item => item.ForCatalogNum == element.CatalogNumber) : [];
                   let diffQuantity = this.props.state.productSalesDiffQuan.filter(item => item.ProdId == element.Id && item.Quantity != null);
-    							let maam = this.props.state.user.Type == 2 ? 1 : 1;
+                  let maam = this.props.state.user.Type == 2 ? 1 : 1;
                   let image = this.props.state.images.length ? this.props.state.images.filter(item => item == element.CatalogNumber) : [];
                   let type;
 
                   if((inCart.length && !("UnitChosen" in inCart[0])) ||  (inCart.length == 0)){
-                    element.Unit == 2 ? type = "/יח" : type = "/יח'";
+                    element.Unit == 2 ? type = " /יח" : type = " /יח'";
                   }else if((inCart.length && (("UnitChosen" in inCart[0] && inCart[0].UnitChosen == 0)))){
-                    type = "/יח'";
+                    type = " /יח'";
                   }else if((inCart.length && (("UnitChosen" in inCart[0] && inCart[0].UnitChosen == 1)))){
-                    type = "/אריזה";
+                    type = " /אריזה";
                   }else if((inCart.length && (("UnitChosen" in inCart[0] && inCart[0].UnitChosen == 2)))){
-                    type = "/יח";
+                    type = " /יח";
                   }
+                  let thirdMenuTitle = "";
+                  if(this.props.state.categories && this.props.state.categories.length>0){
+                    thirdMenuTitle = this.props.state.categories.filter((item) => {return item.Id == element.ThirdMenuItemId})[0].Title;
+                  }
+
 
                   if(index <= this.state.toShow && !element.Extra2 ){
+
+                    let ttlRow = 0;
+                    if((inCart.length && (("UnitChosen" in inCart[0] && (inCart[0].UnitChosen == 0 || inCart[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCart[0])))) || (inCart.length == 0)){
+                      if(inCart.length){
+                        ttlRow = ((parseFloat(element.Price) * maam) * inCart[0].Quantity).toFixed(2);
+                      }
+                    }else{
+                      if(inCart.length){
+                        ttlRow = (((parseFloat((parseFloat(element.Price) * maam)))) * inCart[0].Quantity * parseFloat(element.PackQuan)).toFixed(2);
+                      }
+                    }
                     return(
-                      <div key={index} className={element.Unpublished ? "col-lg-2 wrapper-cont unpublished" : "wrapper-cont col-lg-2"}>
-    										<div className={!element.ActualQuan ? "wrapper" : "wrapper disable"}>
-    											{localStorage.user && (productSales.length || diffQuantity.length) && !element.Status && !element.Extra3 ?
-    												<div onClick={() => this.setState({info: element})} className="flip-card">
-    													<div className="flip-card-inner">
-    														<div className="flip-card-front">
-    															<img src={globalFileServer + 'icons/percent.svg'} />
-    														</div>
-    														<div className="flip-card-back">
-    															<img src={globalFileServer + 'icons/info-white.svg'} />
-    														</div>
-    													</div>
-    												</div>
-    											: null}
+                      <li key={index} className={element.Extra3 && element.SubProducts && element.SubProducts.length > 0 ? element.Unpublished ? "wrapper-cont unpublished color-block" : "wrapper-cont  color-block" : element.Unpublished ? "wrapper-cont unpublished" : "wrapper-cont"}>
+                        <div className={!element.ActualQuan ? "wrapper flex-container" : "wrapper disable flex-container"}>
 
-                          {element.Discount ?
-                            <div className="discount-cont">
-                              <p>הנחה</p>
-                            </div>
-                          :null}
-
-                          <div onClick = {!element.Extra3 ? () => this.setState({selectedProd:element, ProductPopUp:true}) : ()=> this.goToProductParent(element.CatalogNumber)}>
-                            <div className="img-cont">
-                              <img className="img" src={element.Extra1} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
-                            </div>
-                            <div className={this.props.state.user ? "prod-data-cont user" : "prod-data-cont"}>
-        											<h3 className="p-title">{lang=="he" ? element.Title : element.TitleEng}</h3>
-                              <div className="barcode-cont">
-                                <p>{"מק״ט: " + element.CatalogNumber}</p>
-                                {element.Barcode ?
-                                  <p>{"ברקוד: " + element.Barcode}</p>
-                                :null}
-                              </div>
-                              <div>
-                                {(this.props.state.user && this.props.state.user.Id) ||  (!this.props.state.user && !localStorage.role && this.props.state.priceNoLogin == "1") ?
-            											<div className="price-main-cont">
-                                    {element.Price && element.Price != '0' ?
-                                      <div className="price-cont">
-                                        <div className="price-subCont">
-                                          {(inCart.length && (("UnitChosen" in inCart[0] && (inCart[0].UnitChosen == 0 || inCart[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCart[0])))) || (inCart.length == 0) ?
-                                            <h3 className="price">{(parseFloat(element.Price) * maam).toFixed(2) + type}</h3>
-                                          :
-                                            <h3 className="price">{(parseFloat(element.Price) * parseInt(element.PackQuan) * maam).toFixed(2) + type}</h3>
-                                          }
-                                        </div>
-                                        {parseFloat(element.OrgPrice) > element.Price ?
-                                        <div className="orgPrice-subCont">
-                                          <div className="price-widh-discount">
-                                            {(inCart.length && (("UnitChosen" in inCart[0] && (inCart[0].UnitChosen == 0 || inCart[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCart[0])))) || (inCart.length == 0) ?
-                                              <h3 className="old-price">{(parseFloat(element.OrgPrice) * maam).toFixed(2)}</h3>
-                                            :
-                                              <h3 className="old-price">{(parseFloat(element.OrgPrice) * parseInt(element.PackQuan) * maam).toFixed(2)}</h3>
-                                            }
-                                          </div>
-                                        </div>
-                                      :null}
-                                      </div>
-                                    :null}
-            											</div>
-                                :null}
-                              </div>
-                            </div>
-                          </div>
-                          {/*.Type || this.props.state.b2cAvailiable*/}
-                          {(this.props.state.user || this.props.state.b2cAvailiable)  && element.Price && element.Price != 0 && !element.Extra3 ?
-                          <div className={inCart.length ? "add-to-cart in-cart catalog after-add" : "add-to-cart not-in-cart catalog before-add"}>
-                            <ProductAddToCartCatalog
-                              inCart={inCart}
-                              element={element}
-                              price={(parseFloat(element.Price) * maam)}
-                              {...props}
-                            />
-    											</div>
-                          :null}
-
-                          {this.props.state.user && element.Extra3 ?
-                            <NavLink className={"meaged-nav"} to={"/productParent/" + this.props.match.params.lvl1 + "/" + this.props.match.params.lvl2 + "/" + this.props.match.params.lvl3 + "/" + element.CatalogNumber + "/" + lang}>
-                              <div className={"meaged-main"}>
-                                <p>{lang == "he" ? "צפה במוצרים" : "View Products"}</p>
-                              </div>
-                            </NavLink>
-                          :null}
-    										</div>
-    									</div>
-    								);
-                  }
-    						})}
-    					</div>
-    				</div>
-          :
-          <div className="category-wrapper-list">
-            <div className="products-view-header flex-container">
-              <div className="flex-container col-lg-10">
-
-                <div className="col-lg-1 center">
-                  <p>חזר</p>
-                </div>
-                <div className="col-lg-1">
-                  <p>קטגוריה</p>
-                </div>
-                <div className="col-lg-1 center">
-                  <p>תמונה</p>
-                </div>
-                <div className="col-lg-3">
-                  <p>שם</p>
-                </div>
-                <div className="col-lg-1">
-                  <p>מותג</p>
-                </div>
-                <div className="col-lg-2">
-                  <p>ברקוד</p>
-                </div>
-
-                <div className="col-lg-1">
-                  <p>מלאי</p>
-                </div>
-                <div className="col-lg-1">
-                  <p>מחיר</p>
-                </div>
-              </div>
-              <div className="col-lg-1 center">
-                <p>כמות</p>
-              </div>
-              <div className="col-lg-1 center">
-                <p>סה״כ</p>
-              </div>
-            </div>
-            <ul id="navFix" className={"flex-container products-view"}>
-              {!this.state.tmpProducts.length ? <h1 className="hide-on-desctop no-product">לא קיימים מוצרים</h1> : null}
-              {this.state.tmpProducts.map((element, index) => {
-                let inCart = this.props.state.productsInCart.filter(item => item.Products.CatalogNumber == element.CatalogNumber);
-                let productSales = this.props.state.productSales.length ? this.props.state.productSales.filter(item => item.ForCatalogNum == element.CatalogNumber) : [];
-                let diffQuantity = this.props.state.productSalesDiffQuan.filter(item => item.ProdId == element.Id && item.Quantity != null);
-                let maam = this.props.state.user.Type == 2 ? 1 : 1;
-                let image = this.props.state.images.length ? this.props.state.images.filter(item => item == element.CatalogNumber) : [];
-                let type;
-
-                if((inCart.length && !("UnitChosen" in inCart[0])) ||  (inCart.length == 0)){
-                  element.Unit == 2 ? type = " /יח" : type = " /יח'";
-                }else if((inCart.length && (("UnitChosen" in inCart[0] && inCart[0].UnitChosen == 0)))){
-                  type = " /יח'";
-                }else if((inCart.length && (("UnitChosen" in inCart[0] && inCart[0].UnitChosen == 1)))){
-                  type = " /אריזה";
-                }else if((inCart.length && (("UnitChosen" in inCart[0] && inCart[0].UnitChosen == 2)))){
-                  type = " /יח";
-                }
-                let thirdMenuTitle = "";
-                if(this.props.state.categories && this.props.state.categories.length>0){
-                  thirdMenuTitle = this.props.state.categories.filter((item) => {return item.Id == element.ThirdMenuItemId})[0].Title;
-                }
-
-
-                if(index <= this.state.toShow && !element.Extra2 ){
-
-                  let ttlRow = 0;
-                  if((inCart.length && (("UnitChosen" in inCart[0] && (inCart[0].UnitChosen == 0 || inCart[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCart[0])))) || (inCart.length == 0)){
-                    if(inCart.length){
-                      ttlRow = ((parseFloat(element.Price) * maam) * inCart[0].Quantity).toFixed(2);
-                    }
-                  }else{
-                    if(inCart.length){
-                      ttlRow = (((parseFloat((parseFloat(element.Price) * maam)))) * inCart[0].Quantity * parseFloat(element.PackQuan)).toFixed(2);
-                    }
-                  }
-                  return(
-                    <li key={index} className={element.Extra3 && element.SubProducts && element.SubProducts.length > 0 ? element.Unpublished ? "wrapper-cont unpublished color-block" : "wrapper-cont  color-block" : element.Unpublished ? "wrapper-cont unpublished" : "wrapper-cont"}>
-                      <div className={!element.ActualQuan ? "wrapper flex-container" : "wrapper disable flex-container"}>
-
-                        <div className="flex-container right-side-cont col-lg-10" onClick = {!element.Extra3 ? () => this.setState({selectedProd:element, ProductPopUp:true}) : ()=> this.getSubProds(element)}>
-                          <div className="backInventory-cont col-lg-1">
-                            {element.Extra3 && !element.SubProducts ||  (element.SubProducts && element.SubProducts.length == 0) ?
-                              <div className="sub-prod_trigger">
-                                <img src={globalFileServer + 'icons/down-pink.svg'} alt=""/>
-                              </div>
-                            :null}
-                            {element.Extra3 && element.SubProducts && element.SubProducts.length > 0 ?
-                              <div className="sub-prod_trigger">
-                                <img src={globalFileServer + 'icons/up-pink.svg'} alt=""/>
-                              </div>
-                            :null}
-                            {!element.Extra3 && element.IsBack?
-                              <img className="img star" src={globalFileServer + "icons/star.png"} />
-                            :null}
-                          </div>
-                          <div className="cat-cont col-lg-1">
-                            <p className='row-list-p'>{thirdMenuTitle}</p>
-                          </div>
-
-                          <div className="img-cont col-lg-1">
-                            <img className="img" src={element.Extra1} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
-                          </div>
-                          <div className="title-cont col-lg-3">
-                            {element.IsNew ?
-                              <div className="new-p">חדש</div>
-                            :null}
-                            <p className='row-list-p'>{element.Title}</p>
-                          </div>
-                          <div className="mutag-cont col-lg-1">
-                            <p className='row-list-p'>{element.Extra5}</p>
-                          </div>
-                          <div className="barcode-list-cont col-lg-2">
-                            {element.Barcode ?
-                              <p className='row-list-p'>{element.Barcode}</p>
-                            :null}
-                          </div>
-                          <div className="mlay-cont col-lg-1">
-                            <p className='row-list-p'>{element.Extra4 != "0" ? element.Extra4 : null}</p>
-                          </div>
-                          <div className="price-cont col-lg-1">
-                            {(this.props.state.user && this.props.state.user.Id) ||  (!this.props.state.user && !localStorage.role && this.props.state.priceNoLogin == "1") ?
-                              <div className="price-main-cont">
-                                {element.Price && element.Price != '0' ?
-                                  <div className="price-cont">
-                                    <div className="price-subCont">
-                                      {(inCart.length && (("UnitChosen" in inCart[0] && (inCart[0].UnitChosen == 0 || inCart[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCart[0])))) || (inCart.length == 0) ?
-                                        <h3 className="price">{(parseFloat(element.Price) * maam).toFixed(2) + type}</h3>
-                                      :
-                                        <h3 className="price">{(parseFloat(element.Price) * parseInt(element.PackQuan) * maam).toFixed(2) + type}</h3>
-                                      }
-                                    </div>
-
-                                  </div>
-                                :null}
-                              </div>
-                            :null}
-                          </div>
-                        </div>
-                        <div className="col-lg-1">
-                          {(this.props.state.user || this.props.state.b2cAvailiable)  && element.Price && element.Price != 0 && !element.Extra3 ?
-                          <div className={inCart.length ? "add-to-cart list-view in-cart catalog after-add" : "add-to-cart list-view not-in-cart catalog before-add"}>
-                            <ProductAddToCartCatalogList
-                              inCart={inCart}
-                              element={element}
-                              price={(parseFloat(element.Price) * maam)}
-                              {...props}
-                            />
-                          </div>
-                          :null}
-                        </div>
-                        <div className="col-lg-1">
-                          <div className="sum-cont add-to">
-                            <p className="h3-2">{ttlRow != 0 ? ttlRow + ' ₪': ""}</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {element.SubProducts && element.SubProducts.length > 0 ? element.SubProducts.map((ele, ind) => {
-                        let inCartSubProd = this.props.state.productsInCart.filter(item => item.Products.CatalogNumber == ele.CatalogNumber);
-
-                        let ttlRowSubProd = 0;
-                        if((inCartSubProd.length && (("UnitChosen" in inCartSubProd[0] && (inCartSubProd[0].UnitChosen == 0 || inCartSubProd[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCartSubProd[0])))) || (inCartSubProd.length == 0)){
-                          if(inCartSubProd.length){
-                            ttlRowSubProd = ((parseFloat(ele.Price) * maam) * inCartSubProd[0].Quantity).toFixed(2);
-                          }
-                        }else{
-                          if(inCartSubProd.length){
-                            ttlRowSubProd = (((parseFloat((parseFloat(ele.Price) * maam)))) * inCartSubProd[0].Quantity * parseFloat(ele.PackQuan)).toFixed(2);
-                          }
-                        }
-                        return(
-                          <div key={ind} className={!element.ActualQuan ? "wrapper flex-container subProd" : "wrapper disable flex-container subProd"}>
-                            <div className="flex-container right-side-cont col-lg-10" onClick = {() => this.setState({selectedProd:ele, ProductPopUp:true})}>
-                              <div className="backInventory-cont col-lg-1">
-                                {ele.isBack ?
-                                  <img className="img" src={globalFileServer + "icons/star.png"} />
-                                :null}
-                              </div>
-                              <div className="cat-cont col-lg-1">
-                                <p className='row-list-p'>{thirdMenuTitle}</p>
-                              </div>
-
-                              <div className="img-cont col-lg-1">
-                                <img className="img" src={ele.Extra1} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
-                              </div>
-                              <div className="title-cont col-lg-3">
-                                {ele.IsNew ?
-                                  <div className="new-p">חדש</div>
-                                :null}
-                                <p className='row-list-p'>{ele.Title}</p>
-                              </div>
-                              <div className="mutag-cont col-lg-1">
-                                <p className='row-list-p'>{ele.Extra5}</p>
-                              </div>
-                              <div className="barcode-list-cont col-lg-2">
-                                {ele.Barcode ?
-                                  <p className='row-list-p'>{ele.Barcode}</p>
-                                :null}
-                              </div>
-                              <div className="mlay-cont col-lg-1">
-                                <p className='row-list-p'>{ele.Extra4 != "0" ? ele.Extra4 : null}</p>
-                              </div>
-                              <div className="price-cont col-lg-1">
-                                {(this.props.state.user && this.props.state.user.Id) ||  (!this.props.state.user && !localStorage.role && this.props.state.priceNoLogin == "1") ?
-                                  <div className="price-main-cont">
-                                    {ele.Price && ele.Price != '0' ?
-                                      <div className="price-cont">
-                                        <div className="price-subCont">
-                                          {(inCart.length && (("UnitChosen" in inCart[0] && (inCart[0].UnitChosen == 0 || inCart[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCart[0])))) || (inCart.length == 0) ?
-                                            <h3 className="price">{(parseFloat(ele.Price) * maam).toFixed(2) + type}</h3>
-                                          :
-                                            <h3 className="price">{(parseFloat(ele.Price) * parseInt(ele.PackQuan) * maam).toFixed(2) + type}</h3>
-                                          }
-                                        </div>
-
-                                      </div>
-                                    :null}
-                                  </div>
-                                :null}
-                              </div>
-                            </div>
-                            <div className="col-lg-1">
-                              {(this.props.state.user || this.props.state.b2cAvailiable)  && ele.Price && ele.Price != 0 ?
-                              <div className={inCartSubProd.length ? "add-to-cart list-view in-cart catalog after-add" : "add-to-cart list-view not-in-cart catalog before-add"}>
-                                <ProductAddToCartCatalogList
-                                  inCart={inCartSubProd}
-                                  element={ele}
-                                  price={(parseFloat(ele.Price) * maam)}
-                                  {...props}
-                                />
-                              </div>
+                          <div className="flex-container right-side-cont col-lg-10" onClick = {!element.Extra3 ? () => this.setState({selectedProd:element, ProductPopUp:true}) : ()=> this.getSubProds(element)}>
+                            <div className="backInventory-cont col-lg-1">
+                              {element.Extra3 && !element.SubProducts ||  (element.SubProducts && element.SubProducts.length == 0) ?
+                                <div className="sub-prod_trigger">
+                                  <img src={globalFileServer + 'icons/down-pink.svg'} alt=""/>
+                                </div>
+                              :null}
+                              {element.Extra3 && element.SubProducts && element.SubProducts.length > 0 ?
+                                <div className="sub-prod_trigger">
+                                  <img src={globalFileServer + 'icons/up-pink.svg'} alt=""/>
+                                </div>
+                              :null}
+                              {!element.Extra3 && element.IsBack?
+                                <img className="img star" src={globalFileServer + "icons/star.png"} />
                               :null}
                             </div>
-                            <div className="col-lg-1">
-                              <div className="sum-cont add-to">
-                                <p className="h3-2">{ttlRowSubProd != 0 ? ttlRowSubProd + ' ₪': ""}</p>
-                              </div>
+                            <div className="cat-cont col-lg-1">
+                              <p className='row-list-p'>{thirdMenuTitle}</p>
                             </div>
 
+                            <div className="img-cont col-lg-1">
+                              <img className="img" src={element.Extra1} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
+                            </div>
+                            <div className="title-cont col-lg-3">
+                              {element.IsNew ?
+                                <div className="new-p">חדש</div>
+                              :null}
+                              <p className='row-list-p'>{element.Title}</p>
+                            </div>
+                            <div className="mutag-cont col-lg-1">
+                              <p className='row-list-p'>{element.Extra5}</p>
+                            </div>
+                            <div className="barcode-list-cont col-lg-2">
+                              {element.Barcode ?
+                                <p className='row-list-p'>{element.Barcode}</p>
+                              :null}
+                            </div>
+                            <div className="mlay-cont col-lg-1">
+                              <p className='row-list-p'>{element.Extra4 != "0" ? element.Extra4 : null}</p>
+                            </div>
+                            <div className="price-cont col-lg-1">
+                              {(this.props.state.user && this.props.state.user.Id) ||  (!this.props.state.user && !localStorage.role && this.props.state.priceNoLogin == "1") ?
+                                <div className="price-main-cont">
+                                  {element.Price && element.Price != '0' ?
+                                    <div className="price-cont">
+                                      <div className="price-subCont">
+                                        {(inCart.length && (("UnitChosen" in inCart[0] && (inCart[0].UnitChosen == 0 || inCart[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCart[0])))) || (inCart.length == 0) ?
+                                          <h3 className="price">{(parseFloat(element.Price) * maam).toFixed(2) + type}</h3>
+                                        :
+                                          <h3 className="price">{(parseFloat(element.Price) * parseInt(element.PackQuan) * maam).toFixed(2) + type}</h3>
+                                        }
+                                      </div>
+
+                                    </div>
+                                  :null}
+                                </div>
+                              :null}
+                            </div>
                           </div>
+                          <div className="col-lg-1">
+                            {(this.props.state.user || this.props.state.b2cAvailiable)  && element.Price && element.Price != 0 && !element.Extra3 ?
+                            <div className={inCart.length ? "add-to-cart list-view in-cart catalog after-add" : "add-to-cart list-view not-in-cart catalog before-add"}>
+                              <ProductAddToCartCatalogList
+                                inCart={inCart}
+                                element={element}
+                                price={(parseFloat(element.Price) * maam)}
+                                {...props}
+                              />
+                            </div>
+                            :null}
+                          </div>
+                          <div className="col-lg-1">
+                            <div className="sum-cont add-to">
+                              <p className="h3-2">{ttlRow != 0 ? ttlRow + ' ₪': ""}</p>
+                            </div>
+                          </div>
+                        </div>
 
-                        )
+                        {element.SubProducts && element.SubProducts.length > 0 ? element.SubProducts.map((ele, ind) => {
+                          let inCartSubProd = this.props.state.productsInCart.filter(item => item.Products.CatalogNumber == ele.CatalogNumber);
 
-                      }):null}
-                    </li>
-                  );
-                }
-              })}
-            </ul>
+                          let ttlRowSubProd = 0;
+                          if((inCartSubProd.length && (("UnitChosen" in inCartSubProd[0] && (inCartSubProd[0].UnitChosen == 0 || inCartSubProd[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCartSubProd[0])))) || (inCartSubProd.length == 0)){
+                            if(inCartSubProd.length){
+                              ttlRowSubProd = ((parseFloat(ele.Price) * maam) * inCartSubProd[0].Quantity).toFixed(2);
+                            }
+                          }else{
+                            if(inCartSubProd.length){
+                              ttlRowSubProd = (((parseFloat((parseFloat(ele.Price) * maam)))) * inCartSubProd[0].Quantity * parseFloat(ele.PackQuan)).toFixed(2);
+                            }
+                          }
+                          return(
+                            <div key={ind} className={!element.ActualQuan ? "wrapper flex-container subProd" : "wrapper disable flex-container subProd"}>
+                              <div className="flex-container right-side-cont col-lg-10" onClick = {() => this.setState({selectedProd:ele, ProductPopUp:true})}>
+                                <div className="backInventory-cont col-lg-1">
+                                  {ele.isBack ?
+                                    <img className="img" src={globalFileServer + "icons/star.png"} />
+                                  :null}
+                                </div>
+                                <div className="cat-cont col-lg-1">
+                                  <p className='row-list-p'>{thirdMenuTitle}</p>
+                                </div>
+
+                                <div className="img-cont col-lg-1">
+                                  <img className="img" src={ele.Extra1} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
+                                </div>
+                                <div className="title-cont col-lg-3">
+                                  {ele.IsNew ?
+                                    <div className="new-p">חדש</div>
+                                  :null}
+                                  <p className='row-list-p'>{ele.Title}</p>
+                                </div>
+                                <div className="mutag-cont col-lg-1">
+                                  <p className='row-list-p'>{ele.Extra5}</p>
+                                </div>
+                                <div className="barcode-list-cont col-lg-2">
+                                  {ele.Barcode ?
+                                    <p className='row-list-p'>{ele.Barcode}</p>
+                                  :null}
+                                </div>
+                                <div className="mlay-cont col-lg-1">
+                                  <p className='row-list-p'>{ele.Extra4 != "0" ? ele.Extra4 : null}</p>
+                                </div>
+                                <div className="price-cont col-lg-1">
+                                  {(this.props.state.user && this.props.state.user.Id) ||  (!this.props.state.user && !localStorage.role && this.props.state.priceNoLogin == "1") ?
+                                    <div className="price-main-cont">
+                                      {ele.Price && ele.Price != '0' ?
+                                        <div className="price-cont">
+                                          <div className="price-subCont">
+                                            {(inCart.length && (("UnitChosen" in inCart[0] && (inCart[0].UnitChosen == 0 || inCart[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCart[0])))) || (inCart.length == 0) ?
+                                              <h3 className="price">{(parseFloat(ele.Price) * maam).toFixed(2) + type}</h3>
+                                            :
+                                              <h3 className="price">{(parseFloat(ele.Price) * parseInt(ele.PackQuan) * maam).toFixed(2) + type}</h3>
+                                            }
+                                          </div>
+
+                                        </div>
+                                      :null}
+                                    </div>
+                                  :null}
+                                </div>
+                              </div>
+                              <div className="col-lg-1">
+                                {(this.props.state.user || this.props.state.b2cAvailiable)  && ele.Price && ele.Price != 0 ?
+                                <div className={inCartSubProd.length ? "add-to-cart list-view in-cart catalog after-add" : "add-to-cart list-view not-in-cart catalog before-add"}>
+                                  <ProductAddToCartCatalogList
+                                    inCart={inCartSubProd}
+                                    element={ele}
+                                    price={(parseFloat(ele.Price) * maam)}
+                                    {...props}
+                                  />
+                                </div>
+                                :null}
+                              </div>
+                              <div className="col-lg-1">
+                                <div className="sum-cont add-to">
+                                  <p className="h3-2">{ttlRowSubProd != 0 ? ttlRowSubProd + ' ₪': ""}</p>
+                                </div>
+                              </div>
+
+                            </div>
+
+                          )
+
+                        }):null}
+                      </li>
+                    );
+                  }
+                })}
+              </ul>
+            </div>
+            }
+            <Parallax img="parrallax_5.jpg" />
+            </div>
           </div>
-          }
-          <Parallax img="parrallax_5.jpg" />
+
         </div>
+
 			</div>
+      </>
 		)
 	}
 }

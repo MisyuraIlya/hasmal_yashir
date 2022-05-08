@@ -58,7 +58,6 @@ const CategorySlide = params => {
   let childCategory = app.state.categories.filter(item => item.Id == lvl2)[0];
   let subChildCategory = app.state.categories.filter(item => item.Id == lvl3)[0];
   let lvl1Categories = app.state.categories.filter(item => item.LvlNumber == '1');
-
   let firstLvl2 = false;
   if(lvl1Categories && lvl1Categories.length > 0){
     lvl1Categories.map((element,ind) => {
@@ -75,7 +74,7 @@ const CategorySlide = params => {
 		let secondLavel = app.state.categories.filter(item => item.LvlNumber=="2" && item.ParentId == lvl1);
 		return secondLavel;
 	}
-
+    
     return (
       <div className={open ? "category-slidebar-super-main-cont open" : "category-slidebar-super-main-cont closed"}>
         <div onClick={()=> setOpen(!open)} className="close-cont">
@@ -86,21 +85,23 @@ const CategorySlide = params => {
           }
         </div>
 
-
         <div className="category-slidebar-main-cont">
 
           <div className="category-slidebar-fixed-cont">
 
             <div className="category-slidebar-cont">
+
             {app.state.categories.length ?
+            
               <div className="category-slidebar-subcont">
-                  <div className="choose-cat-trigger" onClick={()=> setCategoryPop(!categoryPop)}>
+
+                  {/* <div className="choose-cat-trigger" onClick={()=> setCategoryPop(!categoryPop)}>
                     <p>לכל המחלקות</p>
                     <img src={globalFileServer + 'icons/down-pink.svg'} alt=""/>
-                  </div>
+                  </div> */}
                   <div className="lvl1-title-cont">
                     <img src={parentCategory.Img ? globalFileServer + 'categories/' + parentCategory.Img : globalFileServer + 'logo.png'} />
-                    <h1>{parentCategory.Title}</h1>
+                    {/* <h1>{parentCategory.Title}</h1> */}
 
                     {categoryPop ?
                       <div className="more_cont">

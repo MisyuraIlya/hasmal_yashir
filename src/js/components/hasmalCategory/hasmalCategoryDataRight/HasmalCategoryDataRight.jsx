@@ -1,7 +1,6 @@
 import React from 'react';
 import './HasmalCategoryDataRight.scss'
 const HasmalCategoryDataRight = ({data, subData}) => {
-  console.log(data)
   return (
     <div className='rightCategory'>
       <h2>{data}</h2>

@@ -89,11 +89,12 @@ const BasicRouter = (prop) => (
             {/* == pages == */}
             <Route path="/categories" render={(props) => (<MyCategoryPage/>)} />
             <Route path="/myzone" render={(props) => (<MyZonePage/>)} />
-            <Route path="/category" render={(props) => (<HasmalCategoryPage/>)} />
+            {/* <Route path="/category" render={(props) => (<HasmalCategoryPage/>)} /> */}
             {/* =========== */}
-            {/* <Route path="/category/:lvl1/:lvl2/:lvl3/:lang" render={(props) => (<CategoryPage {...props}{...prop}/>)} />
-            <Route path="/category-page/:lvl1/:lvl2/:lvl3/:lang" render={(props) => (<CategoryView {...props}{...prop}/>)} />
-            <Route path="/productParent/:lvl1/:lvl2/:lvl3/:id/:lang" render={(props) => (<ProductParent {...props}{...prop}/>)} /> */}
+            
+            <Route path="/category/:lvl1/:lvl2/:lvl3" render={(props) => (<CategoryPage {...props}{...prop}/>)} />
+            <Route path="/category-page/:lvl1/:lvl2/:lvl3" render={(props) => (<CategoryView {...props}{...prop}/>)} />
+            <Route path="/productParent/:lvl1/:lvl2/:lvl3/:id" render={(props) => (<ProductParent {...props}{...prop}/>)} />
 
 					<Route path="/cart" render={(props) => (<ShopCart {...props}{...prop}/>)} />
 					<Route path="/wishList/:lang" render={(props) => (<WishList {...props}{...prop}/>)} />
@@ -206,6 +207,7 @@ class App extends Component {
 		}
 
 	}
+  
 	componentDidMount(){
 
     let htmlElement = document.querySelector("html");
@@ -1222,6 +1224,7 @@ class App extends Component {
   }
 
 	render() {
+
 		return (
       <UserContext.Provider value={this}>
 				<BasicRouter {...this} />

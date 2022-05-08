@@ -542,8 +542,8 @@
   padding-bottom: 5px;
   .category-page-sub{
     &.small{
-      width: calc(100vw - 340px);
-      margin-right: 320px;
+      width: calc(100vw - 768px);
+      // margin-right: 730px;
     }
   }
 
@@ -1009,7 +1009,7 @@
           font-size: 16px;
           text-align: center;
           padding: 8px 10px;
-          background: $main-bg;
+          background: #ededed;
           word-break: break-word;
           min-height:50px;
           &:before {
@@ -1348,6 +1348,12 @@
   line-height: 1.5;
   letter-spacing: normal;
   color: #0081cb;
+}
+
+.love_image{
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 @media screen and (max-width: 1150px) {
 

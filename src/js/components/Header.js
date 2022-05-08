@@ -707,7 +707,7 @@ export default class Header extends Component {
 							<div className="col-lg-6 flex-container">
 
 								<div className="col-lg-4 left-right">
-								<NavLink to={'/categories'}>
+								<NavLink to={'/category-page/0/0/0'}>
 									<button className="first-button"> כל קטגוריות המוצרים</button>
 								</NavLink>
 								</div>

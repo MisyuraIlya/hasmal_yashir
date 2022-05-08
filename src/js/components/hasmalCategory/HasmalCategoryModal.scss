@@ -1,0 +1,30 @@
+.category_modal_container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .7);
+  z-index: 1000;
+}
+
+
+.category_modal_styles{
+  width: 1280px;
+  height: 744px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 50px;
+  z-index: 1000;
+}
+
+.images_category_right{
+  width: 60%;
+}
+
+.description_category_left{
+  width: 40%;
+}
