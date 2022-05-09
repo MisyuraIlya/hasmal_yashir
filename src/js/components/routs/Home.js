@@ -10,7 +10,7 @@ import LogoMedias from '../tools/LogoMedias.js';
 import ContactFooter from '../tools/ContactFooter.js';
 import ProductAddToCartCatalog from "./productPage/ProductAddToCartCatalog";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Autoplay } from 'swiper';
+import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 //SwiperCore.use([Autoplay]);
 
 import SecondBanner from "../header/SecondBanner.jsx";
@@ -18,6 +18,10 @@ import RecommendedMonth from "../header/RecommendedMonth.jsx";
 import HasmalFooter from "../footer/HasmalFooter";
 import SearchModal from "../searchModal/SearchModal";
 import CategoryModal from "../categoryModal/CategoryModal";
+
+import 'swiper/swiper-bundle.min.css'
+import 'swiper/swiper.min.css'
+
 
 const ShowCase = res => {
 
@@ -309,6 +313,7 @@ const CategorySale = res => {
       setActiveIndex(ref.current.swiper.activeIndex);
     }
   };
+  SwiperCore.use([Navigation, Pagination]);
 
 
 
@@ -320,13 +325,14 @@ const CategorySale = res => {
     slidesPerView: toShow,
     slidesPerColumn: column,
     slidesPerColumnFill: 'row',
+    
     breakpoints: {
       1400: {
-        slidesPerView: 5,
+        slidesPerView: 3,
         slidesPerColumn: 1
       },
       1000: {
-        slidesPerView: 5,
+        slidesPerView: 3,
         slidesPerColumn: 1
       },
       600: {
@@ -353,13 +359,19 @@ const CategorySale = res => {
         </h1>
       </div>
       <div className="items images images-slider images-slider-cont">
-        <Swiper ref={ref} {...param} >
+        <Swiper  
+          loop={true}
+          pagination={{clickable:true}}
+          ref={ref} 
+          {...param} 
+          >
           {catsLvl1.map((element, index) => {
 
             return (
               <SwiperSlide key={index} className="product-item">
+                
 								<div className={!element.ActualQuan ? "wrapper" : "wrapper disable"}>
-                  <NavLink to={"/category-page/" + element.Id + "/0/0/" + lang}>
+                  <NavLink to={"/category/" + element.Id + "/0/0/0" }>
 										<div className="img-cont">
                       {/* solution */}
 											<img className="img" src={element.Img ? globalFileServer + "home/category/categoryProduct.png" + element.Img : globalFileServer + 'home/category/categoryProduct.png'} />
@@ -369,7 +381,7 @@ const CategorySale = res => {
                         <h3 className="p-title">{lang=="he" ? element.Title : element.TitleEng}</h3>
                         <div className="product_number"><p>פריטים 312</p></div> 
                       </div>
-                      <div className="sub_category flex-container">
+                      {/* <div className="sub_category flex-container">
                         <div className="col-lg-6 right_category"> 
                           <li>במאוס אובר</li>
                           <li>תת קגוריה 1</li>
@@ -383,23 +395,14 @@ const CategorySale = res => {
                           <li>תת קגוריה 6</li>
                           <li>תת קגוריה 7</li>
                         </div>
-                      </div>
+                      </div> */}
 										</div>
 									</NavLink>
 								</div>
               </SwiperSlide>
             );
           })}
-          <div className="circle_paginate">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="selected_dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div>
+
 
         </Swiper>
         {catsLvl1.length > toShow ? (
@@ -474,6 +477,7 @@ export default class Home extends Component {
 
 
 	setType = () => {}
+
 	render(){
 		let lang;
     if(this.props.state.lang){
@@ -482,6 +486,13 @@ export default class Home extends Component {
 		let appState = this.props.state;
     let props = this.props;
 		let constant = this.props.returnConstant;
+
+    let categories = [];
+    if(this.props.state.categories.length>0){
+			categories = this.props.state.categories.filter(item => !item.ParentId && !item.SubParentId);
+    }
+
+
 		return (
 			<div className="home-page">
         

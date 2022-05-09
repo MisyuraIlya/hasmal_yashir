@@ -728,13 +728,38 @@ h3{
 	border-bottom: 1px solid #eaeaea;
 }
 
+.another_container{
+	h1{
+		color: #0081cb;
+	}
+	.another_title{
+		padding-top: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 2;
+	}
+	
+	.another_container_banner_image{
+		position: relative;
+		img{
+			position: absolute;
+			z-index: 1;
+		}
+	}
+
+}
+.abother_container_content_card{
+	position: relative;
+	z-index: 2;
+}
 .another_products{
-	height: 1031px;
   padding: 0 39px 111px 3px;
   background-color: #fff2ce;
 }
 
 .another_proudct_section{
+	z-index: 2;
 	.another_product_card{
 		width: 280px;
 		margin: 66px 0 0 59px;

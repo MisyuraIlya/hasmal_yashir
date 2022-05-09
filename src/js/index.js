@@ -62,6 +62,7 @@ import MyCategoryPage from "./pages/MyCategoryPage";
 import MyZonePage from "./pages/MyZonePage";
 import HasmalCategoryPage from "./pages/HasmalCategoryPage";
 
+
 import './App.scss';
 import RightSideBar from "./components/sidebar/RightSideBar";
 require('./globals.js');
@@ -84,7 +85,7 @@ const BasicRouter = (prop) => (
 			<main id={prop.state.toggleMenu ? 'active' : null} className={'he'}>
 				<Switch>
 					//<Route path="/" exact render={(props) => (<Home {...props}{...prop}/>)} />
-          <Route path="/home/:lang" render={(props) => (<Home key={props.match.params.lang} {...props}{...prop}/>)} />
+          <Route path="/home" render={(props) => (<Home key={props.match.params.lang} {...props}{...prop}/>)} />
 
             {/* == pages == */}
             <Route path="/categories" render={(props) => (<MyCategoryPage/>)} />
