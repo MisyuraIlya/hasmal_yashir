@@ -6,19 +6,29 @@ import ProductInfo from "./ProductInfo";
 import MyCropper from "../../tools/MyCropper";
 import LoadImage from '../../tools/LoadImage';
 import ProductAddToCart from "./ProductAddToCart";
+import VariationProduct from "../../variation/VariationProduct";
+import AnotherProduct from "../../anotherProduct/AnotherProduct";
 
 
 let arrayGLB = [];
+
+let test = [
+  {id:1, title:'ממסר מפחט', titleEng:'memsar Mafhet', makat:'123456', img:''},
+  {id:2, title:'ממסר מפחט', titleEng:'memsar Mafhet', makat:'123456', img:''},
+  {id:3, title:'ממסר מפחט', titleEng:'memsar Mafhet', makat:'123456', img:''},
+
+]
 
 export default class ProductPage extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
 			products: [],
+      allProducts: [],
 			info: false,
       preload: false,
       dateNew: '',
-      imageModal: false
+      imageModal: false,
 		}
 		this.close = this.close.bind(this);
     this.uploadImg = this.uploadImg.bind(this);
@@ -26,6 +36,7 @@ export default class ProductPage extends Component {
     this.unsetPreload = this.unsetPreload.bind(this);
 
 	}
+
 	componentDidMount(){
     let dateNew = new Date;
 		dateNew = dateNew.toLocaleTimeString().slice(0, -3);
@@ -125,13 +136,13 @@ export default class ProductPage extends Component {
   }
 
 	render(){
+    console.log(this.state.products)
     let inCart = this.props.props.state.productsInCart.filter(item => item.Products.CatalogNumber == this.props.state.selectedProd.CatalogNumber);
     let productSales = this.props.props.state.productSales.length ? this.props.props.state.productSales.filter(item => item.ForCatalogNum == this.props.state.selectedProd.CatalogNumber) : [];
     let diffQuantity = this.props.props.state.productSalesDiffQuan.filter(item => item.ProdId == this.props.state.selectedProd.Id && item.Quantity != null);
     let maam = !this.props.props.state.user.Type ? 1 : 1;
     let image = this.props.props.state.images.length ? this.props.props.state.images.filter(item => item == this.props.state.selectedProd.CatalogNumber) : [];
     let type;
-
     if((inCart.length && !("UnitChosen" in inCart[0])) ||  (inCart.length == 0)){
       this.props.state.selectedProd.Unit == 2 ? type = " לק״ג" : type = " ליחידה"
     }else if((inCart.length && (("UnitChosen" in inCart[0] && inCart[0].UnitChosen == 0)))){
@@ -190,34 +201,28 @@ export default class ProductPage extends Component {
         </div>,
         document.getElementById('modal-root')
       ): null}
+
 				<div className="product-wrapper flex-container">
           <div className="col-lg-5 image">
-
-            <img className="img" src={this.props.state.selectedProd.Extra1} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
-
-            {localStorage.role ?
-              <div>
-                <div onClick={this.deleteImage.bind(this,this.props.state.selectedProd.CatalogNumber)} className="delete-img">
-                  <img
-                    src={globalFileServer + 'icons/deletewhite.svg'}
-                  />
-                </div>
-                <MyCropper
-                  itemId={this.props.state.selectedProd.CatalogNumber}
-                  aspectRatio={16/16} {...this}
-                  folder="products"
-                  dist="Img" {...this}
-                  appId={this.props.props.state.appId}
-                />
-              </div>
-            :null}
+            <img className="img" src={this.props.state.selectedProd.ImgLink} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
           </div>
 					<div className="col-lg-7 info-p">
 						<div className="product-details">
-							<div className="share"></div>
-							<div className="name">
 
+							<div className="name">
 								<h2>{lang == "he" ? this.props.state.selectedProd.Title : this.props.state.selectedProd.TitleEng}</h2>
+                <h2>{this.props.state.selectedProd.EngDesc ? this.props.state.selectedProd.EngDesc : null}</h2>
+                <h4>מק"ט {this.props.state.selectedProd.CatalogNumber ? this.props.state.selectedProd.CatalogNumber : null}</h4>
+
+                {/* work here */}
+                <div className="variation_container">
+                  {test.map((item,numberOfVariation) => 
+                  <div className="variations_cards">
+                    <VariationProduct numberOfVariation={numberOfVariation}/>
+                  </div>
+                  )}
+                </div>
+
                 {this.props.state.selectedProd.Description ?
   								<div className="details">
   									<p>{this.props.state.selectedProd.Description}</p>
@@ -285,6 +290,7 @@ export default class ProductPage extends Component {
                   </div >
                 :null}
                 */}
+                <button>הוספה לרשימה</button>
 
 							</div>
 
@@ -347,12 +353,16 @@ export default class ProductPage extends Component {
 					</div>
 
 				</div>
+        
         <div>
           {(productSales.length || diffQuantity.length) && this.props.props.state.user.Type ?
             <div className="sales-info">
               <ProductInfo {...this} />
             </div>
           :null}
+        </div>
+        <div className="another_products">
+            <AnotherProduct/>
         </div>
 			</div>
 		)

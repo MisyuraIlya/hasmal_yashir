@@ -211,7 +211,6 @@
 .title-breadcrumbs{
   // /background:#997950c2;
   padding:15px 0;
-  margin-top:40px;
   margin-bottom:0px;
   z-index: 99;
   .container{
@@ -252,7 +251,7 @@
           color:black;
           font-weight: 400;
           &:after{
-             content: ' / ';
+             content: ' > ';
           }
         }
         span{

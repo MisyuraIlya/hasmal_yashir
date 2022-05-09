@@ -9,6 +9,7 @@ const SecondLevel = params => {
   let { lvl1, lvl2, lvl3} = params2;
 
   useEffect(() => {
+
     setActive(params.childCategory.Id);
   }, []);
 
@@ -26,15 +27,15 @@ const SecondLevel = params => {
   return(
     <div className="col">
 
-      <NavLink to={'/category/' + params.parentCategory.Id + "/" + params.element.Id + "/0/" + app.state.lang}>
-        <h3 className={element.Id == params.childCategory.Id ? "active" : null} onClick={()=> toggleActive(element.Id)}>{params.app.state.lang == "he" ? element.Title : element.CompanyId}</h3>
+      <NavLink to={'/category/' + params.parentCategory.Id + "/" + params.element.Id + "/0/0"}>
+        <h3 className={params.childCategory ? element.Id == params.childCategory.Id ? "active" : null : null} onClick={()=> toggleActive(element.Id)}>{element.Title}</h3>
       </NavLink>
       <ul className={active == element.Id ? "active" : null}>
         {child.map((el, ind) => {
 
           return (
             <li key={ind}>
-              <NavLink className={params.subChildCategory ? el.Id == params.subChildCategory.Id ? 'active-a' : null : null} to={'/category/' + params.parentCategory.Id + "/" + params.element.Id + "/" + el.Id + "/" + app.state.lang}>{params.app.state.lang == "he" ? el.Title : el.CompanyId}</NavLink>
+              <NavLink className={params.subChildCategory ? el.Id == params.subChildCategory.Id ? 'active-a' : null : null} to={'/category/' + params.parentCategory.Id + "/" + params.element.Id + "/" + el.Id + "/0" }>{el.Title}</NavLink>
             </li>
           );
         })}
@@ -55,8 +56,17 @@ const CategorySlide = params => {
   let { lvl1, lvl2, lvl3} = params2;
 
   let parentCategory = app.state.categories.filter(item => item.Id == lvl1)[0];
-  let childCategory = app.state.categories.filter(item => item.Id == lvl2)[0];
+
+  let childCategory;
+  if(lvl2=='0'){
+    childCategory = app.state.categories.filter(item => item.ParentId == lvl1)[0];
+  }else{
+    childCategory = app.state.categories.filter(item => item.Id == lvl2)[0];
+  }
+  
   let subChildCategory = app.state.categories.filter(item => item.Id == lvl3)[0];
+
+  
   let lvl1Categories = app.state.categories.filter(item => item.LvlNumber == '1');
   let firstLvl2 = false;
   if(lvl1Categories && lvl1Categories.length > 0){
@@ -118,7 +128,7 @@ const CategorySlide = params => {
                         {lvl1Categories && lvl1Categories.length > 0 ? lvl1Categories.map((catEle,catInd) => {
                           return(
                             <div key={catInd} className="flex-container row" onClick={()=>goToCatLvl1(catEle.Id)}>
-                              <NavLink onClick={()=> setCategoryPop(false)} to={'/category/' + catEle.Id.toString() + "/" + catEle.FirstLvl2.toString() + "/0/" + app.state.lang}>
+                              <NavLink onClick={()=> setCategoryPop(false)} to={'/category/' + catEle.Id.toString() + "/" + catEle.FirstLvl2.toString() + "/0/0"}>
                                 <div className="col-lg-1">
                                 </div>
                                 <div className="col-lg-11">

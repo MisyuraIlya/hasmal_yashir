@@ -92,7 +92,7 @@ const BasicRouter = (prop) => (
             {/* <Route path="/category" render={(props) => (<HasmalCategoryPage/>)} /> */}
             {/* =========== */}
             
-            <Route path="/category/:lvl1/:lvl2/:lvl3" render={(props) => (<CategoryPage {...props}{...prop}/>)} />
+            <Route path="/category/:lvl1/:lvl2/:lvl3/:id" render={(props) => (<CategoryPage {...props}{...prop}/>)} />
             <Route path="/category-page/:lvl1/:lvl2/:lvl3" render={(props) => (<CategoryView {...props}{...prop}/>)} />
             <Route path="/productParent/:lvl1/:lvl2/:lvl3/:id" render={(props) => (<ProductParent {...props}{...prop}/>)} />
 

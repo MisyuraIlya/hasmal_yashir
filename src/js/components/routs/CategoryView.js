@@ -55,7 +55,7 @@ export default class CategoryView extends Component {
 						{categories.map((element, index) => {
 							return(
 								<div key={index} className="col-lg-3">
-									<NavLink to={ ('/category/' + this.props.match.params.lvl1 + "/" + element.Id + "/0/" )}>
+									<NavLink to={ ('/category/' + element.Id  + "/0/0/0" )}>
 										<div className="wrapper">
 											<img src={element.Img ? globalFileServer + 'categories/' + element.Img : globalFileServer + 'placeholder.jpg'} />
 											<div className='button_category'>
