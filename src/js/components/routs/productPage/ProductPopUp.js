@@ -15,12 +15,7 @@ import ProductsSwiper from "../../productsSwiper/ProductsSwiper";
 
 let arrayGLB = [];
 
-let test = [
-  {id:1, title:'ממסר מפחט', titleEng:'memsar Mafhet', makat:'123456', img:''},
-  {id:2, title:'ממסר מפחט', titleEng:'memsar Mafhet', makat:'123456', img:''},
-  {id:3, title:'ממסר מפחט', titleEng:'memsar Mafhet', makat:'123456', img:''},
 
-]
 
 export default class ProductPage extends Component {
 	constructor(props){
@@ -210,7 +205,7 @@ export default class ProductPage extends Component {
 
 				<div className="product-wrapper flex-container">
           <div className="col-lg-5 image image_container_popup">
-            {/* <img className="img" src={this.props.state.selectedProd.ImgLink} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} /> */}
+            <img className="img" src={this.props.state.selectedProd.ImgLink} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
             <ProductsSwiper variaionData={this.props.variationData}/>
             <a href={this.props.state.selectedProd.PdfLink}>מפרט טכני</a>
           </div>

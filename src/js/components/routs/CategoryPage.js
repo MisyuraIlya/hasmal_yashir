@@ -11,6 +11,7 @@ import ProductAddToCartCatalogList from "./productPage/ProductAddToCartCatalogLi
 import HasmalCategoryBanner from '../hasmalCategory/HasmalCategoryBanner';
 import UserContext from '../../UserContext';
 import CategorySlide from '../tools/CategorySlide';
+import CategoryLabel from "../categoryLabel/CategoryLabel";
 
 let arrayGLB = [];
 let glbCatObj = {
@@ -596,7 +597,6 @@ export default class CategoryPage extends Component {
     let props = Object.assign({}, this.props);
     let lang = this.props.state.lang;
 
-
     // this.filteredVatiation('a9f73101')
 		return (
       <>
@@ -605,8 +605,8 @@ export default class CategoryPage extends Component {
         <div className="flex-container">
           <div className=" right_category">
             
-            <CategorySlide />
-          
+            <CategorySlide/>
+            <CategoryLabel tmpProducts={this.state.tmpProducts}/>
           </div>
           <div className="left_category">
             <div className={this.state.categorySlide ? "category-page-sub small" : "category-page-sub"}>

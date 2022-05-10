@@ -9,11 +9,11 @@ import 'swiper/swiper.min.css'
 
 const ProductsSwiper = ({variaionData}) => {
 
-  const ref = useRef(null);
+
 
   return (
     <div>
-      <Swiper ref={ref}>
+      <Swiper>
         {variaionData.map((i, index) => 
         <SwiperSlide key={index}><img src={i.ImgLink}/></SwiperSlide>
         )}
