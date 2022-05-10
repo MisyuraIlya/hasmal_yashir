@@ -15,21 +15,22 @@ const VariationProduct = ({variaionData, numberOfVariation}) => {
           </div>
       </div>
       <div className="variation_accordion__content">
-        <div className='variation_card_info_container'>
-            <div>
+        <div className='flex-container variation_card_info_container'>
+            <div className='col-lg-4'>
                 <img src={variaionData.ImgLink} />
             </div>
-            <div>
-                <span>{variaionData.Title}</span>
-            </div>
-            <div>
-                <span>{variaionData.EngDesc}</span>
+            <div className='col-lg-8'>
+                <div>
+                    <span>{variaionData.Title}</span>
+                </div>
+                <div>
+                    <span>{variaionData.EngDesc}</span>
+                </div>
             </div>
             <div>
                 <span>מק"ט {variaionData.CatalogNumber}</span>
+                <a href={variaionData.PdfLink}>מפרט טכני</a>
             </div>
-
-            <a href={variaionData.PdfLink}>מפרט טכני</a>
         </div>    
       </div>
     </div>
