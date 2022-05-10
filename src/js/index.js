@@ -81,7 +81,7 @@ const BasicRouter = (prop) => (
       </header>			
       <Route {...prop} render={matchProps => (<Nav {...matchProps}{...prop} />)} />
 			{!localStorage.agent && !localStorage.role ? <Route {...prop} render={matchProps => (<NotificationView {...matchProps}{...prop} />)} /> : null}
-      <RightSideBar rightSideBar={prop.state.rightSideBar}/>
+      <RightSideBar toggleRightSideBar={prop.toggleRightSideBar} rightSideBar={prop.state.rightSideBar}/>
 			<main id={prop.state.toggleMenu ? 'active' : null} className={'he'}>
 				<Switch>
 					//<Route path="/" exact render={(props) => (<Home {...props}{...prop}/>)} />
@@ -1221,7 +1221,8 @@ class App extends Component {
   }
 
   toggleRightSideBar = () => {
-    this.setState({rightSideBar:true})
+    this.state.rightSideBar === true ?  this.setState({rightSideBar:false}) : this.setState({rightSideBar:true})
+
   }
 
 	render() {

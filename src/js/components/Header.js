@@ -447,7 +447,6 @@ export default class Header extends Component {
 		this.notVieWed = this.notVieWed.bind(this);
 		this.inputRef = React.createRef();
 		this.reset = this.reset.bind(this);
-		console.log(props.toggleRightSideBar)
 
 	}
 	componentDidMount() {
@@ -608,9 +607,9 @@ export default class Header extends Component {
 		// this.setState({categoryButton:true})
 	}
 
-	closeRigthSideBar= () => {
-		// this.setState({categoryButton:false})
-	}
+    ToggleSidebar = () => {
+        isOpen === true ? setIsopen(false) : setIsopen(true);
+    }
   	
 	render() {
 		let seo = this.props.state.seo.filter(item => '/' + item.Link == this.props.history.location.pathname)[0];
