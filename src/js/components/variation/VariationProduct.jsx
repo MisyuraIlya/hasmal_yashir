@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 const VariationProduct = ({variaionData, numberOfVariation}) => {
 
   const [active, setActive] = useState(false)
-  console.log(variaionData)
 
 
   return (

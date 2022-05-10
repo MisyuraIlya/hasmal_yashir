@@ -9,10 +9,8 @@ import ProductAddToCart from "./ProductAddToCart";
 import VariationProduct from "../../variation/VariationProduct";
 import AnotherProduct from "../../anotherProduct/AnotherProduct";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
-import 'swiper/swiper-bundle.min.css'
-import 'swiper/swiper.min.css'
+
+import ProductsSwiper from "../../productsSwiper/ProductsSwiper";
 
 
 let arrayGLB = [];
@@ -34,6 +32,7 @@ export default class ProductPage extends Component {
       preload: false,
       dateNew: '',
       imageModal: false,
+      modalSwiperThumb: '',
 		}
 		this.close = this.close.bind(this);
     this.uploadImg = this.uploadImg.bind(this);
@@ -211,17 +210,8 @@ export default class ProductPage extends Component {
 
 				<div className="product-wrapper flex-container">
           <div className="col-lg-5 image image_container_popup">
-            <img className="img" src={this.props.state.selectedProd.ImgLink} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
-            <Swiper
-              spaceBetween={50}
-              slidesPerView={4}
-              onSlideChange={() => console.log('slide change')}
-              onSwiper={(swiper) => console.log(swiper)}
-            >
-              {this.props.variationData.map((i) => 
-              <SwiperSlide><img src={i.ImgLink}/></SwiperSlide>
-              )}
-            </Swiper>
+            {/* <img className="img" src={this.props.state.selectedProd.ImgLink} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} /> */}
+            <ProductsSwiper variaionData={this.props.variationData}/>
             <a href={this.props.state.selectedProd.PdfLink}>מפרט טכני</a>
           </div>
 					<div className="col-lg-7 info-p">
