@@ -135,8 +135,9 @@ export default class ProductPage extends Component {
      });
   }
 
+  
 	render(){
-    console.log(this.state.products)
+    // console.log(this.state.products.CatalogNumber)
     let inCart = this.props.props.state.productsInCart.filter(item => item.Products.CatalogNumber == this.props.state.selectedProd.CatalogNumber);
     let productSales = this.props.props.state.productSales.length ? this.props.props.state.productSales.filter(item => item.ForCatalogNum == this.props.state.selectedProd.CatalogNumber) : [];
     let diffQuantity = this.props.props.state.productSalesDiffQuan.filter(item => item.ProdId == this.props.state.selectedProd.Id && item.Quantity != null);
@@ -160,6 +161,7 @@ export default class ProductPage extends Component {
     }
 
 
+    
     let priceListGroup='';
     if(this.props.state.selectedProd && this.props.state.selectedProd.PriceListGroup){
       switch(this.props.state.selectedProd.PriceListGroup){
@@ -175,9 +177,9 @@ export default class ProductPage extends Component {
       }
     }
 
-
-
     let props = Object.assign({}, this.props);
+    
+    // const variaionData = this.props.filteredVatiation(this.state.products.CatalogNumber);
 
     return(
 			<div className="product-page">
@@ -203,8 +205,9 @@ export default class ProductPage extends Component {
       ): null}
 
 				<div className="product-wrapper flex-container">
-          <div className="col-lg-5 image">
+          <div className="col-lg-5 image image_container_popup">
             <img className="img" src={this.props.state.selectedProd.ImgLink} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
+            <a href={this.props.state.selectedProd.PdfLink}>מפרט טכני</a>
           </div>
 					<div className="col-lg-7 info-p">
 						<div className="product-details">
@@ -216,11 +219,15 @@ export default class ProductPage extends Component {
 
                 {/* work here */}
                 <div className="variation_container">
-                  {test.map((item,numberOfVariation) => 
-                  <div className="variations_cards">
-                    <VariationProduct numberOfVariation={numberOfVariation}/>
-                  </div>
-                  )}
+                  {console.log('prudcts', this.props.variationData)}
+
+                  {
+                    this.props.variationData.map((i,key) => 
+                    <div className="variations_cards" key={key}>
+                      <VariationProduct variaionData={i} numberOfVariation={key}/>
+                    </div>
+                    )
+                  }
                 </div>
 
                 {this.props.state.selectedProd.Description ?

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const VariationProduct = ({numberOfVariation}) => {
+const VariationProduct = ({variaionData, numberOfVariation}) => {
 
   const [active, setActive] = useState(false)
+  console.log(variaionData)
+
+
   return (
     <div className={`variation_accordion ${active ? 'active ' : ''}`}>
       <div className="flex-container " onClick={() => setActive(!active)}>
@@ -12,27 +15,22 @@ const VariationProduct = ({numberOfVariation}) => {
           </div>
       </div>
       <div className="variation_accordion__content">
-        <span>content</span>
-          {/* {props.products.map((i) => 
-              <>
-                  <div className='myzone_zone_card_info_container'>
-                      <input type='checkbox'/>
-                      <div>
-                          <img src={globalFileServer + 'home/recomendedMonth/item1.png'} />
-                      </div>
-                      <div>
-                          <h5>{i.title}</h5>
-                      </div>
-                      <div>
-                          <span>{i.body}</span>
-                      </div>
-                      <div>
-                          <span>{i.desc}</span>
-                      </div>
-                  </div>    
-                  <hr class="myzone_zone_zard_devider"></hr>
-              </>                      
-              )} */}                 
+        <div className='variation_card_info_container'>
+            <div>
+                <img src={variaionData.ImgLink} />
+            </div>
+            <div>
+                <span>{variaionData.Title}</span>
+            </div>
+            <div>
+                <span>{variaionData.EngDesc}</span>
+            </div>
+            <div>
+                <span>מק"ט {variaionData.CatalogNumber}</span>
+            </div>
+
+            <a href={variaionData.PdfLink}>מפרט טכני</a>
+        </div>    
       </div>
     </div>
   );

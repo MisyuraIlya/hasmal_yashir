@@ -24,6 +24,7 @@ export default class CategoryPage extends Component {
 		this.state = {
 			products: [],
       tmpProducts:[],
+      variationData:[],
 			toShow: 24,
 			info: false,
 			viewMode: window.innerWidth > 1000 ? false : true,
@@ -45,7 +46,7 @@ export default class CategoryPage extends Component {
       filteredBrandsArr:[],
       chosenBrand:false,
       morePop: false,
-      brandSearchString:""
+      brandSearchString:"",
 		}
 		this.handleScroll = this.handleScroll.bind(this);
 		this.close = this.close.bind(this);
@@ -59,6 +60,7 @@ export default class CategoryPage extends Component {
 	}
   goToProdBySale(element){
     let selectedProdArr = this.props.state.products.filter((ele,itm) => {return ele.Id == element.Id});
+
     this.setState({info:false,ProductPopUp:true,selectedProd:selectedProdArr[0]});
   }
 	componentDidMount(){
@@ -143,14 +145,23 @@ export default class CategoryPage extends Component {
 		}
 	}
 
+  // filteredVatiation = (productId) => {
+  //   const filteredData = this.state.tmpProducts.filter((i) => {return i.VariationOf == productId})
+    
+  //   return filteredData
+  // }
+
   openProductPage = (encodedCatalog) =>{
     let selectedProd;
+    let variationData;
     let catalogNumber = decodeURIComponent(encodedCatalog);
 
     let tmpProducts = this.state.tmpProducts;
-    selectedProd = tmpProducts.filter((item)=> {return item.CatalogNumber == catalogNumber})[0];
 
-    this.setState({ProductPopUp:true, selectedProd});
+    selectedProd = tmpProducts.filter((item)=> {return item.CatalogNumber == catalogNumber})[0];
+    variationData = tmpProducts.filter((item) => {return item.VariationOf == encodedCatalog})
+    
+    this.setState({ProductPopUp:true, selectedProd, variationData});
   }
 
 	componentWillUnmount(){
@@ -261,7 +272,7 @@ export default class CategoryPage extends Component {
       brandsArr.unshift("כל המותגים");
 
 			this.setState({ products, tmpProducts: products, brandsArr, filteredBrandsArr:brandsArr});
-
+      
       this.setState({preload:false});
       if(this.props.match.params.id != '0'){
         this.openProductPage(this.props.match.params.id);
@@ -394,7 +405,6 @@ export default class CategoryPage extends Component {
 
       let tmpProductsSet = this.state.tmpProducts;
       tmpProductsSet.find(item => item.Id == myElement.Id).SubProducts = [];
-
       this.setState({ products : productsSet, tmpProducts: tmpProductsSet});
 
     }
@@ -572,16 +582,11 @@ export default class CategoryPage extends Component {
     let catalgNumber = encodeURI(element.CatalogNumber);
   
     let catlaogNumberAfter = encodeURIComponent(element.CatalogNumber)
-    console.log(catlaogNumberAfter)
     this.props.history.push("/category/" + this.props.match.params.lvl1 + "/" + this.props.match.params.lvl2 + "/" + this.props.match.params.lvl3 + "/" + catlaogNumberAfter);
 
   }
 
-  filteredVatiation = (productId) => {
-    let filteredData = this.state.tmpProducts.filter((i) => {return i.VariationOf == productId})
-    // debugger;
-    return filteredData
-  }
+
 
   
 	render(){
@@ -590,6 +595,8 @@ export default class CategoryPage extends Component {
     let subChildCategory = this.props.state.categories.filter(item => item.Id == this.props.match.params.lvl3)[0];
     let props = Object.assign({}, this.props);
     let lang = this.props.state.lang;
+
+
     // this.filteredVatiation('a9f73101')
 		return (
       <>
@@ -675,8 +682,7 @@ export default class CategoryPage extends Component {
                       :null}
                     </div>
                   </div>
-                  {console.log(this.state.tmpProducts)}
-                  <ProductPopUp filteredVatiation={this.filteredVatiation} {...this} lang={lang}/>
+                  <ProductPopUp variationData={this.state.variationData}  {...this} lang={lang}/>
                 </div>
                 <div  className="overflow" onClick={() => this.closePropdPop()}></div>
               </div>,
