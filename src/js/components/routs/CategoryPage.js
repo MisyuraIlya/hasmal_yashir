@@ -606,16 +606,49 @@ export default class CategoryPage extends Component {
     const isChecked = e.target.checked;
     const nameValue = e.target.value;
     const labelData = {isChecked, nameValue}
+    let labelCliked = [];
     if(isChecked == false){
       const deletData = nameValue
       const filtered = this.state.labelCliked.filter((i) => i.nameValue !== deletData)
-      this.setState({labelCliked:filtered})
+      labelCliked = filtered;
+      this.setState({labelCliked})
     } else {
-      this.setState({labelCliked:[...this.state.labelCliked, labelData]})
+      labelCliked = [...this.state.labelCliked, labelData];
+      this.setState({labelCliked})
     }
+    this.sortItemsByLabel(labelCliked);
   
   }
+  sortItemsByLabel = (labelCliked) => {
+    let Products = JSON.parse(JSON.stringify(this.state.products));
+    let Extra1Split = [];
+    let tmpProducts = [];
+    Products.map((p) => {
+      if(!p.VariationOf){
+        Extra1Split = p.Extra1.split('#');
+        labelCliked.map((l) => {
+          Extra1Split.map((e) => {
+            if(l.nameValue == e){
+              tmpProducts.push(p);
+            }
+          })
+        })
+      }
+    })
 
+    if(tmpProducts.length > 0) {
+      let uniqueChars = [...new Set(tmpProducts)];
+      console.log(uniqueChars);
+      console.log(tmpProducts)
+      this.setState({tmpProducts:uniqueChars})
+      
+    } else {
+      return this.getAllLables()
+    }
+
+  }
+
+  
 
   
 
@@ -767,6 +800,8 @@ export default class CategoryPage extends Component {
                     let maam = this.props.state.user.Type == 2 ? 1 : 1;
                     let type;
 
+                   
+                    
                     if((inCart.length && !("UnitChosen" in inCart[0])) ||  (inCart.length == 0)){
                       element.Unit == 2 ? type = "/יח" : type = "/יח'";
                     }else if((inCart.length && (("UnitChosen" in inCart[0] && inCart[0].UnitChosen == 0)))){
@@ -776,7 +811,8 @@ export default class CategoryPage extends Component {
                     }else if((inCart.length && (("UnitChosen" in inCart[0] && inCart[0].UnitChosen == 2)))){
                       type = "/יח";
                     }
-
+                    // {console.log(element.Extra1)}
+                    
                     if(index <= this.state.toShow && !element.VariationOf ){
                       return(
                         <div key={index} className={element.Unpublished ? "col-lg-3 wrapper-cont unpublished" : "wrapper-cont col-lg-3"}>
