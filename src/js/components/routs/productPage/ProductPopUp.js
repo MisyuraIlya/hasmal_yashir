@@ -368,7 +368,7 @@ export default class ProductPage extends Component {
           :null}
         </div>
         <div className="another_products">
-            <AnotherProduct/>
+            <AnotherProduct getRandomProduct={this.props.getRandomProduct}/>
         </div>
 			</div>
 		)

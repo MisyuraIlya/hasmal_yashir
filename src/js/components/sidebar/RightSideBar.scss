@@ -27,6 +27,11 @@
     
     z-index: 999999;
     transition: 0.5s;
+    img{
+        position: absolute;
+        left: 0;
+        z-index: -99;
+    }
 }
 .sidebar.active{
     right: 0;
@@ -36,6 +41,12 @@
     align-items: center;
     justify-content: space-between;
     padding: 15px;
+    img{
+        position: absolute;
+        right: 20px;
+        z-index: 1;
+        cursor: pointer;
+    }
 }
 .sidebar-overlay{
     position: fixed;
@@ -82,4 +93,7 @@
     text-align: right;
     color: #fff;
     cursor: pointer;
+    a{
+        cursor: pointer;
+    }
 }

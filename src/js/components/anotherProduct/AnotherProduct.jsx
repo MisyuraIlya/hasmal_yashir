@@ -1,6 +1,6 @@
 import React from 'react';
-
-const AnotherProduct = () => {
+import { NavLink } from 'react-router-dom';
+const AnotherProduct = ({getRandomProduct}) => {
 
   const anotherData = [
     {id:1, img:'', title:'ג"ת פולס צמוד קיר', engTitle:'Bosh GSR 10.8V-Li'},
@@ -8,6 +8,15 @@ const AnotherProduct = () => {
     {id:3, img:'', title:'ג"ת פולס צמוד קיר', engTitle:'Bosh GSR 10.8V-Li'}
   ]
 
+  let random1 = getRandomProduct()
+  let random2 = getRandomProduct()
+  let random3 = getRandomProduct()
+  let random4 = getRandomProduct()
+  let random5 = getRandomProduct()
+  let random6 = getRandomProduct()
+
+  let randomArrayOne = [random1, random2, random3]
+  let randomArraySecond = [random4, random5, random6]
   return (
     <div className='another_container'>
       <div className='another_container_banner_image'>
@@ -18,36 +27,40 @@ const AnotherProduct = () => {
           <h1>עוד ממשפחת המוצר</h1>
         </div>
         <div className='flex-container another_proudct_section'>
-            {anotherData.map((i) => 
-              <div className='another_product_card'>
+            {randomArrayOne.map((i) => 
+            <NavLink to={i.CatalogNumber}>
+              <div className='another_product_card' >
                 <div className='annother_product_img_cont'>
-                  <img src={globalFileServer + 'category/data/product.png'} />
+                  <img src={i.ImgLink} />
                 </div>
                 <div className='another_prodcut_card_cont'>
                   <div className='another_product_card_font'>
-                  <h2>{i.title}</h2>
-                  <h2>{i.engTitle}</h2>
+                  <h2>{i.Title}</h2>
+                  <h2>{i.EngDesc}</h2>
                   </div>
                 </div>
               </div>
+            </NavLink>
             )}
         </div>
         <div className='another_title'>
           <h1>יכול להיות שגם אחד מהמוצרים הללו יעניין אותך</h1>
         </div>
         <div className='flex-container another_proudct_section'>
-            {anotherData.map((i) => 
+            {randomArraySecond.map((i) => 
+            <NavLink to={i.CatalogNumber}>
               <div className='another_product_card'>
                 <div className='annother_product_img_cont'>
-                  <img src={globalFileServer + 'category/data/product.png'} />
+                  <img src={i.ImgLink} />
                 </div>
                 <div className='another_prodcut_card_cont'>
                   <div className='another_product_card_font'>
-                  <h2>{i.title}</h2>
-                  <h2>{i.engTitle}</h2>
+                  <h2>{i.Title}</h2>
+                  <h2>{i.EngDesc}</h2>
                   </div>
                 </div>
               </div>
+            </NavLink>
             )}
         </div>
       </div>

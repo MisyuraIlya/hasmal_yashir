@@ -20,8 +20,9 @@ const RightSideBar = ({toggleRightSideBar, rightSideBar}) => {
     return (
         <>
 <div className={`sidebar ${rightSideBar == true ? 'active' : ''}`}>
+<img src={globalFileServer + 'header/mobile/sidebarbg.png'} />
     <div className="sd-header">
-        <div className="btn btn-primary" onClick={toggleRightSideBar}><i className="fa fa-times">X</i></div>
+        <div className="btn btn-primary" onClick={toggleRightSideBar}><i className="fa fa-times"><img src={globalFileServer + 'header/mobile/sidebarButton.png'} /></i></div>
     </div>
     <div className="sd-body">
         <ul>

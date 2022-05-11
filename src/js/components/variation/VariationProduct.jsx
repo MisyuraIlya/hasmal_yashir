@@ -8,7 +8,7 @@ const VariationProduct = ({variaionData, numberOfVariation}) => {
   return (
     <div className={`variation_accordion ${active ? 'active ' : ''}`}>
       <div className="flex-container " onClick={() => setActive(!active)}>
-          <span>וריאציית מוצר {numberOfVariation}</span>
+          <span>{variaionData.Title}</span>
           <div className="variation_accordion__icon" >
               <i className='bx bxs-chevron-down'></i>
           </div>
@@ -25,9 +25,11 @@ const VariationProduct = ({variaionData, numberOfVariation}) => {
                 <div>
                     <span>{variaionData.EngDesc}</span>
                 </div>
+                <div>
+                  <span>מק"ט {variaionData.CatalogNumber}</span>
+                </div>
             </div>
             <div>
-                <span>מק"ט {variaionData.CatalogNumber}</span>
                 <a href={variaionData.PdfLink}>מפרט טכני</a>
             </div>
         </div>    

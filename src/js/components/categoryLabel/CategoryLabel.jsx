@@ -1,26 +1,35 @@
 import React, { useEffect, useState } from 'react';
 
-const CategoryLabel = ({tmpProducts}) => {
+const CategoryLabel = ({handleCheckedLabel, getAllLables}) => {
 
+  let DataLable = getAllLables()
+  // const [state, setState] = useState([])
 
-  const allLables = tmpProducts.map((i) => {return i.Extra1} )
-  const filteredSpecialCharacter = allLables.map((i) => i.split('#'))
-  const filteredExist = new Set([].concat(...filteredSpecialCharacter))
-
-
-  const s = new Set([1,2,3,4]);
-
-  const a = [...filteredExist].map( n => console.log(n))
-
-
+  // const handleChecked = (e) => {
+  //   const isChecked = e.target.checked;
+  //   const nameValue = e.target.value;
+  //   const labelData = {isChecked, nameValue}
+  //   if(isChecked == false){
+  //     const deletData = nameValue
+  //     const filtered = state.filter((i) => i.nameValue !== deletData)
+  //     setState(filtered)
+  //   } else {
+  //     setState([...state, labelData])
+  //   }
+  
+  // }
 
   return (
     <div className='category_label_component'>
       {
-        [...filteredExist].map((i) => 
+        [...DataLable].map((i) => 
           <div className='category_label_container'>
             <div className='category_label'>
-              <input type='checkbox'/>
+              <input 
+                type='checkbox'
+                value={i}
+                onChange={handleCheckedLabel}
+              />
               <span>{i}</span>
             </div>
           </div>

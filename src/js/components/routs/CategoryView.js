@@ -50,6 +50,7 @@ export default class CategoryView extends Component {
               </div>
           </div>
         </div>
+						{/* desktop version */}
 				<div className="container categories">
 					<div className="flex-container">
 						{categories.map((element, index) => {
@@ -68,6 +69,22 @@ export default class CategoryView extends Component {
 						})}
 					</div>
 				</div>
+
+				{/* mobile version */}
+
+				<div className='categories_mobile'>
+					{categories.map((element, index) => {
+								return(
+									<div key={index} className="card_category_mobile">
+										<NavLink to={ ('/category/' + element.Id  + "/0/0/0" )}>
+												{/* <img src={element.Img ? globalFileServer + 'categories/' + element.Img : globalFileServer + 'placeholder.jpg'} /> */}
+												<h2>{element.Title}</h2>
+										</NavLink>
+									</div>
+								);
+							})}
+				</div>
+
       <RecommendedMonth/>
 			<HasmalFooter/>
 			</div>

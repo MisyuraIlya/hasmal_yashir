@@ -9,15 +9,18 @@ import 'swiper/swiper.min.css'
 
 const ProductsSwiper = ({variaionData}) => {
 
-
+  const [active, setActive] = useState(null)
 
   return (
     <div>
-      <Swiper>
+      <Swiper
+      thumbs={{swiper: active}}
+      >
         {variaionData.map((i, index) => 
         <SwiperSlide key={index}><img src={i.ImgLink}/></SwiperSlide>
         )}
       </Swiper>
+
       <Swiper
         // onSwiper={(swiper) => console.log(swiper)}
         spaceBetween={50}

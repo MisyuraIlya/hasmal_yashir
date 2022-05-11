@@ -872,3 +872,52 @@
       }
     }
 }
+
+
+.categories_mobile{
+ background: #fff;
+}
+
+.categories_mobile{
+    font-size: 16px;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 1px;
+    text-align: right;
+    padding-right: 20px;
+
+    a{
+        color: #7a7a7a;
+
+    }
+}
+.card_category_mobile {
+    background: #f4f4f4;
+    
+}
+
+// desktop
+@media screen and (max-width: 1150px) {
+    .categories{
+        display: none;
+    }
+    
+  }
+  
+
+//   mobile
+  @media screen and (min-width: 1150px) {
+
+    .categories_mobile{
+        background: #fff;
+    }
+    .card_category_mobile{
+        width: 100%;
+        display: flex;
+        padding: 15px 10px 10px 83px;
+        background-color: #f4f4f4;
+        margin-top: 10px;
+
+
+    }
+  }

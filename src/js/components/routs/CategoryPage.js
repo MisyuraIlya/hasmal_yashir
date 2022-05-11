@@ -48,6 +48,7 @@ export default class CategoryPage extends Component {
       chosenBrand:false,
       morePop: false,
       brandSearchString:"",
+      labelCliked:[],
 		}
 		this.handleScroll = this.handleScroll.bind(this);
 		this.close = this.close.bind(this);
@@ -588,6 +589,35 @@ export default class CategoryPage extends Component {
   }
 
 
+  getRandomProduct = () => {
+    const random = this.state.tmpProducts[Math.floor(Math.random() * this.state.tmpProducts.length)];
+    return random;
+  }
+
+  getAllLables = () => {
+    const allLables = this.state.tmpProducts.map((i) => {return i.Extra1} )
+    const filteredSpecialCharacter = allLables.map((i) => i.split('#'))
+    const filteredExist = new Set([].concat(...filteredSpecialCharacter))
+    return filteredExist
+  }
+
+
+  handleCheckedLabel = (e) => {
+    const isChecked = e.target.checked;
+    const nameValue = e.target.value;
+    const labelData = {isChecked, nameValue}
+    if(isChecked == false){
+      const deletData = nameValue
+      const filtered = this.state.labelCliked.filter((i) => i.nameValue !== deletData)
+      this.setState({labelCliked:filtered})
+    } else {
+      this.setState({labelCliked:[...this.state.labelCliked, labelData]})
+    }
+  
+  }
+
+
+  
 
   
 	render(){
@@ -596,8 +626,13 @@ export default class CategoryPage extends Component {
     let subChildCategory = this.props.state.categories.filter(item => item.Id == this.props.match.params.lvl3)[0];
     let props = Object.assign({}, this.props);
     let lang = this.props.state.lang;
-
+    // console.log(this.state.labelCliked)
+    // console.log(this.state.tmpProducts)
+    // let labless = this.getAllLables()
+    // console.log(labless)
     // this.filteredVatiation('a9f73101')
+    // let randomm = this.getRandomProduct(this.state.tmpProducts)
+    // console.log('random', randomm)
 		return (
       <>
       <HasmalCategoryBanner categories={this.props.state.categories} parentCategory={parentCategory}/>
@@ -606,7 +641,7 @@ export default class CategoryPage extends Component {
           <div className=" right_category">
             
             <CategorySlide/>
-            <CategoryLabel tmpProducts={this.state.tmpProducts}/>
+            <CategoryLabel handleCheckedLabel={this.handleCheckedLabel} getAllLables={this.getAllLables}/>
           </div>
           <div className="left_category">
             <div className={this.state.categorySlide ? "category-page-sub small" : "category-page-sub"}>
@@ -682,7 +717,7 @@ export default class CategoryPage extends Component {
                       :null}
                     </div>
                   </div>
-                  <ProductPopUp variationData={this.state.variationData}  {...this} lang={lang}/>
+                  <ProductPopUp getRandomProduct={this.getRandomProduct} variationData={this.state.variationData}  {...this} lang={lang}/>
                 </div>
                 <div  className="overflow" onClick={() => this.closePropdPop()}></div>
               </div>,
