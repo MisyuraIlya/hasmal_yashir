@@ -78,9 +78,11 @@
     "react-times": "^3.1.10",
     "react-tridi": "^1.0.0",
     "react-youtube": "^7.9.0",
+    "sass": "^1.51.0",
     "save": "^2.4.0",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^7.26.10",
+    "swiper": "^8.1.4",
     "voucher-code-generator": "^1.1.1"
   }
 }

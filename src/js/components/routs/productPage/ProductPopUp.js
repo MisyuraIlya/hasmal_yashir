@@ -205,14 +205,20 @@ export default class ProductPage extends Component {
 
 				<div className="product-wrapper flex-container">
           <div className="col-lg-5 image image_container_popup">
-            <img className="img" src={this.props.state.selectedProd.ImgLink} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
-            {console.log(this.props.state.selectedProd)}
-            {this.props.state.selectedProd.Series ? <h4>ייצרן: {this.props.state.selectedProd.Series}</h4> : null}
-            {this.props.state.selectedProd.RatedImpulse ? <h4>דרוג: {this.props.state.selectedProd.RatedImpulse}</h4> : null}
-            {this.props.state.selectedProd.CurveCode ? <h4>קוד: {this.props.state.selectedProd.CurveCode}</h4> : null}
-            {this.props.state.selectedProd.Poles ? <h4>מוטות: {this.props.state.selectedProd.Poles}</h4> : null}
-            {/* <ProductsSwiper variaionData={this.props.variationData}/> */}
-            {this.props.state.selectedProd.PdfLink ? <a href={this.props.state.selectedProd.PdfLink}>מפרט טכני</a> : null}
+            {this.props.variationData 
+            ? <div>
+                <ProductsSwiper mainImg={this.props.state.selectedProd.ImgLink} variaionData={this.props.variationData}/>
+                {this.props.state.selectedProd.Series ? <h4>ייצרן: {this.props.state.selectedProd.Series}</h4> : null}
+                {this.props.state.selectedProd.RatedImpulse ? <h4>דרוג: {this.props.state.selectedProd.RatedImpulse}</h4> : null}
+                {this.props.state.selectedProd.CurveCode ? <h4>קוד: {this.props.state.selectedProd.CurveCode}</h4> : null}
+                {this.props.state.selectedProd.Poles ? <h4>מוטות: {this.props.state.selectedProd.Poles}</h4> : null}
+                {this.props.state.selectedProd.PdfLink ? <a href={this.props.state.selectedProd.PdfLink}>מפרט טכני</a> : null}
+              </div>
+            
+            : <img className="img" src={this.props.state.selectedProd.ImgLink} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
+            }
+            
+
           </div>
 					<div className="col-lg-7 info-p">
 						<div className="product-details">

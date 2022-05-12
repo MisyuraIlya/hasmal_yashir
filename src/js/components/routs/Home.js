@@ -8,8 +8,10 @@ import ContactUs from './Contacts.js'
 import LogoMedias from '../tools/LogoMedias.js';
 import ContactFooter from '../tools/ContactFooter.js';
 import ProductAddToCartCatalog from "./productPage/ProductAddToCartCatalog";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
+
+import { Pagination, Navigation, Thumbs } from 'swiper'
 //SwiperCore.use([Autoplay]);
 
 import SecondBanner from "../header/SecondBanner.jsx";
@@ -312,7 +314,6 @@ const CategorySale = res => {
       setActiveIndex(ref.current.swiper.activeIndex);
     }
   };
-  SwiperCore.use([Navigation, Pagination]);
 
 
 
@@ -361,6 +362,7 @@ const CategorySale = res => {
         <Swiper  
           loop={true}
           pagination={{clickable:true}}
+          modules={[Pagination, Thumbs]}
           ref={ref} 
           {...param} 
           >
