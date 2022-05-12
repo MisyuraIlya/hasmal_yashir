@@ -208,7 +208,7 @@ export default class ProductPage extends Component {
             {this.props.variationData 
             ? <div>
                 <ProductsSwiper mainImg={this.props.state.selectedProd.ImgLink} variaionData={this.props.variationData}/>
-                {this.props.state.selectedProd.Series ? <h4>ייצרן: {this.props.state.selectedProd.Series}</h4> : null}
+                {this.props.state.selectedProd.Series ? <h4>יצרן: {this.props.state.selectedProd.Series}</h4> : null}
                 {this.props.state.selectedProd.RatedImpulse ? <h4>דרוג: {this.props.state.selectedProd.RatedImpulse}</h4> : null}
                 {this.props.state.selectedProd.CurveCode ? <h4>קוד: {this.props.state.selectedProd.CurveCode}</h4> : null}
                 {this.props.state.selectedProd.Poles ? <h4>מוטות: {this.props.state.selectedProd.Poles}</h4> : null}

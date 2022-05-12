@@ -6,7 +6,10 @@ import RecommendedMonth from '../header/RecommendedMonth';
 export default class CategoryView extends Component {
 	constructor(props){
 		super(props);
-		this.state = {}
+		this.state = {
+			active:false,
+			total:[],
+		}
 	}
 	componentDidMount(){
 		setTimeout(() => window.scrollTo(0, 0), 100);
@@ -14,6 +17,28 @@ export default class CategoryView extends Component {
       localStorage.removeItem('lastUrl');
     }
 
+		this.getItems();
+
+	}
+
+	getItems = async () => {
+
+		const valAjax = {
+      funcName: 'getLvl1Cat',
+      point: 'categories'
+    };
+
+		
+    try {
+      const data = await this.props.ajax(valAjax);
+			if(data.result == 'success'){
+				this.setState({total:data.items})
+			}
+
+		} catch(err) {
+      console.log('connection error GetSales');
+      this.setState({preload:false});
+    }
 	}
 	render(){
 
@@ -22,9 +47,8 @@ export default class CategoryView extends Component {
     let subId = parseInt(this.props.match.params.lvl2);
     let parentCategory;
     let childCategory;
-
     if(this.props.state.categories.length>0){
-			categories = this.props.state.categories.filter(item => !item.ParentId && !item.SubParentId);
+			categories = this.state.total
 
     }
 
@@ -60,7 +84,8 @@ export default class CategoryView extends Component {
 										<div className="wrapper">
 											<img src={element.Img ? globalFileServer + 'categories/' + element.Img : globalFileServer + 'placeholder.jpg'} />
 											<div className='button_category'>
-												<h2>{element.Title}</h2>
+												<h4>{element.Title}</h4>
+												<span>{element.Counter} פריטים</span>
 											</div>
 										</div>
 									</NavLink>
@@ -71,15 +96,23 @@ export default class CategoryView extends Component {
 				</div>
 
 				{/* mobile version */}
-
 				<div className='categories_mobile'>
 					{categories.map((element, index) => {
 								return(
 									<div key={index} className="card_category_mobile">
-										<NavLink to={ ('/category/' + element.Id  + "/0/0/0" )}>
+										{/* <NavLink to={ ('/category/' + element.Id  + "/0/0/0" )}> */}
 												{/* <img src={element.Img ? globalFileServer + 'categories/' + element.Img : globalFileServer + 'placeholder.jpg'} /> */}
-												<h2>{element.Title}</h2>
-										</NavLink>
+												<div className='flex-container' onClick={() => this.setState({active:!this.state.active})}>
+
+													<h2>{element.Title}</h2>
+													<div className="card_category_mobile_icon">
+															<i className='bx bxs-chevron-left'></i>
+													</div>
+
+												</div>
+
+											
+										{/* </NavLink> */}
 									</div>
 								);
 							})}

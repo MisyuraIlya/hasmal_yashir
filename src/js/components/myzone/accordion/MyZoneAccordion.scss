@@ -53,3 +53,13 @@
         padding-right: 20px;
     }
 }
+
+.right_side_bar_desktop_dropwon{
+    display: flex;
+    .dropdown_icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+    }
+}

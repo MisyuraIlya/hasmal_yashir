@@ -29,7 +29,7 @@ const VariationProduct = ({variaionData, numberOfVariation}) => {
                   {variaionData.CatalogNumber ?  <span>מק"ט: {variaionData.CatalogNumber}</span> : null}
                 </div>
                 <div>
-                  {variaionData.Series ? <span>ייצרן: {variaionData.Series}</span> : null}
+                  {variaionData.Series ? <span>יצרן: {variaionData.Series}</span> : null}
                 </div>
                 <div>
                   {variaionData.RatedImpulse ? <span>דרוג: {variaionData.RatedImpulse}</span> : null}

@@ -65,6 +65,7 @@ import HasmalCategoryPage from "./pages/HasmalCategoryPage";
 
 import './App.scss';
 import RightSideBar from "./components/sidebar/RightSideBar";
+import DesktopRightSideBar from "./components/sidebar/DesktopRightSideBar";
 require('./globals.js');
 
 if (module.hot) {
@@ -82,6 +83,7 @@ const BasicRouter = (prop) => (
       <Route {...prop} render={matchProps => (<Nav {...matchProps}{...prop} />)} />
 			{!localStorage.agent && !localStorage.role ? <Route {...prop} render={matchProps => (<NotificationView {...matchProps}{...prop} />)} /> : null}
       <RightSideBar toggleRightSideBar={prop.toggleRightSideBar} rightSideBar={prop.state.rightSideBar}/>
+      <DesktopRightSideBar categories={prop.state.categories} toggleDesktopRightSideBar={prop.toggleDesktopRightSideBar}  desktopRightSideBar={prop.state.desktopRightSideBar}/>
 			<main id={prop.state.toggleMenu ? 'active' : null} className={'he'}>
 				<Switch>
 					//<Route path="/" exact render={(props) => (<Home {...props}{...prop}/>)} />
@@ -205,6 +207,7 @@ class App extends Component {
       listView: "",
       totalBasket: 0,
       rightSideBar:false,
+      desktopRightSideBar:false,
 		}
 
 	}
@@ -1223,6 +1226,10 @@ class App extends Component {
   toggleRightSideBar = () => {
     this.state.rightSideBar === true ?  this.setState({rightSideBar:false}) : this.setState({rightSideBar:true})
 
+  }
+
+  toggleDesktopRightSideBar =() => {
+    this.state.desktopRightSideBar === true ?  this.setState({desktopRightSideBar:false}) : this.setState({desktopRightSideBar:true})
   }
 
 	render() {

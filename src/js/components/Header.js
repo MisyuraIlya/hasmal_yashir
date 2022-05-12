@@ -16,7 +16,7 @@ const SiteNav = params => {
 	const [parent, setParent] = useState(false);
 	const [activeHard, setActiveHard] = useState(false);
 	const [parentHard, setParentHard] = useState(false);
-  	const [userEntry, setUserEntry] = useState(false);
+  const [userEntry, setUserEntry] = useState(false);
 	const [userButton, setUserButton] = useState(false);
   	const app = useContext(UserContext);
 
@@ -718,7 +718,7 @@ export default class Header extends Component {
 								<div className="col-lg-4 left-left">
 									<img src={globalFileServer + 'header/lupa.png'} />
 									<img src={globalFileServer + 'header/shop.png'} />
-									<img src={globalFileServer + 'header/sideBar.png'} />
+									<img src={globalFileServer + 'header/sideBar.png'} onClick={this.props.toggleDesktopRightSideBar}/>
 								</div>
 							
 							</div>
