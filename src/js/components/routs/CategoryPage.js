@@ -12,6 +12,8 @@ import HasmalCategoryBanner from '../hasmalCategory/HasmalCategoryBanner';
 import UserContext from '../../UserContext';
 import CategorySlide from '../tools/CategorySlide';
 import CategoryLabel from "../categoryLabel/CategoryLabel";
+import loveComponent from "../loveComponent";
+import LoveProduct from "../LoveProduct";
 
 let arrayGLB = [];
 let glbCatObj = {
@@ -49,6 +51,7 @@ export default class CategoryPage extends Component {
       morePop: false,
       brandSearchString:"",
       labelCliked:[],
+      loveClick:false,
 		}
 		this.handleScroll = this.handleScroll.bind(this);
 		this.close = this.close.bind(this);
@@ -638,8 +641,6 @@ export default class CategoryPage extends Component {
 
     if(tmpProducts.length > 0) {
       let uniqueChars = [...new Set(tmpProducts)];
-      console.log(uniqueChars);
-      console.log(tmpProducts)
       this.setState({tmpProducts:uniqueChars})
       
     } else {
@@ -647,6 +648,9 @@ export default class CategoryPage extends Component {
     }
 
   }
+
+
+
 
   
 
@@ -838,7 +842,6 @@ export default class CategoryPage extends Component {
 
                             <div onClick = {()=>this.goToProductPage(element)}>
                               <div className="img-cont">
-                                <img src={globalFileServer + 'category/data/love.png'}  className='love_image'/>
                                 <img className="img" src={element.ImgLink} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
                               </div>
                               <div className={this.props.state.user ? "prod-data-cont user" : "prod-data-cont"}>
@@ -879,6 +882,7 @@ export default class CategoryPage extends Component {
                                 </div>
                               </div>
                             </div>
+                            <LoveProduct/>
 
                             {(this.props.state.user || this.props.state.b2cAvailiable)  && element.Price && element.Price != 0 && !element.Extra3 ?
                             <div className={inCart.length ? "add-to-cart in-cart catalog after-add" : "add-to-cart not-in-cart catalog before-add"}>

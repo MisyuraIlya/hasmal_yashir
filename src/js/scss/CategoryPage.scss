@@ -1354,6 +1354,14 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  cursor: pointer;
+}
+.love_image_clicked{
+  position: absolute;
+  background-color: red;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
 }
 @media screen and (max-width: 1150px) {
 
