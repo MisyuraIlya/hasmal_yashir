@@ -6,6 +6,7 @@ import RightSideBarAccordion from './RightSideBarAccordion';
 
 const DesktopRightSideBar = ({categories, toggleDesktopRightSideBar, desktopRightSideBar}) => {
 
+  const [cat, setCat] = useState([])
   const authSidebar = [
     {id:1, name:'כניסה / הרשמה', url:''},
     {id:2, name:'עגלת הזמנות', url:''},
@@ -25,21 +26,9 @@ const DesktopRightSideBar = ({categories, toggleDesktopRightSideBar, desktopRigh
     {id:11, name:'בואו נדבר', url:''}
   ]
 
-
-  console.log(lvl1)
-  const [title, setTitle] = useState([])
   let lvl1 = categories.filter(item => item.LvlNumber == '1')
-  // const fetechData = async () => {
-  //   try{
-  //     const response = await categories.filter(item => item.LvlNumber == '1')
-  //     console.log('response', response)
-  //     setTitle(response)
-  //   } catch(error) {
-  //     console.log('error fetch')
-  //   }
-  // }
-  // console.log(title)
-  // useEffect(() => fetechData(), [])
+
+
   // let parentCategory = categories.filter(item => item.Id == this.props.match.params.lvl1)[0];
   // let childCategory = categories.filter(item => item.Id == this.props.match.params.lvl2)[0];
   // let subChildCategory = categories.filter(item => item.Id == this.props.match.params.lvl3)[0];
@@ -57,6 +46,7 @@ const DesktopRightSideBar = ({categories, toggleDesktopRightSideBar, desktopRigh
       </div>
         <div className="sd-body_desktop_right ">
           <ul>
+
               {authSidebar.map((i,index) => 
                   <li><NavLink to={i.url}key={index} className="sd-link">{i.name}</NavLink></li>
               )}
@@ -66,9 +56,12 @@ const DesktopRightSideBar = ({categories, toggleDesktopRightSideBar, desktopRigh
         <div className="sd-body_desktop_center">
           <ul>
               <span><NavLink to='/category-page/0/0/0'  className="yellow_cat">קטגוריות מוצרים</NavLink></span>
-              {sidebarName.map((item,index) => 
-                <RightSideBarAccordion categories={categories} key={index} item={item}/>
-              )}
+              {lvl1.length > 0 
+                ?lvl1.map((i,index) => 
+                <RightSideBarAccordion  categories={categories} key={index} item={i}/>
+                )
+                : null
+              }
               
           </ul>
         </div>
