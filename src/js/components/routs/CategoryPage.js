@@ -12,7 +12,7 @@ import HasmalCategoryBanner from '../hasmalCategory/HasmalCategoryBanner';
 import UserContext from '../../UserContext';
 import CategorySlide from '../tools/CategorySlide';
 import CategoryLabel from "../categoryLabel/CategoryLabel";
-import loveComponent from "../loveComponent";
+
 import LoveProduct from "../LoveProduct";
 
 let arrayGLB = [];

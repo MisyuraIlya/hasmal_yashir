@@ -2,7 +2,6 @@ import ReactDOM from "react-dom";
 import React, { Component, Fragment, useState, useEffect, useRef, useContext } from 'react';
 import { NavLink, useParams } from "react-router-dom";
 import { Parallax, Background } from 'react-parallax';
-//import Swiper from 'react-id-swiper';
 import UserContext from '../../UserContext';
 import SweetAlert from 'sweetalert2';
 import ContactUs from './Contacts.js'
@@ -588,7 +587,7 @@ export default class Home extends Component {
         </div>
 
         <RecommendedMonth globalFileServer={globalFileServer}/>
-        <LogoMedias />
+        {/* <LogoMedias /> */}
         <HasmalFooter/>
 				{/* <ContactFooter lang={lang} props={this.props}/> */}
 

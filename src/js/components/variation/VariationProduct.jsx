@@ -20,17 +20,29 @@ const VariationProduct = ({variaionData, numberOfVariation}) => {
             </div>
             <div className='col-lg-8'>
                 <div>
-                    <span>{variaionData.Title}</span>
+                  {variaionData.Title ? <span>{variaionData.Title}</span> : null}
                 </div>
                 <div>
-                    <span>{variaionData.EngDesc}</span>
+                  {variaionData.EngDesc ? <span>{variaionData.EngDesc}</span> : null}
                 </div>
                 <div>
-                  <span>מק"ט {variaionData.CatalogNumber}</span>
+                  {variaionData.CatalogNumber ?  <span>מק"ט: {variaionData.CatalogNumber}</span> : null}
+                </div>
+                <div>
+                  {variaionData.Series ? <span>ייצרן: {variaionData.Series}</span> : null}
+                </div>
+                <div>
+                  {variaionData.RatedImpulse ? <span>דרוג: {variaionData.RatedImpulse}</span> : null}
+                </div>
+                <div>
+                  {variaionData.CurveCode ? <span>קוד: {variaionData.CurveCode}</span> : null}
+                </div>
+                <div>
+                  {variaionData.Poles ? <span>מוטות: {variaionData.Poles}</span> : null}
                 </div>
             </div>
             <div>
-                <a href={variaionData.PdfLink}>מפרט טכני</a>
+              {variaionData.PdfLink ? <a href={variaionData.PdfLink}>מפרט טכני</a> : null}
             </div>
         </div>    
       </div>

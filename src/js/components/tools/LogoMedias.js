@@ -1,7 +1,6 @@
 import React, { Component, Fragment, useState, useEffect, useContext  } from 'react';
 import { NavLink, useParams } from "react-router-dom";
 import UserContext from '../../UserContext';
-import Swiper from 'react-id-swiper';
 
 const LogoMedias = res => {
 

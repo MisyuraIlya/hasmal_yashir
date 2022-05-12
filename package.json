@@ -62,7 +62,6 @@
     "react-dom": "^16.8.6",
     "react-facebook-login": "^4.1.1",
     "react-helmet": "^5.2.0",
-    "react-id-swiper": "^3.0.0",
     "react-magnifier": "^3.0.4",
     "react-parallax": "^3.0.3",
     "react-particles-js": "^2.7.0",
@@ -82,7 +81,6 @@
     "save": "^2.4.0",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^7.26.10",
-    "swiper": "^6.8.4",
     "voucher-code-generator": "^1.1.1"
   }
 }
