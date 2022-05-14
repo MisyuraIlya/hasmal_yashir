@@ -6,7 +6,6 @@ import RightSideBarAccordion from './RightSideBarAccordion';
 
 const DesktopRightSideBar = ({categories, toggleDesktopRightSideBar, desktopRightSideBar}) => {
 
-  const [cat, setCat] = useState([])
   const authSidebar = [
     {id:1, name:'כניסה / הרשמה', url:''},
     {id:2, name:'עגלת הזמנות', url:''},
@@ -54,11 +53,11 @@ const DesktopRightSideBar = ({categories, toggleDesktopRightSideBar, desktopRigh
         </div>
 
         <div className="sd-body_desktop_center">
-          <ul>
+          <ul className='split_ul_right_desktop'>
               <span><NavLink to='/category-page/0/0/0'  className="yellow_cat">קטגוריות מוצרים</NavLink></span>
               {lvl1.length > 0 
                 ?lvl1.map((i,index) => 
-                <RightSideBarAccordion  categories={categories} key={index} item={i}/>
+                <RightSideBarAccordion toggleDesktopRightSideBar={toggleDesktopRightSideBar} categories={categories} key={index} item={i}/>
                 )
                 : null
               }

@@ -1,0 +1,32 @@
+import React from 'react';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+const CategoryViewAccordionMobile = ({allCat, element}) => {
+
+    const [active, setActive] = useState(false)
+    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    let filteredData = allCat.filter(item => item.LvlNumber == '2' )
+    const lvl2 = filteredData.filter((i) => i.ExtId.split(specialChars)[0] === element.Title)
+    console.log(lvl2)
+
+    return (
+        <div className={`category_view_accordion ${active ? 'active' : ''}`}>
+            
+            <div className=''>
+                <div className='category_view_accordion_card' onClick={() => setActive(!active)}>
+                    <h2>{element.Title}</h2>
+                    <div className="category_view_accordion_icon"  onClick={() => setActive(!active)}>
+                        <i className='bx bxs-chevron-left'></i>
+                    </div>
+                </div>
+                <div className='category_view_accordion_content'>
+                {lvl2.map((i) => 
+                <NavLink to={`category/${i.ParentId}/${i.Id}/0/0`} ><h2>{i.Title}</h2></NavLink>
+                )}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default CategoryViewAccordionMobile;

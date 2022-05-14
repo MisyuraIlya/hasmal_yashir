@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { NavLink } from "react-router-dom";
 import UserContext from '../../UserContext';
+import CategoryViewAccordionMobile from '../CategoryViewAccordionMobile';
 import HasmalFooter from "../footer/HasmalFooter";
 import RecommendedMonth from '../header/RecommendedMonth';
+import SearchMobileInput from '../searchMobileInput/SearchMobileInput'
 export default class CategoryView extends Component {
 	constructor(props){
 		super(props);
@@ -95,27 +97,18 @@ export default class CategoryView extends Component {
 					</div>
 				</div>
 
+
 				{/* mobile version */}
 				<div className='categories_mobile'>
+					<SearchMobileInput/>
 					{categories.map((element, index) => {
-								return(
-									<div key={index} className="card_category_mobile">
-										{/* <NavLink to={ ('/category/' + element.Id  + "/0/0/0" )}> */}
-												{/* <img src={element.Img ? globalFileServer + 'categories/' + element.Img : globalFileServer + 'placeholder.jpg'} /> */}
-												<div className='flex-container' onClick={() => this.setState({active:!this.state.active})}>
-
-													<h2>{element.Title}</h2>
-													<div className="card_category_mobile_icon">
-															<i className='bx bxs-chevron-left'></i>
-													</div>
-
-												</div>
-
-											
-										{/* </NavLink> */}
-									</div>
-								);
-							})}
+						return(
+							<div key={index} className="card_category_mobile">
+									{/* <h1>{element.Title}</h1> */}
+									<CategoryViewAccordionMobile allCat={this.props.state.categories} element={element}/>
+							</div>
+						);
+					})}
 				</div>
 
       <RecommendedMonth/>

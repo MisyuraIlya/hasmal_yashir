@@ -692,11 +692,11 @@ export default class Header extends Component {
 						<div className="second-header flex-container"> 
 						{/*===== right section ====*/}
 						<div className="col-lg-6 right-right">
-							<NavLink to={'/home/' + lang} className="first_logo">
+							<NavLink to={'/'} className="first_logo">
 									<img src={lang == 'he' ? globalFileServer + 'logo.png' : globalFileServer + 'enlogo.png'} alt=""/>
 								</NavLink>
 
-								<NavLink to={'/home/' + lang} className="second_logo" >
+								<NavLink to={'/'} className="second_logo" >
 									<div style={{margin:'20px 20px 20px 20px'}} className="text-image-container">
 										<img src={lang == 'he' ? globalFileServer + 'header/group.png' : globalFileServer + 'enlogo.png'} alt=""/>
 									</div>

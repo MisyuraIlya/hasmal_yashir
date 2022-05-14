@@ -1363,6 +1363,13 @@
   right: 20px;
   cursor: pointer;
 }
+
+
+// mobile
+.card_mobile_categoryPage_bg{
+  width: 100%;
+ background: #fff8f4;
+}
 @media screen and (max-width: 1150px) {
 
   .container_banner{
@@ -1379,7 +1386,11 @@
     display: none;
   }
 
-  
+  .category-page{
+    display: none;
+  }
+
+
 }
 
 @media screen and (min-width: 1150px) {
@@ -1390,6 +1401,10 @@
   .recommended_mobile{
     display: none;
   }
+
+.wrapper-cont_mobile {
+  height: 40%;
+}
 
 
 }
