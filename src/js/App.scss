@@ -976,7 +976,8 @@ p {
 			height: 40px;
 		}
 		&.prev {
-			right: -76px;
+			right: -46px;
+      z-index: 9999999;
 		}
 		&.next {
 			left: -76px;
@@ -1690,4 +1691,16 @@ span.edit {
 }
 .fadeInLeft {
 	animation-name: fadeInLeft;
+}
+
+
+@media screen and (max-width: 1150px) {
+
+ 
+  
+}
+
+@media screen and (min-width: 1150px) {
+
+
 }

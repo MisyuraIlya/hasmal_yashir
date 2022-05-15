@@ -86,7 +86,7 @@ const BasicRouter = (prop) => (
       <DesktopRightSideBar categories={prop.state.categories} toggleDesktopRightSideBar={prop.toggleDesktopRightSideBar}  desktopRightSideBar={prop.state.desktopRightSideBar}/>
 			<main id={prop.state.toggleMenu ? 'active' : null} className={'he'}>
 				<Switch>
-					//<Route path="/" exact render={(props) => (<Home {...props}{...prop}/>)} />
+					//<Route path="/" exact render={(props) => (<Home desktopRightSideBar={prop.state.desktopRightSideBar} {...props}{...prop}/>)} />
           <Route path="/home" render={(props) => (<Home key={props.match.params.lang} {...props}{...prop}/>)} />
 
             {/* == pages == */}

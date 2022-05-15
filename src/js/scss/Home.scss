@@ -559,6 +559,9 @@
   .images-slider-cont{
     // max-width: 1200px;
     margin:0 auto;
+    .swiper{
+      width: 100%;
+    }
   }
 
   .products-sale {
@@ -1566,6 +1569,7 @@
 .image_filtered_product{
   img{
     float: left;
+    height: 50px;
   }
 }
 

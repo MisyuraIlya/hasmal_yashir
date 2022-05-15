@@ -145,7 +145,7 @@ const ProductsSale = res => {
   let width = window.innerWidth;
   let toShow = 6;
   let column = 2;
-
+  // this.props.desktopRightSideBar
   const param = {
     slidesPerView: toShow,
     slidesPerColumn: column,
@@ -171,6 +171,7 @@ const ProductsSale = res => {
   };
 	let lang = res.appState.lang;
   return (
+    
     <div className="products-sale product-list">
       <div className="title-wrapper">
         <h1 className="title">
@@ -351,6 +352,8 @@ const CategorySale = res => {
   let catsLvl1 = res.items.filter((item) => {return item.LvlNumber == "1"});
 
   return (
+    res.desktopRightSideBar ? null
+    :
     <div className="products-sale product-list">
       <div className="title-wrapper">
         <h1 className="title">
@@ -364,7 +367,8 @@ const CategorySale = res => {
         <Swiper  
           loop={true}
           pagination={{clickable:true}}
-          modules={[Pagination, Thumbs]}
+          grabCursor={true}
+          modules={[Navigation, Pagination, Thumbs]}
           ref={ref} 
           {...param} 
           >
@@ -451,8 +455,10 @@ export default class Home extends Component {
     mail:"",
     phone:"",
     msg:"",
-    preload: false
+    preload: false,
+    filteredProducts:[],
 	};
+
 	componentDidMount = () => {
 		setTimeout(() => window.scrollTo(0, 0), 100);
 		this.getItems();
@@ -477,6 +483,25 @@ export default class Home extends Component {
   };
 
 
+  
+	getFilteredProducts = async (e) => {
+      let array = e.split(' ');
+			let val = { 'wordArr': array };
+      const valAjax = {
+        funcName: '',
+        point: 'product_search',
+        val: val
+      };
+      try {
+        const data = await this.props.ajax(valAjax);
+        this.setState({filteredProducts:data})
+        
+      } catch(err) {
+        console.log('connection error GetSales');
+        this.setState({preload:false});
+      }
+
+	}
 
 	setType = () => {}
 
@@ -493,14 +518,14 @@ export default class Home extends Component {
     if(this.props.state.categories.length>0){
 			categories = this.props.state.categories.filter(item => !item.ParentId && !item.SubParentId);
     }
-
+   
 
 		return (
 			<div className="home-page">
         
         <div className="mobile_showcase">
           
-          <SearchMobileInput/>
+          <SearchMobileInput filteredProducts={this.state.filteredProducts} getFilteredProducts={this.getFilteredProducts}/>
 
         </div>
 
@@ -509,7 +534,7 @@ export default class Home extends Component {
             <img src={globalFileServer + 'home/banner/1.png'} />
           </div>
           <div className='title-cont'>
-          <DesktopFilterInput/>
+          <DesktopFilterInput filteredProducts={this.state.filteredProducts} getFilteredProducts={this.getFilteredProducts}/>
           </div>
         </div>
 
@@ -544,13 +569,14 @@ export default class Home extends Component {
             decreaseCart={this.props.decreaseCart}
             addToCart={this.props.addToCart}
             setType={this.setType}
+            desktopRightSideBar={this.props.desktopRightSideBar}
           />
         :null}
         
         <SecondBanner globalFileServer={globalFileServer} />
         <div className="recomendedMonthTitle">
          <h1>המומלצים של החודש</h1>
-
+          <input onChange={this.getFilteredProducts}></input>
         </div>
 
         <RecommendedMonth globalFileServer={globalFileServer}/>

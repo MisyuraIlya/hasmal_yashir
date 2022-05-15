@@ -3,12 +3,7 @@ import React from 'react';
 const SecondBanner = ({globalFileServer}) => {
   return (
     <div className='container_banner'>
-      {
-        window.innerWidth > 1000 
-        ? <img src={globalFileServer + 'home/secondBanner/banner2.png'} />
-        : <img src={globalFileServer + 'home/secondBanner/button_mobile.png'} />
-
-      }
+      <img src={globalFileServer + 'home/secondBanner/banner2.png'} />
       <h1>חדש בפולוס!<br/> ג"ת ניסתרים לפאנלים ביתיים </h1>
       <a href=''>+ עוד על פולס</a>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchModal = ({globalFileServer, searchFilter}) => {
+const SearchModal = ({filteredProducts, globalFileServer, searchFilter}) => {
     
     console.log(globalFileServer)
 
@@ -16,17 +16,17 @@ const SearchModal = ({globalFileServer, searchFilter}) => {
 
     return (
         <div className='search_filter_container'>
-            {sortedProducts.map((i) => 
+            {filteredProducts.map((i) => 
                 <div className='flex-container filtered_product_row'>
                     <div className='col-lg-6 filtered_info_product'>
                     <span>
-                        {i.title}
+                        {i.Title}
                     </span>
-                    <p>{i.number}</p>
+                    <p>{i.CatalogNumber}</p>
                     </div>
 
                     <div className='col-lg-6 image_filtered_product'>
-                        <img src={globalFileServer + 'home/banner/filtered_product.png'} />
+                    {i.ImgLink ?  <img src={i.ImgLink} /> : <img src={globalFileServer + 'placeholder.jpg'} /> }
                     </div>
                     <div className='line_product'></div>
                 </div>
