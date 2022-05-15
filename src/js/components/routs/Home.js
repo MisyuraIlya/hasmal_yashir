@@ -485,8 +485,10 @@ export default class Home extends Component {
 
   
 	getFilteredProducts = async (e) => {
+    if(e != '') {
       let array = e.split(' ');
 			let val = { 'wordArr': array };
+      console.log(array)
       const valAjax = {
         funcName: '',
         point: 'product_search',
@@ -494,12 +496,17 @@ export default class Home extends Component {
       };
       try {
         const data = await this.props.ajax(valAjax);
+        console.log('get Data', data)
         this.setState({filteredProducts:data})
         
       } catch(err) {
         console.log('connection error GetSales');
         this.setState({preload:false});
       }
+    } else {
+      this.setState({filteredProducts:[]})
+    }
+
 
 	}
 
@@ -576,7 +583,6 @@ export default class Home extends Component {
         <SecondBanner globalFileServer={globalFileServer} />
         <div className="recomendedMonthTitle">
          <h1>המומלצים של החודש</h1>
-          <input onChange={this.getFilteredProducts}></input>
         </div>
 
         <RecommendedMonth globalFileServer={globalFileServer}/>

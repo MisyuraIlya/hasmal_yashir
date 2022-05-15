@@ -1,22 +1,16 @@
 import React from 'react';
-
+import { NavLink } from 'react-router-dom';
 const SearchModal = ({filteredProducts, globalFileServer, searchFilter}) => {
     
-    console.log(globalFileServer)
 
-    const products = [
-        {id:1, title:'נורה ליבון',number:'112 סוגים',img:''},
-        {id:2, title:'נורה ליבון',number:'112 סוגים',img:''},
-        {id:3, title:'נורה ליבון',number:'112 סוגים',img:''},
-        {id:4, title:'נורה ליבון',number:'112 סוגים',img:''},
-        {id:5, title:'נורה ליבון',number:'112 סוגים',img:''},
-    ]
 
-    const sortedProducts = products.filter(title => title.title.includes(searchFilter))
-
+    console.log(filteredProducts)
+        // const sortedProducts = products.filter(title => title.title.includes(searchFilter))
+        //to={`/category/${PrimaryMenuItemId}/${SecondaryMenuItemId}/${ThirdMenuItemId}/${CatalogNumber}`}
     return (
         <div className='search_filter_container'>
             {filteredProducts.map((i) => 
+            <NavLink to={`/category/${i.PrimaryMenuItemId}/${i.SecondaryMenuItemId}/${i.ThirdMenuItemId}/${i.CatalogNumber}`}>
                 <div className='flex-container filtered_product_row'>
                     <div className='col-lg-6 filtered_info_product'>
                     <span>
@@ -30,6 +24,7 @@ const SearchModal = ({filteredProducts, globalFileServer, searchFilter}) => {
                     </div>
                     <div className='line_product'></div>
                 </div>
+            </NavLink>
             )}
         </div>
     );

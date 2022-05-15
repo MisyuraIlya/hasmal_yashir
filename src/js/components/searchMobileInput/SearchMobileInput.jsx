@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
+import SearchModal from '../searchModal/SearchModal';
 import './SearchMobileInput.scss'
 import { useDebounce } from 'use-debounce';
 
 const SearchMobileInput = ({filteredProducts,getFilteredProducts}) => {
 
-    const [text, setText] = useState('Hello');
-    const [value] = useDebounce(text, 1000);
-    // console.log(getFilteredProducts)
+    const [searchFilter, setSearchFilter] = useState('')
+    const [value] = useDebounce(searchFilter, 1000);
+  
+  
+    useMemo(() => {
+      getFilteredProducts(value)
+    },[value])
+  
     return (
 
     <div className="search_container_mobile">
@@ -18,8 +24,7 @@ const SearchMobileInput = ({filteredProducts,getFilteredProducts}) => {
         onChange={getFilteredProducts} 
          />
         <button type="submit" className="search_button_mobile"><img src={globalFileServer + 'category/modal/categoryLupa.png'}/></button>
-        <p>Actual value: {text}</p>
-        <p>Debounce value: {value}</p>
+
     </div>
     );
 };

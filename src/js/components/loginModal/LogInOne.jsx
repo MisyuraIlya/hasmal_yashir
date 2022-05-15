@@ -1,7 +1,6 @@
 import React from 'react';
 
 const LogInOne = ({globalFileServer, closeUserLoginModal}) => {
-    console.log(globalFileServer)
     return (
         <div className='login_modal'>
             	<img src={globalFileServer + 'header/mobile/mobile_auth_mobile.png'} />

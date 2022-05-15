@@ -5,7 +5,6 @@ import HasmalFooter from '../components/footer/HasmalFooter';
 import MyModalZone from '../components/myzone/myModalZone/MyModalZone';
 const MyZonePage = () => {
 
-    console.log(globalFileServer)
     const hasbonit = [
         {id:1, indificator:'2998', date:'12/8/21', status:'סופק'},
         {id:2, indificator:'123456', date:'12/8/21', status:'סופק'},

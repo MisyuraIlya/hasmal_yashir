@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import SearchModal from '../searchModal/SearchModal';
 import { useDebounce } from 'use-debounce';
 
@@ -7,22 +7,12 @@ const DesktopFilterInput = ({filteredProducts,getFilteredProducts}) => {
 
   const [searchFilter, setSearchFilter] = useState('')
   const [value] = useDebounce(searchFilter, 1000);
-  console.log(value)
-  const functionQuery = getFilteredProducts(value)
-  // const [filteredData, setFilteredData] = useState([])
-  // console.log(filteredProducts)
-  // console.log(getFilteredProducts)
-  
-  // const fetchData = async () => {
-  //   const data = await getFilteredProducts(value)
-  //   setFilteredData(data)
-  // }
 
-  // useEffect(() => {
-  //   fetchData()
-  // }, [value])
-  // // const response = getFilteredProducts(value)
-  // console.log(filteredData)
+
+  useMemo(() => {
+    getFilteredProducts(value)
+  },[value])
+
   return (
     <>
       <div className="input_banner">
