@@ -828,3 +828,35 @@ h3{
 		color: #505050;
 	}
 }
+
+@media screen and (max-width: 1150px) {
+
+	.another_proudct_section{
+		z-index: 2;
+		.another_product_card{
+			width: 280px;
+			margin: 66px 85px 0 59px;
+			padding: 0 0 22px;
+			background-color: #ededed;
+		}
+		.another_prodcut_card_cont{
+			justify-content: center;
+			align-items: center;
+			display: flex;
+			text-align: center;
+		}
+	
+		.annother_product_img_cont{
+			background-color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			img{
+				width: 185px;
+			}
+	
+	
+		}
+	}
+  
+}

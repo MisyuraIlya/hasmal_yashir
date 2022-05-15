@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import './DesktopRightSideBar.scss'
 import RightSideBarAccordion from './RightSideBarAccordion';
 
-const DesktopRightSideBar = ({categories, toggleDesktopRightSideBar, desktopRightSideBar}) => {
+const DesktopRightSideBar = ({ categories, toggleDesktopRightSideBar, desktopRightSideBar}) => {
 
   const authSidebar = [
     {id:1, name:'כניסה / הרשמה', url:''},
@@ -13,20 +13,10 @@ const DesktopRightSideBar = ({categories, toggleDesktopRightSideBar, desktopRigh
     {id:4, name:'תקנון', url:''},
     {id:5, name:'הצהרת נגישות', url:''},
   ]
-  const sidebarName = [
-    {id:3, name:'כלי עבודה', url:'/category/52/0/0/0'},
-    {id:4, name:'ציוד מיתוג', url:'/category/1/0/0/0'},
-    {id:5, name:'כבלים וחיווט',url:'/category/62/0/0/0'},
-  ]
-  const secondSideBarName =[
-    {id:6, name:'שקעים ומחברים', url:'/category/78/0/0/0'},
-    {id:7, name:'תאורה', url:'/category/4/0/0/0' },
-    {id:8, name:'אינסטלציה חשמלית', url:'/category/50/0/0/0'},
-    {id:11, name:'בואו נדבר', url:''}
-  ]
 
   let lvl1 = categories.filter(item => item.LvlNumber == '1')
-
+  let splitedLvl1One= lvl1.slice(0,4)
+  let splitedLvl1Second = lvl1.slice(4,9)
 
   // let parentCategory = categories.filter(item => item.Id == this.props.match.params.lvl1)[0];
   // let childCategory = categories.filter(item => item.Id == this.props.match.params.lvl2)[0];
@@ -51,12 +41,11 @@ const DesktopRightSideBar = ({categories, toggleDesktopRightSideBar, desktopRigh
               )}
           </ul>
         </div>
-
         <div className="sd-body_desktop_center">
           <ul className='split_ul_right_desktop'>
               <span><NavLink to='/category-page/0/0/0'  className="yellow_cat">קטגוריות מוצרים</NavLink></span>
-              {lvl1.length > 0 
-                ?lvl1.map((i,index) => 
+              {splitedLvl1One.length > 0 
+                ?splitedLvl1One.map((i,index) => 
                 <RightSideBarAccordion toggleDesktopRightSideBar={toggleDesktopRightSideBar} categories={categories} key={index} item={i}/>
                 )
                 : null
@@ -64,18 +53,17 @@ const DesktopRightSideBar = ({categories, toggleDesktopRightSideBar, desktopRigh
               
           </ul>
         </div>
-        {/* <div className='sd-body_desktop_left'>
-            <ul>
-             {secondSideBarName.map((i,index) => 
-              <div className='right_side_bar_desktop_dropwon'>
-                <li><NavLink to={i.url}key={index} className="sd-link">{i.name}</NavLink></li>
-                <div className="dropdown_icon " style={{width:'20%'}}>
-                    <i className='bx bxs-chevron-down'></i>
-                </div>
-              </div>
-              )}
+        <div className='sd-body_desktop_left'>
+        <ul className='split_ul_right_desktop'>
+              {splitedLvl1Second.length > 0 
+                ?splitedLvl1Second.map((i,index) => 
+                <RightSideBarAccordion toggleDesktopRightSideBar={toggleDesktopRightSideBar} categories={categories} key={index} item={i}/>
+                )
+                : null
+              }
+              
           </ul>
-        </div> */}
+        </div>
       </div>
 
 

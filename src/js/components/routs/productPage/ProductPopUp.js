@@ -208,10 +208,6 @@ export default class ProductPage extends Component {
             {this.props.variationData 
             ? <div>
                 <ProductsSwiper mainImg={this.props.state.selectedProd.ImgLink} variaionData={this.props.variationData}/>
-                {this.props.state.selectedProd.Series ? <h4>יצרן: {this.props.state.selectedProd.Series}</h4> : null}
-                {this.props.state.selectedProd.RatedImpulse ? <h4>דרוג: {this.props.state.selectedProd.RatedImpulse}</h4> : null}
-                {this.props.state.selectedProd.CurveCode ? <h4>קוד: {this.props.state.selectedProd.CurveCode}</h4> : null}
-                {this.props.state.selectedProd.Poles ? <h4>מוטות: {this.props.state.selectedProd.Poles}</h4> : null}
                 {this.props.state.selectedProd.PdfLink ? <a href={this.props.state.selectedProd.PdfLink}>מפרט טכני</a> : null}
               </div>
             
@@ -227,7 +223,10 @@ export default class ProductPage extends Component {
 								<h2>{lang == "he" ? this.props.state.selectedProd.Title : this.props.state.selectedProd.TitleEng}</h2>
                 <h2>{this.props.state.selectedProd.EngDesc ? this.props.state.selectedProd.EngDesc : null}</h2>
                 <h4>מק"ט {this.props.state.selectedProd.CatalogNumber ? this.props.state.selectedProd.CatalogNumber : null}</h4>
-
+                {this.props.state.selectedProd.Series ? <h4>יצרן: {this.props.state.selectedProd.Series}</h4> : null}
+                {this.props.state.selectedProd.RatedImpulse ? <h4>דרוג: {this.props.state.selectedProd.RatedImpulse}</h4> : null}
+                {this.props.state.selectedProd.CurveCode ? <h4>קוד: {this.props.state.selectedProd.CurveCode}</h4> : null}
+                {this.props.state.selectedProd.Poles ? <h4>מוטות: {this.props.state.selectedProd.Poles}</h4> : null}
                 {/* work here */}
                 <div className="variation_container">
 
@@ -245,7 +244,7 @@ export default class ProductPage extends Component {
   									<p>{this.props.state.selectedProd.Description}</p>
   								</div>
   							: null}
-                {this.props.state.selectedProd.PackQuan ?
+                {/* {this.props.state.selectedProd.PackQuan ?
                   <div className="prod-info-cont flex-container">
                     <div className="col-lg-3">
                       <p className="c-title pack_quan">יחידות באריזה:</p>
@@ -254,8 +253,8 @@ export default class ProductPage extends Component {
                       <p className="c-nomber">{this.props.state.selectedProd.PackQuan}</p>
                     </div>
                   </div >
-                :null}
-                {this.props.state.selectedProd.CatalogNumber ?
+                :null} */}
+                {/* {this.props.state.selectedProd.CatalogNumber ?
                   <div className="prod-info-cont flex-container">
                     <div className="col-lg-3">
                       <p className="c-title">מספר קטלוגי:</p>
@@ -264,7 +263,7 @@ export default class ProductPage extends Component {
                       <p className="c-nomber">{this.props.state.selectedProd.CatalogNumber}</p>
                     </div>
                   </div >
-                :null}
+                :null} */}
                 {this.props.state.selectedProd.Barcode ?
                   <div className="prod-info-cont flex-container">
                     <div className="col-lg-3">
@@ -307,7 +306,9 @@ export default class ProductPage extends Component {
                   </div >
                 :null}
                 */}
-                <button>הוספה לרשימה</button>
+                <div className="add_to_cart_popup">
+                  <button>הוספה לרשימה</button>
+                </div>
 
 							</div>
 

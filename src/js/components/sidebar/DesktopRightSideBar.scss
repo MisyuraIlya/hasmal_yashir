@@ -191,14 +191,6 @@
 
 .sd-body_desktop_center{
 
-  ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    list-style-position: inside;
-    list-style-type: none;
-
-  }
-
 }
 
 @media screen and (max-width: 1150px) {

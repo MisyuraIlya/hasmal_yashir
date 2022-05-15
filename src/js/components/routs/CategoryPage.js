@@ -664,6 +664,7 @@ export default class CategoryPage extends Component {
     let subChildCategory = this.props.state.categories.filter(item => item.Id == this.props.match.params.lvl3)[0];
     let props = Object.assign({}, this.props);
     let lang = this.props.state.lang;
+    // console.log('this props', this.props.match.params)
     // console.log(this.state.labelCliked)
     // console.log(this.state.tmpProducts)
     // let labless = this.getAllLables()
@@ -911,7 +912,7 @@ export default class CategoryPage extends Component {
 			</div>
 
       {/* Mobile */}
-      <div className="">
+      <div className="category_page_mobile">
 
         <SearchMobileInput/>
 
@@ -921,7 +922,7 @@ export default class CategoryPage extends Component {
             <div className="breadcrumbs">
               <ul>
                 <li>
-                  <NavLink to={"/home/" + lang}>בית</NavLink>
+                  <NavLink to={"/home/"}>בית</NavLink>
                 </li>
                 <li>
                   <NavLink to={"/category-page/" + parentCategory.Id + "/0/0/" + lang}>{parentCategory.Title}</NavLink>
@@ -961,91 +962,30 @@ export default class CategoryPage extends Component {
               if(index <= this.state.toShow && !element.VariationOf ){
                 return(
                 <div onClick = {()=>this.goToProductPage(element)} className="flex-container card_mobile_categoryPage_bg">
-                    <div className="col-lg-3">
-                      <div className="img-cont">
+                    <div className="col-lg-3  category_page_right">
+                      <div className="img-cont_mobile">
                         <img className="img" src={element.ImgLink} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />
+                        <span>פרטים</span>
                       </div>
                     </div>
-                    <div className="col-lg-7">
-                      {this.state.tmpProducts.map((element, index) => {
-                      let inCart = this.props.state.productsInCart.filter(item => item.Products.CatalogNumber == element.CatalogNumber);
-                      let productSales = this.props.state.productSales.length ? this.props.state.productSales.filter(item => item.ForCatalogNum == element.CatalogNumber) : [];
-                      let diffQuantity = this.props.state.productSalesDiffQuan.filter(item => item.ProdId == element.Id && item.Quantity != null);
-                      let maam = this.props.state.user.Type == 2 ? 1 : 1;
-                      let type;
-
- 
-                      
-                      if(index <= this.state.toShow && !element.VariationOf ){
-                        return(
-                          <div key={index} className={element.Unpublished ? "col-lg-3 wrapper-cont unpublished" : "wrapper-cont col-lg-3"}>
-                            <div className={!element.ActualQuan ? "wrapper" : "wrapper disable"}>
-     
-
-
-
-                              <div onClick = {()=>this.goToProductPage(element)}>
-        
-                                <div className={this.props.state.user ? "prod-data-cont user" : "prod-data-cont"}>
-                                  <h3 className="p-title">{lang=="he" ? element.Title : element.TitleEng}</h3>
-                                  <div className="barcode-cont">
-                                    <p>{"מק״ט: " + element.CatalogNumber}</p>
-                                    {element.Barcode ?
-                                      <p>{"ברקוד: " + element.Barcode}</p>
-                                    :null}
-                                  </div>
-                                  <div>
-                                    {(this.props.state.user && this.props.state.user.Id) ||  (!this.props.state.user && !localStorage.role && this.props.state.priceNoLogin == "1") ?
-                                      <div className="price-main-cont">
-                                        {element.Price && element.Price != '0' ?
-                                          <div className="price-cont">
-                                            <div className="price-subCont">
-                                              {(inCart.length && (("UnitChosen" in inCart[0] && (inCart[0].UnitChosen == 0 || inCart[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCart[0])))) || (inCart.length == 0) ?
-                                                <h3 className="price">{(parseFloat(element.Price) * maam).toFixed(2) + type}</h3>
-                                              :
-                                                <h3 className="price">{(parseFloat(element.Price) * parseInt(element.PackQuan) * maam).toFixed(2) + type}</h3>
-                                              }
-                                            </div>
-                                            {parseFloat(element.OrgPrice) > element.Price ?
-                                            <div className="orgPrice-subCont">
-                                              <div className="price-widh-discount">
-                                                {(inCart.length && (("UnitChosen" in inCart[0] && (inCart[0].UnitChosen == 0 || inCart[0].UnitChosen == 2)) ||  (!("UnitChosen" in inCart[0])))) || (inCart.length == 0) ?
-                                                  <h3 className="old-price">{(parseFloat(element.OrgPrice) * maam).toFixed(2)}</h3>
-                                                :
-                                                  <h3 className="old-price">{(parseFloat(element.OrgPrice) * parseInt(element.PackQuan) * maam).toFixed(2)}</h3>
-                                                }
-                                              </div>
-                                            </div>
-                                          :null}
-                                          </div>
-                                        :null}
-                                      </div>
-                                    :null}
-                                  </div>
-                                </div>
-                              </div>
-                              <LoveProduct/>
-
-                              {(this.props.state.user || this.props.state.b2cAvailiable)  && element.Price && element.Price != 0 && !element.Extra3 ?
-                              <div className={inCart.length ? "add-to-cart in-cart catalog after-add" : "add-to-cart not-in-cart catalog before-add"}>
-                                <ProductAddToCartCatalog
-                                  inCart={inCart}
-                                  element={element}
-                                  price={(parseFloat(element.Price) * maam)}
-                                  {...props}
-                                />
-                              </div>
-                              :null}
-
-                            </div>
-                          </div>
-                        );
-                      }
-                      })}
+                    <div className="col-lg-7 category_page_center">
+                      <div className="category_page_center_container">
+                        {console.log(element)}
+                        <h4>{element.Title}</h4>
+                        <h4>{element.EngDesc}</h4>
+                        <h5>{element.CatalogNumber}</h5>
+                      </div>
                     </div>
-                    <div className="col-lg-2">
-                      3
+
+                    <div className="col-lg-2 category_page_left">
+                      <div>
+                        <div className="category_page_circle_mobile">
+                          <span className="category_page_circle_mobile_add">+</span>
+                        </div>
+                        <span>כמות</span>
+                      </div>
                     </div>
+
                   </div>
                 );
               }
