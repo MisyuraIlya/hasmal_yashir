@@ -83,6 +83,7 @@
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^7.26.10",
     "swiper": "^8.1.4",
+    "use-debounce": "^8.0.1",
     "voucher-code-generator": "^1.1.1"
   }
 }

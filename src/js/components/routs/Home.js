@@ -22,6 +22,8 @@ import CategoryModal from "../categoryModal/CategoryModal";
 
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
+import SearchMobileInput from "../searchMobileInput/SearchMobileInput";
+import DesktopFilterInput from "../desktopFilterInput/DesktopFilterInput";
 
 
 const ShowCase = res => {
@@ -449,7 +451,6 @@ export default class Home extends Component {
     mail:"",
     phone:"",
     msg:"",
-    searchFilter:'',
     preload: false
 	};
 	componentDidMount = () => {
@@ -499,18 +500,7 @@ export default class Home extends Component {
         
         <div className="mobile_showcase">
           
-          {/* <div className="input_icon_mobile">
-            <div className="search_icon">
-              <img className="icon_search" src={lang == 'he' ? globalFileServer + 'home/banner/lupa.png' : globalFileServer + 'enlogo.png'} alt=""/>
-            </div>
-              
-            <input placeholder="מוצר/מקט/תחום" className="home-mobile-input"></input>
-          </div> */}
-
-          <div className="search_container_mobile">
-                <input type='text' placeholder='מוצר/מק"ט/תחום' className='search_input_mobile'/>
-                <button type="submit" className="search_button_mobile"><img  src={lang == 'he' ? globalFileServer + 'home/banner/lupa.png' : globalFileServer + 'enlogo.png'} alt=""/></button>
-          </div>
+          <SearchMobileInput/>
 
         </div>
 
@@ -519,32 +509,7 @@ export default class Home extends Component {
             <img src={globalFileServer + 'home/banner/1.png'} />
           </div>
           <div className='title-cont'>
-            <div className="input_banner">
-            <div className="search_container">
-                <form>
-                    <input value={this.state.searchFilter} onChange={(e) => this.setState({searchFilter: e.target.value})} type='text' placeholder='מוצר/מק"ט/תחום' className='search_input'/>
-                    <button type="submit" className="search_button"><img  src={lang == 'he' ? globalFileServer + 'home/banner/lupa.png' : globalFileServer + 'enlogo.png'} alt=""/></button>
-                </form>
-              </div>
-            </div>
-            <div className="filter_container">
-              {this.state.searchFilter == '' 
-              ? null
-              :<SearchModal globalFileServer={globalFileServer} searchFilter={this.state.searchFilter}/>
-              }
-            </div>
-            
-            {this.state.searchFilter == '' 
-            ? <div>
-                <h2 className="title_banner_main">כותרת באנר רשאית בעמוד הבית</h2>
-                <div className="banner_btn">
-                  <button>+ לינק ליעד</button>
-                </div>
-              </div>
-            : null
-            }
-
-
+          <DesktopFilterInput/>
           </div>
         </div>
 

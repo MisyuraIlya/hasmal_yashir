@@ -1429,6 +1429,14 @@
 
   }
 }
+
+.another_product_card_container{
+  .swiper{
+    width: 100%;
+  }
+}
+
+
 @media screen and (max-width: 1150px) {
 
   .container_banner{
@@ -1467,14 +1475,9 @@
     button{
       width: 80%;
     }
-
-    .another_product_card{
-      width: 280px;
-      margin: 66px 60px 0 59px;
-      padding: 0 0 22px;
-      background-color: #ededed;
-    }
   }
+
+
 }
 
 @media screen and (min-width: 1150px) {
@@ -1492,6 +1495,12 @@
 
   .category_page_mobile{
     display: none;
+  }
+
+  .another_product_card_container{
+    .swiper{
+      width: 50%;
+    }
   }
 
 }

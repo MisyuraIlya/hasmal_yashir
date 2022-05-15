@@ -993,7 +993,6 @@ export default class CategoryPage extends Component {
                     </div>
                     <div className="col-lg-7 category_page_center">
                       <div className="category_page_center_container">
-                        {console.log(element)}
                         <h4>{element.Title}</h4>
                         <h4>{element.EngDesc}</h4>
                         <h5>{element.CatalogNumber}</h5>
