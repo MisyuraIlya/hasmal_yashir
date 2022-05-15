@@ -15,6 +15,8 @@ import CategoryLabel from "../categoryLabel/CategoryLabel";
 
 import LoveProduct from "../LoveProduct";
 import SearchMobileInput from "../searchMobileInput/SearchMobileInput";
+import MobileProductFilter from "../MobileProductFilter/MobileProductFilter";
+import FilterPopUp from "../filterPopUp/FilterPopUp";
 
 let arrayGLB = [];
 let glbCatObj = {
@@ -53,6 +55,7 @@ export default class CategoryPage extends Component {
       brandSearchString:"",
       labelCliked:[],
       loveClick:false,
+      filterPopUp:false,
 		}
 		this.handleScroll = this.handleScroll.bind(this);
 		this.close = this.close.bind(this);
@@ -651,7 +654,9 @@ export default class CategoryPage extends Component {
   }
 
 
-
+  handleFilterPopUp = () => {
+    this.setState({filterPopUp: !this.state.filterPopUp})
+  }
 
   
 
@@ -702,6 +707,7 @@ export default class CategoryPage extends Component {
                 <link rel="alternate" href={entry + '/category/' + parentCategory.ParentId + '/' + parentCategory.Id} hreflang="he-il" />
               </Helmet>
             : null}
+            
             {this.state.info ? ReactDOM.createPortal(
               <div className="my-modal prod-info">
                 <div className="modal-wrapper animated">
@@ -915,6 +921,23 @@ export default class CategoryPage extends Component {
       <div className="category_page_mobile">
 
         <SearchMobileInput/>
+        {this.state.filterPopUp ? ReactDOM.createPortal(
+              <div className="my-modal prod-info">
+                <div className="modal-wrapper animated">
+                  <div className="close-cont">
+                    <div onClick={() => this.handleFilterPopUp()} className="close">
+                      <img src={globalFileServer + 'icons/close.svg'} />
+                    </div>
+
+                  </div>
+                  <FilterPopUp/>
+                </div>
+                <div  className="overflow" onClick={() => this.handleFilterPopUp()}></div>
+              </div>,
+              document.getElementById('modal-root')
+            ) : null}
+
+        <MobileProductFilter filterPopUp={this.state.filterPopUp} handleFilterPopUp={this.handleFilterPopUp}/>
 
         <div className="title-breadcrumbs">
           {parentCategory ?
