@@ -37,7 +37,7 @@ const DesktopRightSideBar = ({ categories, toggleDesktopRightSideBar, desktopRig
           <ul>
 
               {authSidebar.map((i,index) => 
-                  <li><NavLink to={i.url}key={index} className="sd-link">{i.name}</NavLink></li>
+                  <li key={index} ><NavLink to={i.url}className="sd-link">{i.name}</NavLink></li>
               )}
           </ul>
         </div>

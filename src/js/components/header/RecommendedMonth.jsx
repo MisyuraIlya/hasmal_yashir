@@ -19,9 +19,9 @@ const RecommendedMonth = ({globalFileServer}) => {
         <div className='title_recommendedMonth'>
           <h1>המומלצים של החודש</h1>
         </div>
-        <div class="container recomendedMonth_desktop">
-          {testArray.map((i) => 
-          <div className='card'>
+        <div className="container recomendedMonth_desktop">
+          {testArray.map((i, index) => 
+          <div className='card' key={index}>
             <div className="event-box">
 
               <div className='event-border'>
@@ -47,9 +47,9 @@ const RecommendedMonth = ({globalFileServer}) => {
 
       {/* mobile */}
       <div className=' recommended_mobile'>
-        <div class="flex-container">
-          {testArray.map((i) =>
-            <div className='col-lg-6 recomended_info_mobile'>
+        <div className="flex-container">
+          {testArray.map((i,index) =>
+            <div className='col-lg-6 recomended_info_mobile' key={index}>
 
               <div className='mobile_recomended_image'>
                   <div className='mobile_special_event'>

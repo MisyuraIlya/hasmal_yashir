@@ -8,8 +8,8 @@ const CategoryLabel = ({handleCheckedLabel, getAllLables}) => {
   return (
     <div className='category_label_component'>
       {
-        [...DataLable].map((i) => 
-          <div className='category_label_container'>
+        [...DataLable].map((i,index) => 
+          <div className='category_label_container' key={index}>
             <div className='category_label'>
               <input 
                 type='checkbox'

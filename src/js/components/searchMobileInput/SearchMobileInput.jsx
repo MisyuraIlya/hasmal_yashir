@@ -9,9 +9,9 @@ const SearchMobileInput = ({filteredProducts,getFilteredProducts}) => {
     const [value] = useDebounce(searchFilter, 1000);
   
   
-    useMemo(() => {
-      getFilteredProducts(value)
-    },[value])
+    // useMemo(() => {
+    //   getFilteredProducts(value)
+    // },[value])
   
     return (
 
@@ -20,8 +20,7 @@ const SearchMobileInput = ({filteredProducts,getFilteredProducts}) => {
         type='text' 
         placeholder='מוצר/מק"ט/תחום'
         className='search_input_mobile'
-        // defaultValue={'Hello'}
-        onChange={getFilteredProducts} 
+        // onChange={getFilteredProducts} 
          />
         <button type="submit" className="search_button_mobile"><img src={globalFileServer + 'category/modal/categoryLupa.png'}/></button>
 

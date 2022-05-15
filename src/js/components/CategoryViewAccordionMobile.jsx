@@ -19,8 +19,8 @@ const CategoryViewAccordionMobile = ({allCat, element}) => {
                     </div>
                 </div>
                 <div className='category_view_accordion_content'>
-                {lvl2.map((i) => 
-                <NavLink to={`/category/${i.ParentId}/${i.Id}/0/0`} ><h2>{i.Title}</h2></NavLink>
+                {lvl2.map((i,index) => 
+                <NavLink key={index} to={`/category/${i.ParentId}/${i.Id}/0/0`} ><h2>{i.Title}</h2></NavLink>
                 )}
                 </div>
             </div>

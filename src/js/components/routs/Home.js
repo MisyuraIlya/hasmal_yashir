@@ -146,29 +146,7 @@ const ProductsSale = res => {
   let toShow = 6;
   let column = 2;
   // this.props.desktopRightSideBar
-  const param = {
-    slidesPerView: toShow,
-    slidesPerColumn: column,
-    slidesPerColumnFill: 'row',
-    breakpoints: {
-      1600: {
-        slidesPerView: 4,
-        slidesPerColumn: 1
-      },
-      1400: {
-        slidesPerView: 4,
-        slidesPerColumn: 2
-      },
-      1000: {
-        slidesPerView: 3,
-        slidesPerColumn: 1
-      },
-      0: {
-        slidesPerView: 2,
-        slidesPerColumn: 1
-      }
-    }
-  };
+ 
 	let lang = res.appState.lang;
   return (
     
@@ -179,7 +157,7 @@ const ProductsSale = res => {
         </h1>
       </div>
       <div className="items images images-slider-cont">
-        <Swiper ref={ref} {...param} >
+        <Swiper ref={ref}  >
           {res.items.map((element, index) => {
 
 						let inCart = res.appState.productsInCart.filter(item => item.Products.CatalogNumber == element.CatalogNumber);
@@ -324,30 +302,7 @@ const CategorySale = res => {
   let toShow = 5;
   let column = 1;
 
-  const param = {
-    slidesPerView: toShow,
-    slidesPerColumn: column,
-    slidesPerColumnFill: 'row',
-    
-    breakpoints: {
-      1400: {
-        slidesPerView: 3,
-        slidesPerColumn: 1
-      },
-      1000: {
-        slidesPerView: 3,
-        slidesPerColumn: 1
-      },
-      600: {
-        slidesPerView: 2,
-        slidesPerColumn: 1
-      },
-      0: {
-        slidesPerView: 2,
-        slidesPerColumn: 1
-      }
-    }
-  };
+
 	let lang = res.appState.lang;
   let catsLvl1 = res.items.filter((item) => {return item.LvlNumber == "1"});
 
@@ -370,7 +325,8 @@ const CategorySale = res => {
           grabCursor={true}
           modules={[Navigation, Pagination, Thumbs]}
           ref={ref} 
-          {...param} 
+          spaceBetween={50}
+          slidesPerView={3}
           >
           {catsLvl1.map((element, index) => {
 

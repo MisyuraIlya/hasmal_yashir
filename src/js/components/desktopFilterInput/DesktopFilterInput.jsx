@@ -24,7 +24,6 @@ const DesktopFilterInput = ({filteredProducts,getFilteredProducts}) => {
               type='text' 
               placeholder='מוצר/מק"ט/תחום' 
               className='search_input'
-              // defaultValue={'Hello'}
               onChange={(e) => setSearchFilter(e.target.value)} 
               />
               <button type="submit" className="search_button"><img  src={ globalFileServer + 'home/banner/lupa.png' } alt=""/></button>

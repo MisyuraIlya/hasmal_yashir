@@ -984,7 +984,7 @@ export default class CategoryPage extends Component {
 
               if(index <= this.state.toShow && !element.VariationOf ){
                 return(
-                <div onClick = {()=>this.goToProductPage(element)} className="flex-container card_mobile_categoryPage_bg">
+                <div key={index} onClick = {()=>this.goToProductPage(element)} className="flex-container card_mobile_categoryPage_bg">
                     <div className="col-lg-3  category_page_right">
                       <div className="img-cont_mobile">
                         <img className="img" src={element.ImgLink} onError={(e) => e.target.src = globalFileServer + 'placeholder.jpg'} />

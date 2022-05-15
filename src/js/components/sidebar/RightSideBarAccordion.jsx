@@ -18,8 +18,8 @@ const RightSideBarAccordion = ({toggleDesktopRightSideBar, categories, item}) =>
           </div>
         </div>
       <div className="right_side_bar_desktop_dropwon__content">
-             {lvl2.map((i) => 
-              <NavLink to={`/category/${i.ParentId}/${i.Id}/0/0`} onClick={toggleDesktopRightSideBar}><h2>{i.Title}</h2></NavLink>
+             {lvl2.map((i, index) => 
+              <NavLink key={index} to={`/category/${i.ParentId}/${i.Id}/0/0`} onClick={toggleDesktopRightSideBar}><h2>{i.Title}</h2></NavLink>
              )}
       </div>
       </div>

@@ -11,7 +11,6 @@ const AnotherProduct = ({getRandomProduct}) => {
   let random6 = getRandomProduct()
   let randomArrayOne = [random1, random2, random3]
   let randomArraySecond = [random4, random5, random6]
-  console.log(randomArrayOne)
   return (
     <div className='another_container'>
       <div className='another_container_banner_image'>
@@ -26,9 +25,9 @@ const AnotherProduct = ({getRandomProduct}) => {
             spaceBetween={35}
             slidesPerView={3}
             >
-            {randomArrayOne.map((i) => 
+            {randomArrayOne.map((i,index) => 
 
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               <NavLink to={i.CatalogNumber}>
                 <div className='another_product_card' >
                   <div className='annother_product_img_cont'>
@@ -54,9 +53,9 @@ const AnotherProduct = ({getRandomProduct}) => {
             spaceBetween={35}
             slidesPerView={3}
             >
-            {randomArraySecond.map((i) => 
+            {randomArraySecond.map((i,index) => 
             
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               <NavLink to={i.CatalogNumber}>
                 <div className='another_product_card' >
                   <div className='annother_product_img_cont'>

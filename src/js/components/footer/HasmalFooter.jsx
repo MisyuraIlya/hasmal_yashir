@@ -41,7 +41,7 @@ const HasmalFooter = () => {
 
                 <div className='col-lg-6'>
                 <select className='short_select'>
-                    <option value="" disabled selected>הסניף שלי</option>
+                    <option value="" disabled >הסניף שלי</option>
                     <option value="hurr">1</option>
                 </select>
                 <input placeholder='דוא"ל' className='short_input'/>

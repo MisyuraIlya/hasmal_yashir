@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 const HasmalCategoryBanner = ({categories, parentCategory}) => {
-  categories.length ? console.log('yes') : console.log('null');
   return (
     <div className='category_container'>
       <div className='category_banner'>
