@@ -866,7 +866,7 @@ p {
 		> div {
 			width: 18px;
 			height: 18px;
-			background-color: $c1;
+			background-color: $blue-hashmal;
 			border-radius: 100%;
 			display: inline-block;
 			animation: sk-bouncedelay 1.4s infinite ease-in-out both;
@@ -976,7 +976,7 @@ p {
 			height: 40px;
 		}
 		&.prev {
-			right: -46px;
+			right: -76px;
       z-index: 9999999;
 		}
 		&.next {
@@ -1489,6 +1489,11 @@ span.edit {
   margin: 5px 30px;
   float: left;
   text-align: right;
+}
+
+.logos_container{
+  background-color: #fff;
+  margin-top: 100px;
 }
 @keyframes zoomIn {
 	from {

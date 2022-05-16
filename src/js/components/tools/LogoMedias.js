@@ -1,64 +1,39 @@
 import React, { Component, Fragment, useState, useEffect, useContext  } from 'react';
 import { NavLink, useParams } from "react-router-dom";
 import UserContext from '../../UserContext';
+import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
+
+import { Pagination, Navigation, Thumbs } from 'swiper'
 
 const LogoMedias = res => {
 
 	const [swiper, updateSwiper] = useState(null);
 
-  const goNext = () => {
-		if (swiper !== null) {
-			swiper.slideNext();
-		}
-  };
-
-  const goPrev = () => {
-		if (swiper !== null) {
-			swiper.slidePrev();
-		}
-  };
 
 	let toShow = window.innerWidth > 1200 ? 8 : 2;
 
-	let params = {
-		slidesPerView: 6,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false
-    },
-    breakpoints: {
-      1400: {
-        slidesPerView: 6,
-        slidesPerColumn: 1
-      },
-      1000: {
-        slidesPerView: 4,
-        slidesPerColumn: 1
-      },
-      600: {
-        slidesPerView: 2,
-        slidesPerColumn: 1
-      },
-      0: {
-        slidesPerView: 2,
-        slidesPerColumn: 1
-      }
-    }
-	};
+
 	const medias = [...Array(7).keys()];
 	return(
-		<div className="logos">
+		<div className="logos logos_container">
 			<div className="images images-slider">
 			{medias.length ?
-			<Swiper getSwiper={updateSwiper} {...params}>
+			<Swiper
+			loop={true}
+			grabCursor={true}
+			spaceBetween={50}
+      slidesPerView={7}
+			>
 				{medias.map((element, index) => {
           let counter = element+1;
 					return (
+					<SwiperSlide>
 						<div key={index} className="item">
 							<div className="wrapper">
 								<img src={globalFileServer + 'home/manufacturers/' + (counter) + '.png'} />
 							</div>
 						</div>
+					</SwiperSlide>
 					)
 				})}
 			</Swiper>

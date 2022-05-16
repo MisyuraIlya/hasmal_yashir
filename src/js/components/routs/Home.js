@@ -325,7 +325,6 @@ const CategorySale = res => {
           grabCursor={true}
           modules={[Navigation, Pagination, Thumbs]}
           ref={ref} 
-          spaceBetween={50}
           slidesPerView={3}
           >
           {catsLvl1.map((element, index) => {
@@ -336,7 +335,6 @@ const CategorySale = res => {
 								<div className={!element.ActualQuan ? "wrapper" : "wrapper disable"}>
                   <NavLink to={"/category/" + element.Id + "/0/0/0" }>
 										<div className="img-cont">
-                      {console.log('link', element)}
 											{element.Img ? <img className="img" src={element.Img} /> : <img src={globalFileServer + 'placeholder.jpg'} />}
 										</div>
 										<div className="prod-data-cont">
@@ -414,6 +412,8 @@ export default class Home extends Component {
     preload: false,
     filteredProducts:[],
     loader:false,
+    promotedData:[],
+    randomPromotedData:[],
 	};
 
 	componentDidMount = () => {
@@ -424,23 +424,30 @@ export default class Home extends Component {
 
 
 	getItems = async () => {
+      let random = []
       const val = {
-  			funcName: 'getSliderItems',
+  			funcName: 'getPromotedProduct',
   	    point: 'products'
   		};
+
   		try {
   	    const data = await this.props.ajax(val);
         this.setState({
-          products: data.Productss
+          promotedData:data
         });
+
+      for(let i = 0; i < 6; i++){
+        let randomized = data[Math.floor(Math.random() * data.length)];
+        random.push(randomized)
+      }
+
+      this.setState({randomPromotedData: random})
   	  } catch(err) {
   	    //this.props.connectionError('connection error GetSales');
-        console.log('connection error GetSales');
+        console.log('connection error getPromotedProduct');
   	  }
   };
 
-
-  
 	getFilteredProducts = async (e) => {
     if(e != '') {
       let array = e.split(' ');
@@ -482,15 +489,13 @@ export default class Home extends Component {
     if(this.props.state.categories.length>0){
 			categories = this.props.state.categories.filter(item => !item.ParentId && !item.SubParentId);
     }
-   
+
+
 
 		return (
 			<div className="home-page">
-        
         <div className="mobile_showcase">
-          
           <SearchMobileInput loader={this.state.loader} filteredProducts={this.state.filteredProducts} getFilteredProducts={this.getFilteredProducts}/>
-
         </div>
 
         <div className="showcase">
@@ -542,8 +547,8 @@ export default class Home extends Component {
          <h1>המומלצים של החודש</h1>
         </div>
 
-        <RecommendedMonth globalFileServer={globalFileServer}/>
-        {/* <LogoMedias /> */}
+        <RecommendedMonth randomPromotedData={this.state.randomPromotedData} globalFileServer={globalFileServer}/>
+        <LogoMedias />
         <HasmalFooter/>
 				{/* <ContactFooter lang={lang} props={this.props}/> */}
 

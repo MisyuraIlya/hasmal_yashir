@@ -12,7 +12,6 @@ const CategoryViewAccordionMobile = ({allCat, element}) => {
         <div className={`category_view_accordion ${active ? 'active' : ''}`}>
             
             <div className=''>
-                {console.log(element)}
                     <div className='category_view_accordion_card' onClick={() => setActive(!active)}>
                         <NavLink to={`/category/${element.Id}/0/0/0`}>
                             <h2>{element.Title}</h2>

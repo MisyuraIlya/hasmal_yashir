@@ -75,7 +75,6 @@ if (module.hot) {
 
 const BasicRouter = (prop) => (
 	<Router>
-    {/* {console.log(prop.toggleRightSideBar)} */}
 		<Fragment>
       <header id="header">
         <Route {...prop} render={matchProps => (<Header {...matchProps}{...prop} />)} />

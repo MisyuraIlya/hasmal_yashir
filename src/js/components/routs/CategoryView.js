@@ -5,6 +5,7 @@ import CategoryViewAccordionMobile from '../CategoryViewAccordionMobile';
 import HasmalFooter from "../footer/HasmalFooter";
 import RecommendedMonth from '../header/RecommendedMonth';
 import SearchMobileInput from '../searchMobileInput/SearchMobileInput'
+import LogoMedias from '../tools/LogoMedias';
 export default class CategoryView extends Component {
 	constructor(props){
 		super(props);
@@ -13,6 +14,8 @@ export default class CategoryView extends Component {
 			total:[],
 			filteredProducts:[],
 			loader:false,
+			promotedData:[],
+			randomPromotedData:[],
 		}
 	}
 	componentDidMount(){
@@ -70,6 +73,31 @@ export default class CategoryView extends Component {
       this.setState({filteredProducts:[]})
     }
 	}
+
+	getItemsPromoted = async () => {
+		let random = []
+		const val = {
+			funcName: 'getPromotedProduct',
+			point: 'products'
+		};
+
+		try {
+			const data = await this.props.ajax(val);
+			this.setState({
+				promotedData:data
+			});
+
+		for(let i = 0; i < 6; i++){
+			let randomized = data[Math.floor(Math.random() * data.length)];
+			random.push(randomized)
+		}
+
+		this.setState({randomPromotedData: random})
+		} catch(err) {
+			//this.props.connectionError('connection error GetSales');
+			console.log('connection error getPromotedProduct');
+		}
+	};
 
 	render(){
 
@@ -140,7 +168,10 @@ export default class CategoryView extends Component {
 					})}
 				</div>
 
-      <RecommendedMonth/>
+      <RecommendedMonth randomPromotedData={this.state.randomPromotedData} globalFileServer={globalFileServer}/>
+			<div>
+				<LogoMedias/>
+			</div>
 			<HasmalFooter/>
 			</div>
 		)
