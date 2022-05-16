@@ -3,7 +3,7 @@ import SearchModal from '../searchModal/SearchModal';
 import './SearchMobileInput.scss'
 import { useDebounce } from 'use-debounce';
 
-const SearchMobileInput = ({filteredProducts,getFilteredProducts}) => {
+const SearchMobileInput = ({loader, filteredProducts,getFilteredProducts}) => {
 
     const [searchFilter, setSearchFilter] = useState('')
     const [value] = useDebounce(searchFilter, 1000);
@@ -29,7 +29,7 @@ const SearchMobileInput = ({filteredProducts,getFilteredProducts}) => {
     <div className="filter_container">
         {searchFilter == '' 
         ? null
-        :<SearchModal filteredProducts={filteredProducts} globalFileServer={globalFileServer} searchFilter={searchFilter}/>
+        :<SearchModal loader={loader} filteredProducts={filteredProducts} globalFileServer={globalFileServer} searchFilter={searchFilter}/>
         }
       </div>
     </>

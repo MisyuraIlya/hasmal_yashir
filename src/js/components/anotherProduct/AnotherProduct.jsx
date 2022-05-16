@@ -31,7 +31,7 @@ const AnotherProduct = ({getRandomProduct}) => {
               <NavLink to={i.CatalogNumber}>
                 <div className='another_product_card' >
                   <div className='annother_product_img_cont'>
-                    <img src={i.ImgLink} />
+                    {i.ImgLink ? <img src={i.ImgLink} /> : <img src={ globalFileServer + 'placeholder.jpg'} />}
                   </div>
                   <div className='another_prodcut_card_cont'>
                     <div className='another_product_card_font'>
@@ -59,7 +59,7 @@ const AnotherProduct = ({getRandomProduct}) => {
               <NavLink to={i.CatalogNumber}>
                 <div className='another_product_card' >
                   <div className='annother_product_img_cont'>
-                    <img src={i.ImgLink} />
+                  {i.ImgLink ? <img src={i.ImgLink} /> : <img src={ globalFileServer + 'placeholder.jpg'} />}
                   </div>
                   <div className='another_prodcut_card_cont'>
                     <div className='another_product_card_font'>

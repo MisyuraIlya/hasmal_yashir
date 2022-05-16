@@ -3,7 +3,7 @@ import SearchModal from '../searchModal/SearchModal';
 import { useDebounce } from 'use-debounce';
 
 
-const DesktopFilterInput = ({filteredProducts,getFilteredProducts}) => {
+const DesktopFilterInput = ({loader,filteredProducts,getFilteredProducts}) => {
 
   const [searchFilter, setSearchFilter] = useState('')
   const [value] = useDebounce(searchFilter, 1000);
@@ -34,7 +34,7 @@ const DesktopFilterInput = ({filteredProducts,getFilteredProducts}) => {
       <div className="filter_container">
         {searchFilter == '' 
         ? null
-        :<SearchModal filteredProducts={filteredProducts} globalFileServer={globalFileServer} searchFilter={searchFilter}/>
+        :<SearchModal loader={loader} filteredProducts={filteredProducts} globalFileServer={globalFileServer} searchFilter={searchFilter}/>
         }
       </div>
 

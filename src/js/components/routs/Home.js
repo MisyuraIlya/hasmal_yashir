@@ -336,8 +336,8 @@ const CategorySale = res => {
 								<div className={!element.ActualQuan ? "wrapper" : "wrapper disable"}>
                   <NavLink to={"/category/" + element.Id + "/0/0/0" }>
 										<div className="img-cont">
-                      {/* solution */}
-											<img className="img" src={element.Img ? globalFileServer + "home/category/categoryProduct.png" + element.Img : globalFileServer + 'home/category/categoryProduct.png'} />
+                      {console.log('link', element)}
+											{element.Img ? <img className="img" src={element.Img} /> : <img src={globalFileServer + 'placeholder.jpg'} />}
 										</div>
 										<div className="prod-data-cont">
                       <div>
@@ -413,6 +413,7 @@ export default class Home extends Component {
     msg:"",
     preload: false,
     filteredProducts:[],
+    loader:false,
 	};
 
 	componentDidMount = () => {
@@ -444,26 +445,26 @@ export default class Home extends Component {
     if(e != '') {
       let array = e.split(' ');
 			let val = { 'wordArr': array };
-      console.log(array)
       const valAjax = {
         funcName: '',
         point: 'product_search',
         val: val
       };
+
+      this.setState({loader:true})
       try {
         const data = await this.props.ajax(valAjax);
-        console.log('get Data', data)
         this.setState({filteredProducts:data})
         
       } catch(err) {
         console.log('connection error GetSales');
         this.setState({preload:false});
+      } finally{
+        this.setState({loader:false})
       }
     } else {
       this.setState({filteredProducts:[]})
     }
-
-
 	}
 
 	setType = () => {}
@@ -488,7 +489,7 @@ export default class Home extends Component {
         
         <div className="mobile_showcase">
           
-          <SearchMobileInput filteredProducts={this.state.filteredProducts} getFilteredProducts={this.getFilteredProducts}/>
+          <SearchMobileInput loader={this.state.loader} filteredProducts={this.state.filteredProducts} getFilteredProducts={this.getFilteredProducts}/>
 
         </div>
 
@@ -497,7 +498,7 @@ export default class Home extends Component {
             <img src={globalFileServer + 'home/banner/1.png'} />
           </div>
           <div className='title-cont'>
-          <DesktopFilterInput filteredProducts={this.state.filteredProducts} getFilteredProducts={this.getFilteredProducts}/>
+          <DesktopFilterInput loader={this.state.loader} filteredProducts={this.state.filteredProducts} getFilteredProducts={this.getFilteredProducts}/>
           </div>
         </div>
 

@@ -57,6 +57,7 @@ export default class CategoryPage extends Component {
       loveClick:false,
       filterPopUp:false,
       filteredProducts:[],
+      loader:false,
 		}
 		this.handleScroll = this.handleScroll.bind(this);
 		this.close = this.close.bind(this);
@@ -659,30 +660,30 @@ export default class CategoryPage extends Component {
     this.setState({filterPopUp: !this.state.filterPopUp})
   }
 
-  getFilteredProducts = async (e) => {
+	getFilteredProducts = async (e) => {
     if(e != '') {
       let array = e.split(' ');
 			let val = { 'wordArr': array };
-      console.log(array)
       const valAjax = {
         funcName: '',
         point: 'product_search',
         val: val
       };
+
+      this.setState({loader:true})
       try {
         const data = await this.props.ajax(valAjax);
-        console.log('get Data', data)
         this.setState({filteredProducts:data})
         
       } catch(err) {
         console.log('connection error GetSales');
         this.setState({preload:false});
+      } finally{
+        this.setState({loader:false})
       }
     } else {
       this.setState({filteredProducts:[]})
     }
-
-
 	}
 
   
@@ -945,7 +946,7 @@ export default class CategoryPage extends Component {
       {/* Mobile */}
       <div className="category_page_mobile">
 
-        <SearchMobileInput filteredProducts={this.state.filteredProducts} getFilteredProducts={this.getFilteredProducts}/>
+        <SearchMobileInput loader={this.state.loader} filteredProducts={this.state.filteredProducts} getFilteredProducts={this.getFilteredProducts}/>
         {this.state.filterPopUp ? ReactDOM.createPortal(
               <div className="my-modal prod-info">
                 <div className="modal-wrapper animated">

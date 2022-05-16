@@ -12,12 +12,15 @@ const CategoryViewAccordionMobile = ({allCat, element}) => {
         <div className={`category_view_accordion ${active ? 'active' : ''}`}>
             
             <div className=''>
-                <div className='category_view_accordion_card' onClick={() => setActive(!active)}>
-                    <h2>{element.Title}</h2>
-                    <div className="category_view_accordion_icon"  onClick={() => setActive(!active)}>
-                        <i className='bx bxs-chevron-left'></i>
+                {console.log(element)}
+                    <div className='category_view_accordion_card' onClick={() => setActive(!active)}>
+                        <NavLink to={`/category/${element.Id}/0/0/0`}>
+                            <h2>{element.Title}</h2>
+                        </NavLink>
+                        <div className="category_view_accordion_icon"  onClick={() => setActive(!active)}>
+                            <i className='bx bxs-chevron-left'></i>
+                        </div>
                     </div>
-                </div>
                 <div className='category_view_accordion_content'>
                 {lvl2.map((i,index) => 
                 <NavLink key={index} to={`/category/${i.ParentId}/${i.Id}/0/0`} ><h2>{i.Title}</h2></NavLink>
