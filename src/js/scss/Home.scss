@@ -1345,7 +1345,7 @@
   }
 }
 
-.card{
+.card_recommendedMonth{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1358,33 +1358,39 @@
 }
 
 .event-border{
-  width: 250px;
-  height: 410px;
-  background-color: #ededed;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   img{
     width: 100%;
   }
 }
 
 .special_event{
-  float: left;
+  position:absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
   width: 80px;
   height: 80px;
+
   span{
     position: absolute;
-    left: 70px;
-    top:20px;
+    top: 15px;
+    left: 0;
+    width: 166px;
   }
+
 }
 
 .special_event_special{
+
   font-size: 20px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
+
   color: #fe5335;
+
 }
 
 .special_event_new{
@@ -1397,9 +1403,17 @@
   color: #0081cb;
 }
 
+
 .content-info{
   float: right;
   text-align: right;
+
+  p{
+    text-align: right;
+    color: #505050;
+    font-size: 16px;
+    text-align: right;
+  }
 }
 .event-info {
   text-align: center;

@@ -25,6 +25,7 @@ export default class CategoryView extends Component {
     }
 
 		this.getItems();
+		this.getItemsPromoted();
 
 	}
 
@@ -168,7 +169,7 @@ export default class CategoryView extends Component {
 					})}
 				</div>
 
-      <RecommendedMonth randomPromotedData={this.state.randomPromotedData} globalFileServer={globalFileServer}/>
+      		<RecommendedMonth randomPromotedData={this.state.randomPromotedData} globalFileServer={globalFileServer}/>
 			<div>
 				<LogoMedias/>
 			</div>

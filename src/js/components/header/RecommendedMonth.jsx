@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 const RecommendedMonth = ({randomPromotedData, promotedData, globalFileServer}) => {
 
   const specialEvnet = globalFileServer + 'home/recomendedMonth/specialevent.png'
-
   return (
     <div className='container_recommenedMonth'>
         <div className='title_recommendedMonth'>
@@ -12,23 +11,23 @@ const RecommendedMonth = ({randomPromotedData, promotedData, globalFileServer}) 
 
         <div className="container recomendedMonth_desktop">
           { randomPromotedData.map((i, index) => 
-          <div className='card' key={index}>
+          <div className='card_recommendedMonth' key={index}>
             <div className="event-box">
 
               <div className='event-border'>
                 <div className='special_event'>
                   <img src={specialEvnet}/>
                   {/* what is the special event table in data base? */}
-                  {/* <span className='special_event_special'>{i.specialEventTitle}</span>
-                  <span className='special_event_new'>{i.newEventTitle}</span> */}
+                  <span className='special_event_special'>+ הנחה ייחודית</span>
+                  <span className='special_event_new'>{i.newEventTitle}</span>
                 </div>
-                  <img src={i.ImgLink} className='event-img'/>
+                  <img src={i.ImgLink} className='event_img'/>
               </div>
 
               <div className='content-info'>
-                <h3 className="event-text">{i.Title}</h3>
+                <p className="event-text">{i.Title}</p>
                 <p>{i.EngDesc}</p>
-                <p>{i.CatalogNumber}</p>
+                <p>מק"ט {i.CatalogNumber}</p>
               </div>
 
             </div>
