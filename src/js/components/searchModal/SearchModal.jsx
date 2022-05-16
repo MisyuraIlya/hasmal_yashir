@@ -4,7 +4,6 @@ const SearchModal = ({filteredProducts, globalFileServer, searchFilter}) => {
     
 
 
-    console.log(filteredProducts)
         // const sortedProducts = products.filter(title => title.title.includes(searchFilter))
         //to={`/category/${PrimaryMenuItemId}/${SecondaryMenuItemId}/${ThirdMenuItemId}/${CatalogNumber}`}
     return (

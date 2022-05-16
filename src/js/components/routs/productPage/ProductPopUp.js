@@ -205,7 +205,7 @@ export default class ProductPage extends Component {
 
 				<div className="product-wrapper flex-container">
           <div className="col-lg-5 image image_container_popup">
-            {this.props.variationData 
+            {this.props.variationData.length > 0
             ? <div>
                 <ProductsSwiper mainImg={this.props.state.selectedProd.ImgLink} variaionData={this.props.variationData}/>
                 {this.props.state.selectedProd.PdfLink ? <a href={this.props.state.selectedProd.PdfLink}>מפרט טכני</a> : null}

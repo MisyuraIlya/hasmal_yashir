@@ -11,6 +11,7 @@ export default class CategoryView extends Component {
 		this.state = {
 			active:false,
 			total:[],
+			filteredProducts:[],
 		}
 	}
 	componentDidMount(){
@@ -41,6 +42,32 @@ export default class CategoryView extends Component {
       console.log('connection error GetSales');
       this.setState({preload:false});
     }
+	}
+
+	  getFilteredProducts = async (e) => {
+    if(e != '') {
+      let array = e.split(' ');
+			let val = { 'wordArr': array };
+      console.log(array)
+      const valAjax = {
+        funcName: '',
+        point: 'product_search',
+        val: val
+      };
+      try {
+        const data = await this.props.ajax(valAjax);
+        console.log('get Data', data)
+        this.setState({filteredProducts:data})
+        
+      } catch(err) {
+        console.log('connection error GetSales');
+        this.setState({preload:false});
+      }
+    } else {
+      this.setState({filteredProducts:[]})
+    }
+
+
 	}
 	render(){
 
@@ -100,7 +127,7 @@ export default class CategoryView extends Component {
 
 				{/* mobile version */}
 				<div className='categories_mobile'>
-					<SearchMobileInput/>
+					<SearchMobileInput filteredProducts={this.state.filteredProducts} getFilteredProducts={this.getFilteredProducts}/>
 					{categories.map((element, index) => {
 						return(
 							<div key={index} className="card_category_mobile">
