@@ -543,10 +543,6 @@ export default class Home extends Component {
         :null}
         
         <SecondBanner globalFileServer={globalFileServer} />
-        <div className="recomendedMonthTitle">
-         <h1>המומלצים של החודש</h1>
-        </div>
-
         <RecommendedMonth randomPromotedData={this.state.randomPromotedData} globalFileServer={globalFileServer}/>
         <LogoMedias />
         <HasmalFooter/>

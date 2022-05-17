@@ -2,10 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PreLoader from '../loader/PreLoader';
 const SearchModal = ({loader, filteredProducts, globalFileServer, searchFilter}) => {
-        console.log(loader)
         // const sortedProducts = products.filter(title => title.title.includes(searchFilter))
         //to={`/category/${PrimaryMenuItemId}/${SecondaryMenuItemId}/${ThirdMenuItemId}/${CatalogNumber}`}
-        console.log(filteredProducts.length > 0)
     return (
         <div className='search_filter_container'>
 

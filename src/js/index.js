@@ -66,6 +66,7 @@ import HasmalCategoryPage from "./pages/HasmalCategoryPage";
 import './App.scss';
 import RightSideBar from "./components/sidebar/RightSideBar";
 import DesktopRightSideBar from "./components/sidebar/DesktopRightSideBar";
+import ErrorPage from "./components/errorPage/ErrorPage";
 require('./globals.js');
 
 if (module.hot) {
@@ -146,7 +147,7 @@ const BasicRouter = (prop) => (
 category-page
 */}
 
-					<Route render={(props) => (<NotFound {...props}{...prop}/>)} />
+					<Route render={(props) => (<ErrorPage/>)} />
 				</Switch>
 			</main>
 
