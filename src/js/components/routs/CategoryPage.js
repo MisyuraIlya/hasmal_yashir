@@ -644,13 +644,13 @@ export default class CategoryPage extends Component {
         })
       }
     })
-
+    console.log(tmpProducts)
     if(tmpProducts.length > 0) {
       let uniqueChars = [...new Set(tmpProducts)];
       this.setState({tmpProducts:uniqueChars})
       
     } else {
-      return this.getAllLables()
+      return this.componentDidMount()
     }
 
   }

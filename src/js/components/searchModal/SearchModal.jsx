@@ -12,8 +12,8 @@ const SearchModal = ({loader, filteredProducts, globalFileServer, searchFilter})
         
             :
             filteredProducts.length > 0 
-            ?             filteredProducts.map((i) => 
-                <NavLink to={`/category/${i.PrimaryMenuItemId}/${i.SecondaryMenuItemId}/${i.ThirdMenuItemId}/${encodeURIComponent(i.CatalogNumber)}`}>
+            ?             filteredProducts.map((i,index) => 
+                <NavLink key={index} to={`/category/${i.PrimaryMenuItemId}/${i.SecondaryMenuItemId}/${i.ThirdMenuItemId}/${encodeURIComponent(i.CatalogNumber)}`}>
                     <div className='flex-container filtered_product_row'>
                         <div className='col-lg-6 filtered_info_product'>
                         <span>
